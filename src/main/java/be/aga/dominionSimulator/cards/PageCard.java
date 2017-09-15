@@ -6,22 +6,22 @@ import be.aga.dominionSimulator.enums.DomCardName;
 
 public class PageCard extends DomCard {
     public PageCard() {
-      super( DomCardName.Page);
+        super(DomCardName.Page);
     }
 
     public void play() {
-      owner.addActions(1);
-      owner.drawCards(1);
+        owner.addActions(1);
+        owner.drawCards(1);
     }
 
     @Override
     public void handleCleanUpPhase() {
-        if (owner==null)
+        if (owner == null)
             return;
-        if (owner.wants(DomCardName.Treasure_Hunter)) {
+        if (owner.wants(DomCardName.TreasureHunter)) {
             DomPlayer theOwner = owner;
             owner.returnToSupply(this);
-            theOwner.gain(DomCardName.Treasure_Hunter);
+            theOwner.gain(DomCardName.TreasureHunter);
             return;
         }
         super.handleCleanUpPhase();

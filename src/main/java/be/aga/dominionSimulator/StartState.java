@@ -9,9 +9,9 @@ import java.util.regex.Pattern;
 
 public class StartState {
 
-    private ArrayList< DomCardName> myHand = new ArrayList<>();
-    private ArrayList< DomCardName> myDrawDeck = new ArrayList<>();
-    private ArrayList< DomCardName> myDiscard = new ArrayList<>();
+    private ArrayList<DomCardName> myHand = new ArrayList<>();
+    private ArrayList<DomCardName> myDrawDeck = new ArrayList<>();
+    private ArrayList<DomCardName> myDiscard = new ArrayList<>();
     private boolean shuffleDrawDeck = true;
     public String myOriginalHand;
     public String myOriginalDrawDeck;
@@ -23,8 +23,8 @@ public class StartState {
     }
 
     public boolean addDrawDeck(String aDrawDeck, String aShuffle) {
-        myOriginalDrawDeck=aDrawDeck;
-        shuffleDrawDeck=aShuffle.equals("true");
+        myOriginalDrawDeck = aDrawDeck;
+        shuffleDrawDeck = aShuffle.equals("true");
         return dissectAndAdd(aDrawDeck, myDrawDeck);
     }
 
@@ -35,16 +35,16 @@ public class StartState {
 
     public static boolean dissectAndAdd(String aString, ArrayList<DomCardName> aDestination) {
         if (aString.trim().isEmpty()) {
-            aDestination= new ArrayList<>();
+            aDestination = new ArrayList<>();
             return true;
         }
-        for (String tag : aString.split(",| and")){
+        for (String tag : aString.split(",| and")) {
             Pattern pattern = Pattern.compile(" *(\\d*) *(.*)");
             Matcher matcher = pattern.matcher(tag.trim());
             if (!matcher.matches())
-              return false;
+                return false;
             String theString = matcher.group(2);
-            theString=theString.replaceAll( "\\s|-", "_" ).replaceAll( "'", "\\$" );
+            theString = theString.replaceAll("\\s|-", "_").replaceAll("'", "\\$");
             DomCardName theCardName;
             try {
                 theCardName = DomCardName.valueOf(theString);
@@ -52,17 +52,17 @@ public class StartState {
                 return false;
             }
             Integer theNumber = 1;
-            if (matcher.group(1).trim().length()>0)
+            if (matcher.group(1).trim().length() > 0)
                 theNumber = new Integer(matcher.group(1));
-            for (int j=0;j<theNumber;j++){
-               aDestination.add(0,theCardName);
+            for (int j = 0; j < theNumber; j++) {
+                aDestination.add(0, theCardName);
             }
         }
         return true;
     }
 
     public ArrayList<DomCardName> getHand() {
-      return myHand;
+        return myHand;
     }
 
     public ArrayList<DomCardName> getDrawDeck() {
@@ -78,14 +78,14 @@ public class StartState {
     }
 
     public String getXML() {
-        String newline = System.getProperty( "line.separator" );
+        String newline = System.getProperty("line.separator");
         StringBuilder builder = new StringBuilder();
-        builder.append("  <start_state>").append(newline);
+        builder.append("  <startState>").append(newline);
         builder.append("    <hand contents=\"").append(myOriginalHand).append("\"/>").append(newline);
         builder.append("    <discard contents=\"").append(myOriginalDiscard).append("\"/>").append(newline);
         builder.append("    <drawdeck contents=\"").append(myOriginalDrawDeck).append("\"");
         builder.append(" shuffle=\"").append(shuffleDrawDeck).append("\"/>").append(newline);
-        builder.append("  </start_state>").append(newline);
+        builder.append("  </startState>").append(newline);
         return builder.toString();
     }
 }

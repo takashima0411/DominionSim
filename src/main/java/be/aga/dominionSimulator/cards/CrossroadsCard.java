@@ -5,13 +5,13 @@ import be.aga.dominionSimulator.enums.DomCardName;
 import be.aga.dominionSimulator.enums.DomCardType;
 
 public class CrossroadsCard extends DomCard {
-    public CrossroadsCard () {
-      super( DomCardName.Crossroads);
+    public CrossroadsCard() {
+        super(DomCardName.Crossroads);
     }
 
     public void play() {
-        if (owner.getCardsFromPlay(DomCardName.Crossroads).size()==1)
-          owner.addActions(3);
+        if (owner.getCardsFromPlay(DomCardName.Crossroads).size() == 1)
+            owner.addActions(3);
         owner.drawCards(owner.getCardsFromHand(DomCardType.Victory).size());
     }
 
@@ -19,12 +19,12 @@ public class CrossroadsCard extends DomCard {
     public int getPlayPriority() {
         //TODO probably doesn't cover everything
         if (owner.getCardsFromHand(DomCardType.Action).size()
-            -owner.getCardsFromHand(DomCardName.Crossroads).size()
-            -owner.getCardsFromHand(DomCardName.Nobles).size()
-                -owner.getCardsFromHand(DomCardName.Great_Hall).size()
-                -owner.getCardsFromHand(DomCardName.Mill).size()
-            >owner.getCardsFromHand(DomCardType.Terminal).size())
-          return 30;
+                - owner.getCardsFromHand(DomCardName.Crossroads).size()
+                - owner.getCardsFromHand(DomCardName.Nobles).size()
+                - owner.getCardsFromHand(DomCardName.GreatHall).size()
+                - owner.getCardsFromHand(DomCardName.Mill).size()
+                > owner.getCardsFromHand(DomCardType.Terminal).size())
+            return 30;
         return super.getPlayPriority();
     }
 
@@ -32,8 +32,8 @@ public class CrossroadsCard extends DomCard {
     public boolean wantsToBePlayed() {
         if (owner.getCardsFromPlay(DomCardName.Crossroads).isEmpty())
             return true;
-        if (owner.getActionsLeft()==1 && !owner.getCardsFromHand(DomCardName.Secret_Chamber).isEmpty())
-          return false;
+        if (owner.getActionsLeft() == 1 && !owner.getCardsFromHand(DomCardName.SecretChamber).isEmpty())
+            return false;
         return true;
     }
 }

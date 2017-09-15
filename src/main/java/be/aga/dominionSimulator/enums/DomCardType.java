@@ -16,7 +16,7 @@ public enum DomCardType {
     Village(false),
     Trasher(false),
     Reaction(true),
-    Card_Advantage(false),
+    CardAdvantage(false),
     Looter(true),
     Ruins(true),
     Reserve(true),
@@ -28,7 +28,7 @@ public enum DomCardType {
     Gathering(true),
     Castle(true),
     Landmark(true),
-    Split_Pile(false),
+    SplitPile(false),
     TrashForBenefit(false);
 
     private final boolean isLegalCardType;
