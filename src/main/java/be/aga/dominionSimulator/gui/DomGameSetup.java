@@ -17,22 +17,22 @@ import be.aga.dominionSimulator.DomPlayer;
 
 public class DomGameSetup extends EscapeDialog implements ListSelectionListener, ActionListener {
    private DomEngine myEngine;
-   
+
 public DomGameSetup(DomEngine anEngine, final DomPlayer aSelectedBot) {
-	 myEngine=anEngine;
-	 buildGUI();
-	 setTitle("Game Setup");
-	 pack();
-	 RefineryUtilities.centerFrameOnScreen(this);
-	 setVisible(true);
+     myEngine=anEngine;
+     buildGUI();
+     setTitle("Game Setup");
+     pack();
+     RefineryUtilities.centerFrameOnScreen(this);
+     setVisible(true);
 }
 
 private void buildGUI() {
-	setLayout( new GridBagLayout() );
+    setLayout( new GridBagLayout() );
     final GridBagConstraints theCons = DomGui.getGridBagConstraints( 2 );
-	add(getSelectionPanel(), theCons);
-	theCons.gridy++;
-	add(getButtonPanel(), theCons);
+    add(getSelectionPanel(), theCons);
+    theCons.gridy++;
+    add(getButtonPanel(), theCons);
 }
 
 private JPanel getButtonPanel() {
@@ -68,7 +68,7 @@ private JPanel getButtonPanel() {
     DomGui.addHeavyLabel(thePanel, theCons);
 
     return thePanel;
-	
+
 }
 
 private JPanel getSelectionPanel() {
@@ -89,21 +89,21 @@ private JPanel getSelectionPanel() {
 
 @Override
 public void actionPerformed(ActionEvent e) {
-	if (e.getActionCommand().equals("Cancel")){
-		dispose();
-	}
-	if (e.getActionCommand().equals("OK")){
-		dispose();
-	}
-	if (e.getActionCommand().equals("Clear")){
-		myEngine.setSelectedBot(null);
-		dispose();
-	}
+    if (e.getActionCommand().equals("Cancel")){
+        dispose();
+    }
+    if (e.getActionCommand().equals("OK")){
+        dispose();
+    }
+    if (e.getActionCommand().equals("Clear")){
+        myEngine.setSelectedBot(null);
+        dispose();
+    }
 }
 
 @Override
 public void valueChanged(ListSelectionEvent e) {
-	// TODO Auto-generated method stub
-	
+    // TODO Auto-generated method stub
+
 }
 }

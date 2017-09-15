@@ -1,15 +1,12 @@
 package be.aga.dominionSimulator.gui;
 
-import java.awt.Component;
-import java.net.URL;
-
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.ImageIcon;
-import javax.swing.JList;
-
 import be.aga.dominionSimulator.enums.DomCardName;
 
-  
+import javax.swing.*;
+import java.awt.*;
+import java.net.URL;
+
+
   public class CustomComboBoxRenderer extends DefaultListCellRenderer {
     public Component getListCellRendererComponent(
                                        JList list,
@@ -24,7 +21,7 @@ import be.aga.dominionSimulator.enums.DomCardName;
               ImageIcon theCardPicture = new ImageIcon(theImageLocation) ;
               DomBotEditor.cardImageLabel.setIcon(theCardPicture);
             }
-        } 
+        }
         return c;
     }
 }

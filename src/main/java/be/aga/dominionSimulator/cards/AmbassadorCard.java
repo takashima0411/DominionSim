@@ -16,7 +16,7 @@ public class AmbassadorCard extends DomCard {
     }
 
     public void play() {
-    	if (owner.getCardsInHand().isEmpty())
+        if (owner.getCardsInHand().isEmpty())
           return;
         if (owner.getPlayStrategyFor(this)==DomPlayStrategy.ambassadorWar) {
             handleAmbassadorWar();
@@ -106,8 +106,8 @@ public class AmbassadorCard extends DomCard {
 
     private void attackOpponents( DomCardName aCardName ) {
       for (DomPlayer thePlayer : owner.getOpponents()) {
-         if (thePlayer.checkDefense()) 
-        	 continue;
+         if (thePlayer.checkDefense())
+             continue;
          DomCard theCard = owner.getCurrentGame().takeFromSupply( aCardName);
          if (theCard!=null) {
            thePlayer.gain(theCard);
@@ -124,19 +124,19 @@ public class AmbassadorCard extends DomCard {
    }
     @Override
     public int getTrashPriority() {
-    	if (owner==null)
-    		return super.getTrashPriority();
+        if (owner==null)
+            return super.getTrashPriority();
 
-    	int theCount=0;
-    	for (DomCardName card : owner.getDeck().keySet()){
+        int theCount=0;
+        for (DomCardName card : owner.getDeck().keySet()){
             //avoid endless loop when both Temple and Amb in deck
             if (card==DomCardName.Ambassador || card==DomCardName.Temple)
-    			continue;
-    		if (card.getTrashPriority(owner)<16)
-    			theCount+=owner.countInDeck(card);
-    	}
-    	if (theCount<3 && owner.countInDeck(DomCardName.Curse)==0)
-    		return 14;
-    	return super.getTrashPriority();
+                continue;
+            if (card.getTrashPriority(owner)<16)
+                theCount+=owner.countInDeck(card);
+        }
+        if (theCount<3 && owner.countInDeck(DomCardName.Curse)==0)
+            return 14;
+        return super.getTrashPriority();
     }
 }

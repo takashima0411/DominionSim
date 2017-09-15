@@ -1,44 +1,35 @@
 package be.aga.dominionSimulator.gui;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import be.aga.dominionSimulator.DomBuyCondition;
+import be.aga.dominionSimulator.enums.*;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JPanel;
-
-import be.aga.dominionSimulator.DomBuyCondition;
-import be.aga.dominionSimulator.enums.DomBotComparator;
-import be.aga.dominionSimulator.enums.DomBotFunction;
-import be.aga.dominionSimulator.enums.DomBotOperator;
-import be.aga.dominionSimulator.enums.DomCardName;
-import be.aga.dominionSimulator.enums.DomCardType;
-
 public class DomBuyConditionPanel extends JPanel implements ItemListener {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     Object[] numberValues = new Object[100];
-	private JComboBox myLeftFunctionBox;
-	private JComboBox myLeftCardBox;
-	private JComboBox myLeftTypeBox;
-	private JComboBox myRightFunctionBox;
-	private JComboBox myRightCardBox;
-	private JComboBox myRightTypeBox;
-	private JComboBox myExtraOperator;
-	private JComboBox myComparatorBox;
-	private JComboBox myExtraValue;
-	
-	public DomBuyConditionPanel(DomBuyCondition aBuyCondition, DomBuyRulePanel aBuyRulePanel) {
-		for (int i=0;i<100;i++){
-		  numberValues[i]=i;	
-		}
-		setLayout( new GridBagLayout() );
+    private JComboBox myLeftFunctionBox;
+    private JComboBox myLeftCardBox;
+    private JComboBox myLeftTypeBox;
+    private JComboBox myRightFunctionBox;
+    private JComboBox myRightCardBox;
+    private JComboBox myRightTypeBox;
+    private JComboBox myExtraOperator;
+    private JComboBox myComparatorBox;
+    private JComboBox myExtraValue;
+
+    public DomBuyConditionPanel(DomBuyCondition aBuyCondition, DomBuyRulePanel aBuyRulePanel) {
+        for (int i=0;i<100;i++){
+          numberValues[i]=i;
+        }
+        setLayout( new GridBagLayout() );
         GridBagConstraints theCons = DomGui.getGridBagConstraints( 2 );
-        
+
         //left function
         ArrayList<Object> theValues = new ArrayList<>();
         Collections.addAll(theValues, DomBotFunction.values());
@@ -60,7 +51,7 @@ public class DomBuyConditionPanel extends JPanel implements ItemListener {
         theCons.gridheight=2;
         theCons.fill=GridBagConstraints.NONE;
         theCons.anchor=GridBagConstraints.CENTER;
-        add(myComparatorBox, theCons); 
+        add(myComparatorBox, theCons);
         theCons.gridheight=1;
         theCons.fill=GridBagConstraints.BOTH;
         theCons.anchor=GridBagConstraints.NORTHWEST;
@@ -76,7 +67,7 @@ public class DomBuyConditionPanel extends JPanel implements ItemListener {
         theCons.gridx++;
         add(myRightFunctionBox, theCons);
 
-        //add the extra operator        
+        //add the extra operator
         myExtraOperator = new JComboBox(DomBotOperator.values());
         myExtraOperator.setSelectedItem( aBuyCondition.getExtraOperator() == null ? DomBotOperator.plus : aBuyCondition.getExtraOperator());
         theCons.gridx++;
@@ -91,7 +82,7 @@ public class DomBuyConditionPanel extends JPanel implements ItemListener {
 
         theCons.gridx++;
         DomGui.addHeavyLabel( this, theCons );
-        
+
         JButton myDeleteBTN = new JButton(new ImageIcon(getClass().getResource("images/delete.gif")));
         myDeleteBTN.setActionCommand( "Delete" );
         myDeleteBTN.addActionListener(aBuyRulePanel);
@@ -122,18 +113,18 @@ public class DomBuyConditionPanel extends JPanel implements ItemListener {
                 || aBuyCondition.getLeftFunction() == DomBotFunction.isPlusOneCoinTokenSet
                 || aBuyCondition.getLeftFunction() == DomBotFunction.countVPon
                 ) {
-        	myLeftCardBox.setVisible(true);
-        	myLeftCardBox.setSelectedItem( aBuyCondition.getLeftCardName() );
+            myLeftCardBox.setVisible(true);
+            myLeftCardBox.setSelectedItem( aBuyCondition.getLeftCardName() );
         }
 //        theCons.gridx++;
         add(myLeftCardBox, theCons);
-        
+
         //left card type box (same position as the card name box)
         myLeftTypeBox=new JComboBox(DomCardType.values());
         myLeftTypeBox.setVisible(false);
         if (aBuyCondition.getLeftFunction() == DomBotFunction.countCardTypeInDeck){
-        	myLeftTypeBox.setVisible(true);
-        	myLeftTypeBox.setSelectedItem( aBuyCondition.getLeftCardType());
+            myLeftTypeBox.setVisible(true);
+            myLeftTypeBox.setSelectedItem( aBuyCondition.getLeftCardType());
         }
         add(myLeftTypeBox, theCons);
         //space for the Comparator
@@ -157,32 +148,32 @@ public class DomBuyConditionPanel extends JPanel implements ItemListener {
                 || aBuyCondition.getRightFunction() == DomBotFunction.isPlusOneCoinTokenSet
                 || aBuyCondition.getRightFunction() == DomBotFunction.countVPon
                 ) {
-        	myRightCardBox.setVisible(true);
-        	myRightCardBox.setSelectedItem( aBuyCondition.getRightCardName() );
+            myRightCardBox.setVisible(true);
+            myRightCardBox.setSelectedItem( aBuyCondition.getRightCardName() );
         }
         theCons.gridx++;
         add(myRightCardBox, theCons);
-        
+
         //Right card type box (same position as the card name box)
         myRightTypeBox=new JComboBox(DomCardType.values());
         myRightTypeBox.setVisible(false);
         if (aBuyCondition.getRightFunction() == DomBotFunction.countCardTypeInDeck){
-        	myRightTypeBox.setVisible(true);
-        	myRightTypeBox.setSelectedItem( aBuyCondition.getRightCardType());
+            myRightTypeBox.setVisible(true);
+            myRightTypeBox.setSelectedItem( aBuyCondition.getRightCardType());
         }
         add(myRightTypeBox, theCons);
-	}
-	
-		@Override
-		public void itemStateChanged(ItemEvent e) {
-			if (e.getSource()==myLeftFunctionBox) {
-				myLeftCardBox.setVisible(false);
-				myLeftTypeBox.setVisible(false);
-				if (myLeftFunctionBox.getSelectedItem() == DomBotFunction.countCardsInDeck
-				 || myLeftFunctionBox.getSelectedItem() == DomBotFunction.countCardsInOpponentsDecks
-				 || myLeftFunctionBox.getSelectedItem() == DomBotFunction.countCardsInSupply
-				 || myLeftFunctionBox.getSelectedItem() == DomBotFunction.countCardsInHand
-				 || myLeftFunctionBox.getSelectedItem() == DomBotFunction.countCardsInPlay
+    }
+
+        @Override
+        public void itemStateChanged(ItemEvent e) {
+            if (e.getSource()==myLeftFunctionBox) {
+                myLeftCardBox.setVisible(false);
+                myLeftTypeBox.setVisible(false);
+                if (myLeftFunctionBox.getSelectedItem() == DomBotFunction.countCardsInDeck
+                 || myLeftFunctionBox.getSelectedItem() == DomBotFunction.countCardsInOpponentsDecks
+                 || myLeftFunctionBox.getSelectedItem() == DomBotFunction.countCardsInSupply
+                 || myLeftFunctionBox.getSelectedItem() == DomBotFunction.countCardsInHand
+                 || myLeftFunctionBox.getSelectedItem() == DomBotFunction.countCardsInPlay
                  || myLeftFunctionBox.getSelectedItem() == DomBotFunction.countOnTavernMat
                  || myLeftFunctionBox.getSelectedItem() == DomBotFunction.isPlusOneActionTokenSet
                  || myLeftFunctionBox.getSelectedItem() == DomBotFunction.isPlusOneCardTokenSet
@@ -193,20 +184,20 @@ public class DomBuyConditionPanel extends JPanel implements ItemListener {
                         || myLeftFunctionBox.getSelectedItem() == DomBotFunction.isPlusOneCoinTokenSet
                         || myLeftFunctionBox.getSelectedItem() == DomBotFunction.countVPon
                         ) {
-    				myLeftCardBox.setVisible(true);
-				}
-				if (myLeftFunctionBox.getSelectedItem() == DomBotFunction.countCardTypeInDeck) {
-    				myLeftTypeBox.setVisible(true);
-				}
-			}
-			if (e.getSource()==myRightFunctionBox) {
-				myRightCardBox.setVisible(false);
-				myRightTypeBox.setVisible(false);
-				if (myRightFunctionBox.getSelectedItem() == DomBotFunction.countCardsInDeck
-			     || myRightFunctionBox.getSelectedItem() == DomBotFunction.countCardsInOpponentsDecks
-		         || myRightFunctionBox.getSelectedItem() == DomBotFunction.countCardsInSupply
-		         || myRightFunctionBox.getSelectedItem() == DomBotFunction.countCardsInHand
-				 || myRightFunctionBox.getSelectedItem() == DomBotFunction.countCardsInPlay
+                    myLeftCardBox.setVisible(true);
+                }
+                if (myLeftFunctionBox.getSelectedItem() == DomBotFunction.countCardTypeInDeck) {
+                    myLeftTypeBox.setVisible(true);
+                }
+            }
+            if (e.getSource()==myRightFunctionBox) {
+                myRightCardBox.setVisible(false);
+                myRightTypeBox.setVisible(false);
+                if (myRightFunctionBox.getSelectedItem() == DomBotFunction.countCardsInDeck
+                 || myRightFunctionBox.getSelectedItem() == DomBotFunction.countCardsInOpponentsDecks
+                 || myRightFunctionBox.getSelectedItem() == DomBotFunction.countCardsInSupply
+                 || myRightFunctionBox.getSelectedItem() == DomBotFunction.countCardsInHand
+                 || myRightFunctionBox.getSelectedItem() == DomBotFunction.countCardsInPlay
                  || myRightFunctionBox.getSelectedItem() == DomBotFunction.countOnTavernMat
                  || myRightFunctionBox.getSelectedItem() == DomBotFunction.isPlusOneActionTokenSet
                  || myRightFunctionBox.getSelectedItem() == DomBotFunction.isPlusOneCardTokenSet
@@ -217,40 +208,40 @@ public class DomBuyConditionPanel extends JPanel implements ItemListener {
                         || myRightFunctionBox.getSelectedItem() == DomBotFunction.isPlusOneCoinTokenSet
                         || myRightFunctionBox.getSelectedItem() == DomBotFunction.countVPon
                        ) {
-    				myRightCardBox.setVisible(true);
-				}
-				if (myRightFunctionBox.getSelectedItem() == DomBotFunction.countCardTypeInDeck) {
-    				myRightTypeBox.setVisible(true);
-				}
-			}
-		}
-		
-		public DomBuyCondition getBuyCondition() {
-			DomBotFunction theLeftFunction;
-			if (myLeftFunctionBox.getSelectedItem().getClass().equals(DomBotFunction.class))
-			  theLeftFunction =(DomBotFunction)myLeftFunctionBox.getSelectedItem();
-			else
-			  theLeftFunction=DomBotFunction.constant;
+                    myRightCardBox.setVisible(true);
+                }
+                if (myRightFunctionBox.getSelectedItem() == DomBotFunction.countCardTypeInDeck) {
+                    myRightTypeBox.setVisible(true);
+                }
+            }
+        }
 
-			DomBotFunction theRightFunction;
-			if (myRightFunctionBox.getSelectedItem().getClass().equals(DomBotFunction.class))
-			  theRightFunction =(DomBotFunction)myRightFunctionBox.getSelectedItem();
-			else
-			  theRightFunction=DomBotFunction.constant;
+        public DomBuyCondition getBuyCondition() {
+            DomBotFunction theLeftFunction;
+            if (myLeftFunctionBox.getSelectedItem().getClass().equals(DomBotFunction.class))
+              theLeftFunction =(DomBotFunction)myLeftFunctionBox.getSelectedItem();
+            else
+              theLeftFunction=DomBotFunction.constant;
 
-			DomBuyCondition theCondition = 
-				new DomBuyCondition( 
-				theLeftFunction,
-               	(DomCardName) myLeftCardBox.getSelectedItem()  ,
-               	(DomCardType) myLeftTypeBox.getSelectedItem() ,
-               	theLeftFunction==DomBotFunction.constant? myLeftFunctionBox.getSelectedItem().toString():"0",
-               	(DomBotComparator) myComparatorBox.getSelectedItem() ,
-               	theRightFunction ,
-               	(DomCardName) myRightCardBox.getSelectedItem()  ,
-               	(DomCardType) myRightTypeBox.getSelectedItem() ,
-               	theRightFunction==DomBotFunction.constant? myRightFunctionBox.getSelectedItem().toString():"0",
-               	(DomBotOperator) myExtraOperator.getSelectedItem() ,
-               	myExtraValue.getSelectedItem().toString() );
-			return theCondition;
-		}
+            DomBotFunction theRightFunction;
+            if (myRightFunctionBox.getSelectedItem().getClass().equals(DomBotFunction.class))
+              theRightFunction =(DomBotFunction)myRightFunctionBox.getSelectedItem();
+            else
+              theRightFunction=DomBotFunction.constant;
+
+            DomBuyCondition theCondition =
+                new DomBuyCondition(
+                theLeftFunction,
+                   (DomCardName) myLeftCardBox.getSelectedItem()  ,
+                   (DomCardType) myLeftTypeBox.getSelectedItem() ,
+                   theLeftFunction==DomBotFunction.constant? myLeftFunctionBox.getSelectedItem().toString():"0",
+                   (DomBotComparator) myComparatorBox.getSelectedItem() ,
+                   theRightFunction ,
+                   (DomCardName) myRightCardBox.getSelectedItem()  ,
+                   (DomCardType) myRightTypeBox.getSelectedItem() ,
+                   theRightFunction==DomBotFunction.constant? myRightFunctionBox.getSelectedItem().toString():"0",
+                   (DomBotOperator) myExtraOperator.getSelectedItem() ,
+                   myExtraValue.getSelectedItem().toString() );
+            return theCondition;
+        }
 }

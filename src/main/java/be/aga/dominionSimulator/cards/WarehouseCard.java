@@ -13,11 +13,11 @@ public class WarehouseCard extends DomCard {
       owner.drawCards( 3 );
       owner.doForcedDiscard( 3, false );
     }
-    
+
     @Override
     public boolean wantsToBePlayed() {
-    	if (owner.getDeckSize()<2)
-    	  return false;
-		return true;
+        if (owner.getDeckSize()<2)
+          return false;
+        return true;
     }
 }

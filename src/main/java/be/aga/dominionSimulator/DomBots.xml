@@ -237,7 +237,7 @@
                 description="Build points lead and sit on it, ending game optional">
             <type name="TwoPlayer"/>
             <type name="Province"/>
-            
+
             <buy name="Triumph">
                 <condition>
                     <left type="countCardsInPlay" attribute="Beggar"/>
@@ -277,7 +277,7 @@
         <type name="Competitive"/>
         <type name="Combo"/>
         <type name="Province"/>
-        
+
         <type name="Generated"/>
         <buy name="Province"/>
         <buy name="Duchy">
@@ -4083,7 +4083,7 @@
      <drawdeck contents="5 Copper, Silver, Estate" shuffle="true"/>
      <discard contents=""/>
    </start_state>
-   
+
    <buy name="Province"/>
    <buy name="Duchy">
       <condition>
@@ -4122,7 +4122,7 @@
      <drawdeck contents="4 Copper, Silver, 2 Estate" shuffle="true"/>
      <discard contents=""/>
    </start_state>
-   
+
    <buy name="Province"/>
    <buy name="Duchy">
       <condition>
@@ -4305,7 +4305,7 @@
 <player name="Wharf/Hamlet/Bridge" author="Geronimoo" description="Get a few Universities to get Wharves. Finish with Bridges.">
  <type name="Competitive"/>
  <type name="TwoPlayer"/>
- <type name="Engine"/> 
+ <type name="Engine"/>
  <type name="Combo"/>
  <type name="Province"/>
    <buy name="Province">
@@ -9825,7 +9825,7 @@
  <type name="Optimized"/>
  <type name="BigMoney"/>
  <type name="TwoPlayer"/>
- <type name="Province"/>	
+ <type name="Province"/>
    <buy name="Province">
       <condition>
          <left type="countCardsInDeck" attribute="Gold"/>
@@ -9872,7 +9872,7 @@
  <type name="BigMoney"/>
  <type name="TwoPlayer"/>
  <type name="Attacking"/>
- <type name="Province"/>	
+ <type name="Province"/>
    <buy name="Province">
       <condition>
          <left type="countCardsInDeck" attribute="Gold"/>
@@ -9918,7 +9918,7 @@
  <type name="Optimized"/>
  <type name="BigMoney"/>
  <type name="TwoPlayer"/>
- <type name="Province"/>	
+ <type name="Province"/>
    <buy name="Gold">
       <condition>
          <left type="countCardsInPlay" attribute="Wharf"/>

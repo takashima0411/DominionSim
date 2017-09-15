@@ -16,19 +16,19 @@ public class NavigatorCard extends DomCard {
       ArrayList<DomCard> theCards = owner.revealTopCards(5);
       int theTotal=0;
       for (DomCard card : theCards){
-    	theTotal+=card.getDiscardPriority(1);
-    	if (card.getName()==DomCardName.Tunnel){
-    		owner.discard(theCards);
-    		return;
-    	}
+        theTotal+=card.getDiscardPriority(1);
+        if (card.getName()==DomCardName.Tunnel){
+            owner.discard(theCards);
+            return;
+        }
       }
       if (theTotal<80) {
         owner.discard(theCards);
       } else {
-    	  Collections.sort(theCards,SORT_FOR_DISCARD_FROM_HAND);
-    	  for (DomCard theCard : theCards) {
-    	    owner.putOnTopOfDeck(theCard);
-    	  }
+          Collections.sort(theCards,SORT_FOR_DISCARD_FROM_HAND);
+          for (DomCard theCard : theCards) {
+            owner.putOnTopOfDeck(theCard);
+          }
       }
     }
 }

@@ -7,7 +7,7 @@ public class ColonyCard extends DomCard {
     public ColonyCard () {
       super( DomCardName.Colony);
     }
-    
+
     @Override
     public int getTrashPriority() {
       return 100;

@@ -14,7 +14,7 @@ public class SummonCard extends DomCard {
     public void play() {
       DomCardName theDesiredCard = owner.getDesiredCard(DomCardType.Action, new DomCost( 4, 0), false ,false,null);
       if (theDesiredCard==null) {
-    	theDesiredCard=owner.getCurrentGame().getBestCardInSupplyFor( owner, DomCardType.Action,new DomCost(4, 0));
+        theDesiredCard=owner.getCurrentGame().getBestCardInSupplyFor( owner, DomCardType.Action,new DomCost(4, 0));
       }
       if (theDesiredCard!=null) {
           DomCard theCard = owner.getCurrentGame().takeFromSupply(theDesiredCard);

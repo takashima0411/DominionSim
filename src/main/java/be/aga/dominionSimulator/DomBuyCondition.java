@@ -21,40 +21,40 @@ public class DomBuyCondition {
     private double extraAttribute;
     private DomCardType rightCardType;
     private DomCardType leftCardType;
-            
-	public DomBuyCondition(DomBotFunction aLeftFunction,
-			DomCardName aLeftCardName, 
-			DomCardType aLeftCardType, 
-			String aLeftValue,
-			DomBotComparator aComparator, 
-			DomBotFunction aRightFunction,
-			DomCardName aRightCardName, 
-			DomCardType aRightCardType, 
-			String aRightValue,			
-			DomBotOperator anExtraOperator, 
-			String anExtraAttribute) {
-		leftFunction=aLeftFunction;
-		leftCardName=aLeftCardName;
-		leftCardType=aLeftCardType;
-		leftValue=new Double(aLeftValue).doubleValue();
-		comparator=aComparator;
-		rightFunction=aRightFunction;
-		rightCardName=aRightCardName;
-		rightCardType=aRightCardType;
-		rightValue=new Double(aRightValue).doubleValue();
-		extraOperator=anExtraOperator;
-		if (anExtraAttribute==null || anExtraAttribute.equals("")) {
-			extraAttribute=0;
-	    } else { 
-		  extraAttribute=new Double(anExtraAttribute).doubleValue();
-	    }
-	}
 
-	public DomBuyCondition() {
-	}
+    public DomBuyCondition(DomBotFunction aLeftFunction,
+            DomCardName aLeftCardName,
+            DomCardType aLeftCardType,
+            String aLeftValue,
+            DomBotComparator aComparator,
+            DomBotFunction aRightFunction,
+            DomCardName aRightCardName,
+            DomCardType aRightCardType,
+            String aRightValue,
+            DomBotOperator anExtraOperator,
+            String anExtraAttribute) {
+        leftFunction=aLeftFunction;
+        leftCardName=aLeftCardName;
+        leftCardType=aLeftCardType;
+        leftValue=new Double(aLeftValue).doubleValue();
+        comparator=aComparator;
+        rightFunction=aRightFunction;
+        rightCardName=aRightCardName;
+        rightCardType=aRightCardType;
+        rightValue=new Double(aRightValue).doubleValue();
+        extraOperator=anExtraOperator;
+        if (anExtraAttribute==null || anExtraAttribute.equals("")) {
+            extraAttribute=0;
+        } else {
+          extraAttribute=new Double(anExtraAttribute).doubleValue();
+        }
+    }
 
-	public boolean isTrue(DomPlayer owner) {
-		switch(leftFunction){
+    public DomBuyCondition() {
+    }
+
+    public boolean isTrue(DomPlayer owner) {
+        switch(leftFunction){
           case countCardsInDeck:
             leftValue=owner.countInDeck(leftCardName);
             break;
@@ -110,9 +110,9 @@ public class DomBuyCondition {
               leftValue=owner.getCurrentGame().countCardsInSmallestPile();
               break;
           case countCardsInOpponentsDecks:
-        	  leftValue=0;
-        	  for (DomPlayer player : owner.getOpponents())
-        		 leftValue+=player.countInDeck(leftCardName);
+              leftValue=0;
+              for (DomPlayer player : owner.getOpponents())
+                 leftValue+=player.countInDeck(leftCardName);
               break;
           case isPlusOneBuyTokenSet:
               leftValue=owner.isPlusOneBuyTokenSet() ? 1:0;
@@ -154,16 +154,16 @@ public class DomBuyCondition {
               leftValue=owner.getCurrentGame().getBoard().countVPon(leftCardName);
               break;
         }
-		switch(rightFunction){
-		  case countCardsInDeck:
-			rightValue=owner.countInDeck(rightCardName);
-			break;
+        switch(rightFunction){
+          case countCardsInDeck:
+            rightValue=owner.countInDeck(rightCardName);
+            break;
           case countCardTypeInDeck:
             rightValue=owner.count(rightCardType);
             break;
-		  case countCardsInSupply:
-			rightValue=owner.getCurrentGame().countInSupply(rightCardName);
-			break;
+          case countCardsInSupply:
+            rightValue=owner.getCurrentGame().countInSupply(rightCardName);
+            break;
           case countCardsInHand:
               rightValue=owner.getCardsFromHand(rightCardName).size();
               break;
@@ -210,9 +210,9 @@ public class DomBuyCondition {
               rightValue=owner.getCurrentGame().countCardsInSmallestPile();
               break;
           case countCardsInOpponentsDecks:
-        	  rightValue=0;
-        	  for (DomPlayer player : owner.getOpponents())
-        		 rightValue+=player.countInDeck(rightCardName);
+              rightValue=0;
+              for (DomPlayer player : owner.getOpponents())
+                 rightValue+=player.countInDeck(rightCardName);
               break;
           case isPlusOneBuyTokenSet:
               rightValue=owner.isPlusOneBuyTokenSet() ? 1:0;
@@ -254,60 +254,60 @@ public class DomBuyCondition {
               rightValue=owner.getCurrentGame().getBoard().countVPon(leftCardName);
               break;
         }
-		double theRightValue=rightValue;
-		switch(extraOperator) {
-		  case plus:
-			theRightValue = rightValue+extraAttribute;
-			break;
-		  case minus:
-	  	    theRightValue = rightValue-extraAttribute;
-			break;
-		  case multiplyWith:
-			theRightValue = rightValue*extraAttribute;
-			break;
-		  case divideBy:
-			theRightValue = rightValue/extraAttribute;
-			break;
-		}
-		switch(comparator){
-		  case equalTo:
-			  return leftValue==theRightValue;
-		  case smallerOrEqualThan:
-			  return leftValue<=theRightValue;
-		  case smallerThan:
-			  return leftValue<theRightValue;
-		  case greaterOrEqualThan:
-			  return leftValue>=theRightValue;
-		  case greaterThan:
-			  return leftValue>theRightValue;
-		}
-		
-		return false;
-	}
+        double theRightValue=rightValue;
+        switch(extraOperator) {
+          case plus:
+            theRightValue = rightValue+extraAttribute;
+            break;
+          case minus:
+              theRightValue = rightValue-extraAttribute;
+            break;
+          case multiplyWith:
+            theRightValue = rightValue*extraAttribute;
+            break;
+          case divideBy:
+            theRightValue = rightValue/extraAttribute;
+            break;
+        }
+        switch(comparator){
+          case equalTo:
+              return leftValue==theRightValue;
+          case smallerOrEqualThan:
+              return leftValue<=theRightValue;
+          case smallerThan:
+              return leftValue<theRightValue;
+          case greaterOrEqualThan:
+              return leftValue>=theRightValue;
+          case greaterThan:
+              return leftValue>theRightValue;
+        }
 
-	public void addRightHand(String aType, String anAttribute) {
-	   rightFunction=DomBotFunction.valueOf(aType);
+        return false;
+    }
+
+    public void addRightHand(String aType, String anAttribute) {
+       rightFunction=DomBotFunction.valueOf(aType);
        if (anAttribute==null)
            return;
        if (rightFunction==DomBotFunction.constant) {
-	     rightValue=Double.valueOf(anAttribute).doubleValue();
-	     return;
-	   } 
+         rightValue=Double.valueOf(anAttribute).doubleValue();
+         return;
+       }
        if (rightFunction==DomBotFunction.countCardTypeInDeck) {
          rightCardType=DomCardType.valueOf(anAttribute);
          return;
        }
        rightCardName=DomCardName.valueOf(anAttribute);
-	}
+    }
 
-	public void addLeftHand(String aType, String anAttribute) {
+    public void addLeftHand(String aType, String anAttribute) {
        leftFunction=DomBotFunction.valueOf(aType);
        if (anAttribute==null)
            return;
        if (leftFunction==DomBotFunction.constant) {
          leftValue=Double.valueOf(anAttribute).doubleValue();
          return;
-       } 
+       }
        if (leftFunction==DomBotFunction.countCardTypeInDeck) {
          leftCardType=DomCardType.valueOf(anAttribute);
          return;
@@ -315,114 +315,114 @@ public class DomBuyCondition {
        leftCardName=DomCardName.valueOf(anAttribute);
     }
 
-	public void addComparator(String aComparator) {
-       comparator=DomBotComparator.valueOf(aComparator);	
-	}
+    public void addComparator(String aComparator) {
+       comparator=DomBotComparator.valueOf(aComparator);
+    }
 
     /**
      */
     public void addExtraOperation( String aType, String anAttribute ) {
-        extraOperator=DomBotOperator.valueOf(aType);   
-        extraAttribute=Double.valueOf(anAttribute).doubleValue();   
+        extraOperator=DomBotOperator.valueOf(aType);
+        extraAttribute=Double.valueOf(anAttribute).doubleValue();
     }
 
     public DomBotFunction getLeftFunction() {
-		return leftFunction;
-	}
+        return leftFunction;
+    }
 
-	public void setLeftFunction(DomBotFunction leftFunction) {
-		this.leftFunction = leftFunction;
-	}
+    public void setLeftFunction(DomBotFunction leftFunction) {
+        this.leftFunction = leftFunction;
+    }
 
-	public double getLeftValue() {
-		return leftValue;
-	}
+    public double getLeftValue() {
+        return leftValue;
+    }
 
-	public void setLeftValue(double leftValue) {
-		this.leftValue = leftValue;
-	}
+    public void setLeftValue(double leftValue) {
+        this.leftValue = leftValue;
+    }
 
-	public DomCardName getLeftCardName() {
-		return leftCardName;
-	}
+    public DomCardName getLeftCardName() {
+        return leftCardName;
+    }
 
-	public void setLeftCardName(DomCardName leftCardName) {
-		this.leftCardName = leftCardName;
-	}
+    public void setLeftCardName(DomCardName leftCardName) {
+        this.leftCardName = leftCardName;
+    }
 
-	public DomBotComparator getComparator() {
-		return comparator;
-	}
+    public DomBotComparator getComparator() {
+        return comparator;
+    }
 
-	public void setComparator(DomBotComparator comparator) {
-		this.comparator = comparator;
-	}
+    public void setComparator(DomBotComparator comparator) {
+        this.comparator = comparator;
+    }
 
-	public DomBotFunction getRightFunction() {
-		return rightFunction;
-	}
+    public DomBotFunction getRightFunction() {
+        return rightFunction;
+    }
 
-	public void setRightFunction(DomBotFunction rightFunction) {
-		this.rightFunction = rightFunction;
-	}
+    public void setRightFunction(DomBotFunction rightFunction) {
+        this.rightFunction = rightFunction;
+    }
 
-	public double getRightValue() {
-		return rightValue;
-	}
+    public double getRightValue() {
+        return rightValue;
+    }
 
-	public void setRightValue(double rightValue) {
-		this.rightValue = rightValue;
-	}
+    public void setRightValue(double rightValue) {
+        this.rightValue = rightValue;
+    }
 
-	public DomCardName getRightCardName() {
-		return rightCardName;
-	}
+    public DomCardName getRightCardName() {
+        return rightCardName;
+    }
 
-	public void setRightCardName(DomCardName rightCardName) {
-		this.rightCardName = rightCardName;
-	}
+    public void setRightCardName(DomCardName rightCardName) {
+        this.rightCardName = rightCardName;
+    }
 
-	public DomBotOperator getExtraOperator() {
-		return extraOperator;
-	}
+    public DomBotOperator getExtraOperator() {
+        return extraOperator;
+    }
 
-	public void setExtraOperator(DomBotOperator extraOperator) {
-		this.extraOperator = extraOperator;
-	}
+    public void setExtraOperator(DomBotOperator extraOperator) {
+        this.extraOperator = extraOperator;
+    }
 
-	public double getExtraAttribute() {
-		return extraAttribute;
-	}
+    public double getExtraAttribute() {
+        return extraAttribute;
+    }
 
-	public void setExtraAttribute(double extraAttribute) {
-		this.extraAttribute = extraAttribute;
-	}
+    public void setExtraAttribute(double extraAttribute) {
+        this.extraAttribute = extraAttribute;
+    }
 
-	public DomCardType getRightCardType() {
-		return rightCardType;
-	}
+    public DomCardType getRightCardType() {
+        return rightCardType;
+    }
 
-	public void setRightCardType(DomCardType rightCardType) {
-		this.rightCardType = rightCardType;
-	}
+    public void setRightCardType(DomCardType rightCardType) {
+        this.rightCardType = rightCardType;
+    }
 
-	public DomCardType getLeftCardType() {
-		return leftCardType;
-	}
+    public DomCardType getLeftCardType() {
+        return leftCardType;
+    }
 
-	public void setLeftCardType(DomCardType leftCardType) {
-		this.leftCardType = leftCardType;
-	}
+    public void setLeftCardType(DomCardType leftCardType) {
+        this.leftCardType = leftCardType;
+    }
 
-	/**
-     * @param domBuyRulePanel 
+    /**
+     * @param domBuyRulePanel
      * @return
      */
     public DomBuyConditionPanel getGuiPanel(DomBuyRulePanel domBuyRulePanel) {
         return new DomBuyConditionPanel(this, domBuyRulePanel);
     }
 
-	public String getXML(String theRuleIndentation) {
+    public String getXML(String theRuleIndentation) {
         StringBuilder theXML = new StringBuilder();
         String newline = System.getProperty( "line.separator" );
         String theIndentation = "   ";
@@ -432,7 +432,7 @@ public class DomBuyCondition {
         theXML.append("<left type=\"").append(leftFunction.name()).append("\"");
         if (leftFunction==DomBotFunction.constant) {
           theXML.append(" attribute=\"").append(leftValue).append("\"");
-        } 
+        }
         if (leftFunction==DomBotFunction.countCardTypeInDeck) {
           theXML.append(" attribute=\"").append(leftCardType.name()).append("\"");
         }
@@ -460,7 +460,7 @@ public class DomBuyCondition {
         theXML.append("<right type=\"").append(rightFunction.name()).append("\"");
         if (rightFunction==DomBotFunction.constant) {
           theXML.append(" attribute=\"").append(rightValue).append("\"");
-        } 
+        }
         if (rightFunction==DomBotFunction.countCardTypeInDeck) {
           theXML.append(" attribute=\"").append(rightCardType.name()).append("\"");
         }
@@ -489,6 +489,6 @@ public class DomBuyCondition {
         }
         theXML.append(theRuleIndentation).append(theIndentation);
         theXML.append("</condition>").append(newline);
-		return theXML.toString();
-	}
+        return theXML.toString();
+    }
 }

@@ -58,12 +58,12 @@ public class DomCost implements Comparable< DomCost >{
      */
     @Override
     public int compareTo( DomCost aO ) {
-    	//CAREFUL when using this!!
-    	//the cost of King's Court for example will be smaller then the cost of Transmute
-    	//and the cost of Transmute will also be smaller than the cost of King's Court! 
+        //CAREFUL when using this!!
+        //the cost of King's Court for example will be smaller then the cost of Transmute
+        //and the cost of Transmute will also be smaller than the cost of King's Court!
         if (this.coins<aO.getCoins() || this.potions<aO.getPotions() || this.debt<aO.getDebt() )
            return -1;
-        
+
         if (this.coins==aO.getCoins() && this.potions==aO.getPotions() && this.debt==aO.getDebt())
             return 0;
 
@@ -78,16 +78,16 @@ public class DomCost implements Comparable< DomCost >{
       theNewCost.setDebt(debt + aCostToAdd.getDebt());
 //      if (theNewCost.compareTo(ZERO)<0)
 //    	  theNewCost=ZERO;
-      return theNewCost; 
+      return theNewCost;
     }
 
-	public DomCost subtract(DomCost aCostToSubtract) {
-	      DomCost theNewCost = new DomCost(  coins - aCostToSubtract.coins, potions - aCostToSubtract.potions );
+    public DomCost subtract(DomCost aCostToSubtract) {
+          DomCost theNewCost = new DomCost(  coins - aCostToSubtract.coins, potions - aCostToSubtract.potions );
           theNewCost.setDebt(debt - aCostToSubtract.getDebt());
 //	      if (theNewCost.compareTo(ZERO)<0)
 //	    	  theNewCost=ZERO;
-	      return theNewCost; 
-	}
+          return theNewCost;
+    }
 
     @Override
     public String toString() {

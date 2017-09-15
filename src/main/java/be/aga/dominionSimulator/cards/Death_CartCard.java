@@ -17,13 +17,13 @@ public class Death_CartCard extends DomCard {
       ArrayList<DomCard> theActions = owner.getCardsFromHand(DomCardType.Action);
       if (theActions.isEmpty()) {
         if (owner.getCardsInPlay().indexOf(this)!=-1)
-    	  owner.trash(owner.removeCardFromPlay(this));
+          owner.trash(owner.removeCardFromPlay(this));
       } else {
-    	Collections.sort(theActions,SORT_FOR_TRASHING);
-    	owner.trash(owner.removeCardFromHand(theActions.get(0)));
+        Collections.sort(theActions,SORT_FOR_TRASHING);
+        owner.trash(owner.removeCardFromHand(theActions.get(0)));
       }
     }
-    
+
     @Override
     public void doWhenGained() {
         owner.gain(DomCardName.Ruins);

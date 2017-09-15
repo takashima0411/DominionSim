@@ -8,7 +8,7 @@ public class Abandoned_MineCard extends DomCard {
     public Abandoned_MineCard () {
       super( DomCardName.Abandoned_Mine);
     }
-    
+
     @Override
     public void play() {
       owner.addAvailableCoins(1);

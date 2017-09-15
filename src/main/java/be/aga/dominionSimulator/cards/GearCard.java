@@ -18,7 +18,7 @@ public class GearCard extends DomCard {
     public void play() {
       owner.drawCards(2);
       if (owner.getCardsInHand().isEmpty())
-    	  return;
+          return;
       Collections.sort(owner.getCardsInHand(), DomCard.SORT_FOR_DISCARD_FROM_HAND);
       if (owner.getCardsInHand().get(0).hasCardType(DomCardType.Action) && owner.actionsLeft==0) {
           mySetAsideCards.add(owner.getCardsInHand().remove(0));

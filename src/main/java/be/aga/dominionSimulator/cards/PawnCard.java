@@ -29,9 +29,9 @@ public class PawnCard extends DomCard {
 
       //standard handling
       if (owner.getNextActionToPlay()!=null && owner.getActionsLeft()==0) {
-    	  owner.addActions(1);
-    	  theChoicesCount++;
-    	  actionChosen=true;
+          owner.addActions(1);
+          theChoicesCount++;
+          actionChosen=true;
       }
       if (owner.getTotalPotentialCurrency().compareTo(new DomCost(7,0))>0) {
             owner.addAvailableBuys(1);
@@ -39,24 +39,24 @@ public class PawnCard extends DomCard {
             buysChosen=true;
       }
       if (owner.addingThisIncreasesBuyingPower( new DomCost( 1,0 ))) {
-    	  owner.addAvailableCoins(1);
-    	  theChoicesCount++;
-    	  coinsChosen=true;
+          owner.addAvailableCoins(1);
+          theChoicesCount++;
+          coinsChosen=true;
       }
       if (owner.getDeckSize()>0 && theChoicesCount<2){
-    	  owner.drawCards(1);
-    	  theChoicesCount++;
+          owner.drawCards(1);
+          theChoicesCount++;
       }
       if (theChoicesCount<2 && !buysChosen) {
-    	  owner.addAvailableBuys(1);
-    	  theChoicesCount++;
+          owner.addAvailableBuys(1);
+          theChoicesCount++;
       }
       if (theChoicesCount<2 && !coinsChosen){
-    	  owner.addAvailableCoins(1);
+          owner.addAvailableCoins(1);
           theChoicesCount++;
       }
       if (theChoicesCount<2 && !actionChosen){
-    	  owner.addActions(1);
+          owner.addActions(1);
           theChoicesCount++;
       }
     }

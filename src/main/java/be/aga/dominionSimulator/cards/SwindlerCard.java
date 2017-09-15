@@ -15,17 +15,17 @@ public class SwindlerCard extends DomCard {
     public void play() {
       owner.addAvailableCoins(2);
       for (DomPlayer thePlayer : owner.getOpponents()) {
-          if (thePlayer.checkDefense()) 
-        	continue;
+          if (thePlayer.checkDefense())
+            continue;
           ArrayList< DomCard > theCards = thePlayer.revealTopCards(1);
           if (theCards.isEmpty())
-        	  continue;
+              continue;
           DomCardName theNewCard = owner.getCurrentGame().getCardForSwindler(thePlayer, theCards.get(0).getCost(owner.getCurrentGame()));
           thePlayer.trash(theCards.get(0));
           if (theNewCard!=null)
             thePlayer.gain(theNewCard);
           else
-        	if (DomEngine.haveToLog) DomEngine.addToLog(thePlayer + " gains nothing");
+            if (DomEngine.haveToLog) DomEngine.addToLog(thePlayer + " gains nothing");
       }
     }
 }

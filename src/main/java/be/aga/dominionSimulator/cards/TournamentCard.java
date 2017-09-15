@@ -14,9 +14,9 @@ public class TournamentCard extends DomCard {
     public void play() {
       owner.addActions(1);
       if (!owner.getCardsFromHand(DomCardName.Province).isEmpty()){
-    	  if (DomEngine.haveToLog) DomEngine.addToLog( owner + " reveals a "+DomCardName.Province.toHTML()+" and may gain a Prize" );
-    	  gainPrize();
-    	  owner.discardFromHand(owner.getCardsFromHand(DomCardName.Province).get(0));
+          if (DomEngine.haveToLog) DomEngine.addToLog( owner + " reveals a "+DomCardName.Province.toHTML()+" and may gain a Prize" );
+          gainPrize();
+          owner.discardFromHand(owner.getCardsFromHand(DomCardName.Province).get(0));
       }
       for (DomPlayer thePlayer : owner.getOpponents()){
         if (!thePlayer.getCardsFromHand(DomCardName.Province).isEmpty()){
@@ -28,23 +28,23 @@ public class TournamentCard extends DomCard {
       owner.drawCards(1);
     }
 
-	private void gainPrize() {
-		for (DomBuyRule buyRule : owner.getBuyRules()){
-			 if (buyRule.getCardToBuy()==DomCardName.Duchy
-			 && owner.getCurrentGame().countInSupply(buyRule.getCardToBuy())>0
-			 && buyRule.wantsToBuyOrGainNow(owner)){
-				owner.gainOnTopOfDeck(owner.getCurrentGame().takeFromSupply(buyRule.getCardToBuy()));
-				return;
-			}
-		}
-		for (DomBuyRule buyRule : owner.getPrizeBuyRules()){
-			 if (owner.getCurrentGame().getBoard().isPrizeAvailable(buyRule.getCardToBuy())
-			 && buyRule.wantsToBuyOrGainNow(owner)){
-				owner.gainOnTopOfDeck(owner.getCurrentGame().takeFromSupply(buyRule.getCardToBuy()));
-				return;
-			}
-		}
-	}
+    private void gainPrize() {
+        for (DomBuyRule buyRule : owner.getBuyRules()){
+             if (buyRule.getCardToBuy()==DomCardName.Duchy
+             && owner.getCurrentGame().countInSupply(buyRule.getCardToBuy())>0
+             && buyRule.wantsToBuyOrGainNow(owner)){
+                owner.gainOnTopOfDeck(owner.getCurrentGame().takeFromSupply(buyRule.getCardToBuy()));
+                return;
+            }
+        }
+        for (DomBuyRule buyRule : owner.getPrizeBuyRules()){
+             if (owner.getCurrentGame().getBoard().isPrizeAvailable(buyRule.getCardToBuy())
+             && buyRule.wantsToBuyOrGainNow(owner)){
+                owner.gainOnTopOfDeck(owner.getCurrentGame().takeFromSupply(buyRule.getCardToBuy()));
+                return;
+            }
+        }
+    }
 
     @Override
     public int getPlayPriority() {

@@ -4,7 +4,6 @@ import be.aga.dominionSimulator.DomCard;
 import be.aga.dominionSimulator.DomPlayer;
 import be.aga.dominionSimulator.enums.DomCardName;
 
-import java.util.Collections;
 
 public class Small_CastleCard extends DomCard {
     public Small_CastleCard() {

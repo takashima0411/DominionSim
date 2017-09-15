@@ -13,11 +13,11 @@ public class UniversityCard extends DomCard {
   public void play() {
     owner.addActions(2);
     DomCardName theDesiredCard = owner.getDesiredCard(DomCardType.Action
-    		                                               ,new DomCost(5,0) 
-     													   ,false
-     													   ,false
-     													   ,null);
+                                                           ,new DomCost(5,0)
+                                                            ,false
+                                                            ,false
+                                                            ,null);
     if (theDesiredCard!=null)
-	  owner.gain(theDesiredCard);
+      owner.gain(theDesiredCard);
   }
 }

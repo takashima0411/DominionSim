@@ -1,50 +1,21 @@
 package be.aga.dominionSimulator.gui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import be.aga.dominionSimulator.DomBuyRule;
+import be.aga.dominionSimulator.DomEngine;
+import be.aga.dominionSimulator.DomPlayer;
+import be.aga.dominionSimulator.enums.DomBotType;
 import be.aga.dominionSimulator.enums.DomCardName;
 import be.aga.dominionSimulator.enums.DomSet;
 import org.jfree.ui.RefineryUtilities;
 
-import be.aga.dominionSimulator.DomEngine;
-import be.aga.dominionSimulator.DomPlayer;
-import be.aga.dominionSimulator.enums.DomBotType;
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DomBotSelector extends EscapeDialog
                             implements ListSelectionListener, ActionListener, WindowListener {
@@ -59,33 +30,33 @@ public class DomBotSelector extends EscapeDialog
 
    Action chooseAction = new AbstractAction() {
        public void actionPerformed(ActionEvent e) {
-   		 myEngine.setSelectedBot(myBotList.getSelectedValue());
-   		 dispose();
+            myEngine.setSelectedBot(myBotList.getSelectedValue());
+            dispose();
        }
    };
 
 public DomBotSelector(DomEngine anEngine, final DomPlayer aSelectedBot) {
-	 myEngine=anEngine;
-	 buildGUI();
+     myEngine=anEngine;
+     buildGUI();
    addWindowListener(this);
-	 setTitle("Select a strategy (click to select multiple types)");
-	 pack();
-	 RefineryUtilities.centerFrameOnScreen(this);
-	 setVisible(true);
-	 mSearchField.requestFocus();
+     setTitle("Select a strategy (click to select multiple types)");
+     pack();
+     RefineryUtilities.centerFrameOnScreen(this);
+     setVisible(true);
+     mSearchField.requestFocus();
      Runnable doScroll = new Runnable() {
        public void run() {
-      	 myBotList.setSelectedValue(aSelectedBot, true);
+           myBotList.setSelectedValue(aSelectedBot, true);
        }
      };
      SwingUtilities.invokeLater( doScroll );
 }
 
 private void buildGUI() {
-	setLayout( new BorderLayout() );
-	add(getSelectionPanel(), BorderLayout.CENTER);
-	add(getButtonPanel(), BorderLayout.PAGE_END);
-	setPreferredSize(new Dimension(600, 600));
+    setLayout( new BorderLayout() );
+    add(getSelectionPanel(), BorderLayout.CENTER);
+    add(getButtonPanel(), BorderLayout.PAGE_END);
+    setPreferredSize(new Dimension(600, 600));
 }
 
 private JPanel getButtonPanel() {
@@ -126,7 +97,7 @@ private JPanel getButtonPanel() {
     theBTN.setActionCommand("Delete");
     theCons.gridx++;
     thePanel.add(theBTN,theCons);
-	return thePanel;
+    return thePanel;
 
 }
 
@@ -183,16 +154,16 @@ private HintTextField getSearchField() {
 }
 
 private JList getBotTypeList() {
-	myBotTypeList = new JList(DomBotType.values());
+    myBotTypeList = new JList(DomBotType.values());
   myBotTypeList.setSelectionModel(new ToggleListSelectionModel());
-	myBotTypeList.setSelectedIndices(sSelectedIndices);
-	myBotTypeList.addListSelectionListener(this);
-	return myBotTypeList;
+    myBotTypeList.setSelectedIndices(sSelectedIndices);
+    myBotTypeList.addListSelectionListener(this);
+    return myBotTypeList;
 }
 
 @SuppressWarnings("serial")
 private JList getBotList() {
-	myBotList = new JList(myEngine.getBots(myBotTypeList.getSelectedValues(), mSearchTerms)) {
+    myBotList = new JList(myEngine.getBots(myBotTypeList.getSelectedValues(), mSearchTerms)) {
         // This method is called as the cursor moves within the list.
         public String getToolTipText(MouseEvent evt) {
             int index = locationToIndex(evt.getPoint());
@@ -220,16 +191,16 @@ private JList getBotList() {
 
             return tip.toString();
         }
-	};
-	new ListAction(myBotList, chooseAction);
-	return myBotList;
+    };
+    new ListAction(myBotList, chooseAction);
+    return myBotList;
 }
 
 @Override
 public void valueChanged(ListSelectionEvent e) {
-	if ( e.getSource().equals(myBotTypeList)){
+    if ( e.getSource().equals(myBotTypeList)){
         refreshBotList();
-	}
+    }
 }
 
 private void refreshBotList() {
@@ -238,22 +209,22 @@ private void refreshBotList() {
 
 @Override
 public void actionPerformed(ActionEvent e) {
-	if (e.getActionCommand().equals("Cancel")){
-		dispose();
-	}
-	if (e.getActionCommand().equals("OK")){
-		myEngine.setSelectedBot(myBotList.getSelectedValue());
-		dispose();
-	}
-	if (e.getActionCommand().equals("Clear")){
-		myEngine.setSelectedBot(null);
-		dispose();
-	}
-	if (e.getActionCommand().equals("Delete")){
-		myEngine.deleteBot((DomPlayer) myBotList.getSelectedValue());
-		refreshBotList();
-		myBotList.requestFocus();
-	}
+    if (e.getActionCommand().equals("Cancel")){
+        dispose();
+    }
+    if (e.getActionCommand().equals("OK")){
+        myEngine.setSelectedBot(myBotList.getSelectedValue());
+        dispose();
+    }
+    if (e.getActionCommand().equals("Clear")){
+        myEngine.setSelectedBot(null);
+        dispose();
+    }
+    if (e.getActionCommand().equals("Delete")){
+        myEngine.deleteBot((DomPlayer) myBotList.getSelectedValue());
+        refreshBotList();
+        myBotList.requestFocus();
+    }
 }
 
   public void windowClosed(WindowEvent arg0) {

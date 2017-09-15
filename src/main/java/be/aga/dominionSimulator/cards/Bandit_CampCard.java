@@ -9,8 +9,8 @@ public class Bandit_CampCard extends DomCard {
     }
 
     public void play() {
-       	owner.drawCards(1);
-       	owner.addActions(2);
+           owner.drawCards(1);
+           owner.addActions(2);
         owner.gain(DomCardName.Spoils);
     }
 }

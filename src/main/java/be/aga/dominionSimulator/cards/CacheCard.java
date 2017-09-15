@@ -10,9 +10,9 @@ public class CacheCard extends DomCard {
 
     @Override
     public void doWhenGained() {
-    	for (int i=0;i<2;i++){
-	        if (owner.getCurrentGame().countInSupply(DomCardName.Copper)>0)
-	          owner.gain(DomCardName.Copper);
-    	}
+        for (int i=0;i<2;i++){
+            if (owner.getCurrentGame().countInSupply(DomCardName.Copper)>0)
+              owner.gain(DomCardName.Copper);
+        }
     }
 }

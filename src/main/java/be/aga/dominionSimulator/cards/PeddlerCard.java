@@ -14,7 +14,7 @@ public class PeddlerCard extends DomCard {
       owner.addAvailableCoins(1);
       owner.drawCards(1);
     }
-    
+
     @Override
     public int getPlayPriority() {
         if (owner.getCardsFromHand(DomCardName.Peddler).size()==1 && owner.getPlayStrategyFor(this)== DomPlayStrategy.combo && !owner.getCardsFromHand(DomCardName.Stonemason).isEmpty())
@@ -33,7 +33,7 @@ public class PeddlerCard extends DomCard {
 //    		//little fix for Salvager so we have a shot at $8 in the end game
 //    		return owner.getCardsFromHand(DomCardName.Salvager).get(0).getPlayPriority()+1;
 //    	}
-    	return super.getPlayPriority();
+        return super.getPlayPriority();
     }
 
 }

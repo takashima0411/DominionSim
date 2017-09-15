@@ -14,7 +14,7 @@ public class FeastCard extends DomCard {
       DomCardName theDesiredCard = owner.getDesiredCard(new DomCost( 5, 0), false);
       if (theDesiredCard==null) {
         //possible we get here if card was throne-roomed
-    	owner.gain(owner.getCurrentGame().getBestCardInSupplyFor(owner, null, new DomCost( 5, 0)));
+        owner.gain(owner.getCurrentGame().getBestCardInSupplyFor(owner, null, new DomCost( 5, 0)));
       } else {
         owner.gain(theDesiredCard);
       }
@@ -25,9 +25,9 @@ public class FeastCard extends DomCard {
           if (DomEngine.haveToLog) DomEngine.addToLog( owner + " already trashed " + this);
       }
     }
-    
+
     @Override
     public boolean wantsToBePlayed() {
-    	return owner.getDesiredCard(new DomCost( 5, 0), false)!=null;
+        return owner.getDesiredCard(new DomCost( 5, 0), false)!=null;
     }
 }

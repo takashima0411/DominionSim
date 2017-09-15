@@ -7,7 +7,7 @@ public class GardensCard extends DomCard {
     public GardensCard () {
       super( DomCardName.Gardens);
     }
-    
+
     @Override
     public int getTrashPriority() {
       if (owner!=null && owner.wantsToGainOrKeep(DomCardName.Gardens))

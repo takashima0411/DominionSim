@@ -13,12 +13,12 @@ public class TransmuteCard extends DomCard {
     }
 
     public void play() {
-    	DomCard theCardToTrash = findCardToTrash();
+        DomCard theCardToTrash = findCardToTrash();
         if (theCardToTrash==null) {
-	    	//possible if played with Throne Room/KC
-	        if (owner.getCardsInHand().isEmpty())
-	          return;
-	        theCardToTrash=owner.getCardsInHand().get(0);
+            //possible if played with Throne Room/KC
+            if (owner.getCardsInHand().isEmpty())
+              return;
+            theCardToTrash=owner.getCardsInHand().get(0);
         }
         owner.trash(owner.removeCardFromHand(theCardToTrash));
         if (theCardToTrash.hasCardType(DomCardType.Action)
@@ -34,32 +34,32 @@ public class TransmuteCard extends DomCard {
             owner.gain(DomCardName.Gold);
         }
     }
-    
+
     private DomCard findCardToTrash() {
         ArrayList<DomCard> cardsInHand = owner.getCardsInHand();
         if (cardsInHand.isEmpty())
-        	return null;
+            return null;
         DomCard theCardToTrash = null;
         Collections.sort(cardsInHand,SORT_FOR_TRASHING);
         //if it's time to get the green cards, find an action first
         if (owner.wants(DomCardName.Duchy)
          && !owner.getCardsFromHand(DomCardType.Action).isEmpty()){
-        	theCardToTrash = owner.getCardsFromHand(DomCardType.Action).get(0);
+            theCardToTrash = owner.getCardsFromHand(DomCardType.Action).get(0);
         }
         if (theCardToTrash==null){
           theCardToTrash=cardsInHand.get(0);
         }
         if (theCardToTrash.getTrashPriority()>=20
           || owner.removingReducesBuyingPower(theCardToTrash))
-        	return null;
+            return null;
         return theCardToTrash;
-	}
+    }
 
-	@Override
+    @Override
     public boolean wantsToBePlayed() {
-		owner.getCardsInHand().remove(this);
-		boolean foundCardToTrash= findCardToTrash()!=null;
-	    owner.getCardsInHand().add(this);
-    	return foundCardToTrash;
+        owner.getCardsInHand().remove(this);
+        boolean foundCardToTrash= findCardToTrash()!=null;
+        owner.getCardsInHand().add(this);
+        return foundCardToTrash;
     }
 }

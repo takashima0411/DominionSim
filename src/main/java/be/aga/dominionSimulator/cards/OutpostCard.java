@@ -10,15 +10,15 @@ public class OutpostCard extends DomCard {
     @Override
     public void play() {
         for (DomCard card : owner.getCardsFromPlay(DomCardName.Outpost)){
-        	if (card.discardAtCleanUp())
-        		//this means previous turn was an extra turn from Outpost, so we don't get another
-        		return;
+            if (card.discardAtCleanUp())
+                //this means previous turn was an extra turn from Outpost, so we don't get another
+                return;
         }
-		owner.setExtraOutpostTurn(true);
+        owner.setExtraOutpostTurn(true);
     }
     @Override
     public void resolveDuration() {
-    	owner.setExtraOutpostTurn(false);
+        owner.setExtraOutpostTurn(false);
     }
 
     @Override

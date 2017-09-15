@@ -7,7 +7,7 @@ import be.aga.dominionSimulator.enums.DomCardType;
 
 public class AlmsCard extends DomCard {
 
-	public AlmsCard() {
+    public AlmsCard() {
       super( DomCardName.Alms);
     }
 

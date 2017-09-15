@@ -5,11 +5,11 @@ import be.aga.dominionSimulator.enums.DomCardName;
 
 public class HighwayCard extends DomCard {
 
-	public HighwayCard () {
+    public HighwayCard () {
       super( DomCardName.Highway);
     }
 
-    public void play() {        
+    public void play() {
       owner.addActions(1);
       owner.drawCards(1);
    }

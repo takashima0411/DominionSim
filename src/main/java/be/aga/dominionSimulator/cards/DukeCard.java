@@ -7,12 +7,12 @@ public class DukeCard extends DomCard {
     public DukeCard () {
       super( DomCardName.Duke);
     }
-    
+
     @Override
     public int getTrashPriority() {
       if (owner!=null && owner.wantsToGainOrKeep(DomCardName.Duke))
-    	return 42;
-      
+        return 42;
+
       return super.getTrashPriority();
     }
 }

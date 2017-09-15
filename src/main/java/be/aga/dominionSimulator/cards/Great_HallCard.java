@@ -12,10 +12,10 @@ public class Great_HallCard extends DomCard {
       owner.addActions(1);
       owner.drawCards(1);
     }
-    
+
     @Override
     public int getTrashPriority() {
-        //TODO this should be lower if we're in the greening stage! 
-    	return super.getTrashPriority();
+        //TODO this should be lower if we're in the greening stage!
+        return super.getTrashPriority();
     }
 }

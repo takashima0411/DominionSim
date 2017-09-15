@@ -17,6 +17,6 @@ public class BanquetCard extends DomCard {
     if (theDesiredCard==null)
         theDesiredCard=owner.getCurrentGame().getBoard().getBestCardInSupplyFor(owner,null,new DomCost(5,0),false, DomCardType.Victory);
     if (theDesiredCard!=null)
-	  owner.gain(theDesiredCard);
+      owner.gain(theDesiredCard);
   }
 }

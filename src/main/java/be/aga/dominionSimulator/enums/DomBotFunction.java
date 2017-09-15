@@ -59,7 +59,7 @@ public enum DomBotFunction {
 
        case gainsNeededToEndGame:
            return "#buys/gains needed to end game";
- 
+
        case countCardTypeInDeck:
            return "count Type in deck";
 
@@ -89,7 +89,7 @@ public enum DomBotFunction {
 
        case countEmptyPiles:
            return "empty piles in supply";
-       
+
        case countCardsLeftInSmallestPile:
            return "cards in smallest supply pile";
 

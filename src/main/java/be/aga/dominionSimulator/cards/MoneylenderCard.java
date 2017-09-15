@@ -11,25 +11,25 @@ public class MoneylenderCard extends DomCard {
     }
 
     public void play() {
-      ArrayList<DomCard> theCoppers = owner.getCardsFromHand(DomCardName.Copper); 
+      ArrayList<DomCard> theCoppers = owner.getCardsFromHand(DomCardName.Copper);
       if (!theCoppers.isEmpty()) {
-    	owner.trash(owner.removeCardFromHand(theCoppers.get(0)));
-    	owner.addAvailableCoins(3);
+        owner.trash(owner.removeCardFromHand(theCoppers.get(0)));
+        owner.addAvailableCoins(3);
       }
     }
-    
+
     @Override
     public int getPlayPriority() {
-        if (owner.getCardsFromHand(DomCardName.Copper).isEmpty()) 
-        	return 100;
-    	return super.getPlayPriority();
+        if (owner.getCardsFromHand(DomCardName.Copper).isEmpty())
+            return 100;
+        return super.getPlayPriority();
     }
-    
+
     public int getDiscardPriority(int i) {
-    	if (owner!=null)
-          if (owner.getCardsFromHand(DomCardName.Copper).isEmpty()) 
-        	return 0;
-    	return super.getDiscardPriority(i);
+        if (owner!=null)
+          if (owner.getCardsFromHand(DomCardName.Copper).isEmpty())
+            return 0;
+        return super.getDiscardPriority(i);
     }
 
     @Override

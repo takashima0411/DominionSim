@@ -17,9 +17,9 @@ public class Council_RoomCard extends DomCard {
         thePlayer.drawCards( 1 );
       }
     }
-    
+
     public int getPlayPriority() {
       //put this higher up on the play priority if we have some actions to spare (enabling engine chains)
-      return owner.getActionsLeft() > 1 && owner.getDeckSize()>0 ? 6 : 25;  
+      return owner.getActionsLeft() > 1 && owner.getDeckSize()>0 ? 6 : 25;
     }
 }

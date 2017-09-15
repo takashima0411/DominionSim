@@ -24,13 +24,13 @@ public class Native_VillageCard extends DomCard {
           playForBigTurn();
           break;
         case ApothecaryNativeVillage:
-        	//always put card away because it's a useless green
-        	playNativeVillageForStorage();
-      }    
+            //always put card away because it's a useless green
+            playNativeVillageForStorage();
+      }
     }
 
     private void playForBigTurn() {
-      if (owner.getCardsFromHand( DomCardName.Native_Village ).size() > 0 
+      if (owner.getCardsFromHand( DomCardName.Native_Village ).size() > 0
        || owner.getNativeVillageMat().isEmpty()
        || !isBigTurnReady()) {
         playNativeVillageForStorage();
@@ -66,7 +66,7 @@ public class Native_VillageCard extends DomCard {
         playNativeVillageForCards();
       } else {
         playNativeVillageForStorage();
-      } 
+      }
     }
 
       public void playNativeVillageForStorage() {
@@ -88,12 +88,12 @@ public class Native_VillageCard extends DomCard {
       }
       @Override
     public boolean wantsToBePlayed() {
-    	if (owner.getPlayStrategyFor(this)==DomPlayStrategy.ApothecaryNativeVillage){
-    		if (owner.getKnownTopCards()>0
-    		  && owner.getDeck().lookAtTopCard().getDiscardPriority(1)<DomCardName.Copper.getDiscardPriority(1))
-    			return true;
-    		return false;
-    	}
-    	return true;
+        if (owner.getPlayStrategyFor(this)==DomPlayStrategy.ApothecaryNativeVillage){
+            if (owner.getKnownTopCards()>0
+              && owner.getDeck().lookAtTopCard().getDiscardPriority(1)<DomCardName.Copper.getDiscardPriority(1))
+                return true;
+            return false;
+        }
+        return true;
     }
 }

@@ -17,7 +17,7 @@ public class WitchCard extends DomCard {
         }
       }
     }
-    
+
     @Override
     public int getTrashPriority() {
       if (owner!=null) {

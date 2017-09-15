@@ -5,7 +5,6 @@ import be.aga.dominionSimulator.DomCost;
 import be.aga.dominionSimulator.enums.DomCardName;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class CatacombsCard extends DomCard {
     public CatacombsCard() {
@@ -16,12 +15,12 @@ public class CatacombsCard extends DomCard {
       ArrayList<DomCard> theCards = owner.revealTopCards(3);
       int theTotal=0;
       for (DomCard card : theCards){
-    	theTotal+=card.getDiscardPriority(owner.getActionsLeft());
-    	if (card.getName()==DomCardName.Tunnel){
-    		owner.discard(theCards);
+        theTotal+=card.getDiscardPriority(owner.getActionsLeft());
+        if (card.getName()==DomCardName.Tunnel){
+            owner.discard(theCards);
             owner.drawCards(3);
-    		return;
-    	}
+            return;
+        }
       }
       if (theTotal<45) {
         owner.discard(theCards);

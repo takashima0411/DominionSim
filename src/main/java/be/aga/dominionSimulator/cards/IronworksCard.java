@@ -13,11 +13,11 @@ public class IronworksCard extends DomCard {
     public void play() {
       DomCardName theDesiredCard=null;
       if (!owner.getCardsFromHand(DomCardType.Action).isEmpty() && owner.getActionsLeft() == 0){
-    	//if we have more actions in hand we probably want to play them so find an action card to gain
-    	theDesiredCard = owner.getDesiredCard(DomCardType.Action, new DomCost( 4, 0) , false, false, null);
+        //if we have more actions in hand we probably want to play them so find an action card to gain
+        theDesiredCard = owner.getDesiredCard(DomCardType.Action, new DomCost( 4, 0) , false, false, null);
       }
       if (theDesiredCard==null) {
-    	//we didn't have more actions in hand or no actions to gain, so just gain the card we want the most
+        //we didn't have more actions in hand or no actions to gain, so just gain the card we want the most
         theDesiredCard = owner.getDesiredCard(new DomCost( 4, 0), false);
       }
       if (theDesiredCard==null) {
@@ -25,24 +25,24 @@ public class IronworksCard extends DomCard {
         theDesiredCard=owner.getCurrentGame().getBestCardInSupplyFor(owner, null, new DomCost(4, 0));
       }
       if (theDesiredCard==null)
-    	return;
+        return;
       owner.gain(theDesiredCard);
       if (theDesiredCard.hasCardType(DomCardType.Treasure))
-      	owner.addAvailableCoins(1);
+          owner.addAvailableCoins(1);
       if (theDesiredCard.hasCardType(DomCardType.Action))
-      	owner.addActions(1);
+          owner.addActions(1);
       if (theDesiredCard.hasCardType(DomCardType.Victory))
-    	owner.drawCards(1);
+        owner.drawCards(1);
     }
-    
+
     @Override
     public boolean wantsToBePlayed() {
        return owner.getDesiredCard(new DomCost( 4, 0), false) != null ;
     }
     @Override
     public int getPlayPriority() {
-    	if (wantsToBePlayed() && owner.getDesiredCard(new DomCost( 4, 0), false).hasCardType(DomCardType.Action))
-    		return 14;
-    	return super.getPlayPriority();
+        if (wantsToBePlayed() && owner.getDesiredCard(new DomCost( 4, 0), false).hasCardType(DomCardType.Action))
+            return 14;
+        return super.getPlayPriority();
     }
 }

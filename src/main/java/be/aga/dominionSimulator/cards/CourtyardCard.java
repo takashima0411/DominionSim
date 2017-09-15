@@ -10,15 +10,15 @@ public class CourtyardCard extends DomCard {
     }
 
     public void play() {
-    	owner.drawCards(3);
-    	if (owner.getCardsInHand().isEmpty()) {
-  	      if (DomEngine.haveToLog) 
+        owner.drawCards(3);
+        if (owner.getCardsInHand().isEmpty()) {
+            if (DomEngine.haveToLog)
             DomEngine.addToLog( owner + "'s hand is empty, so returns nothing");
           return;
-    	}
+        }
         owner.putCardFromHandOnTop();
     }
-    
+
     @Override
     public boolean wantsToBePlayed() {
       return !owner.isDeckEmpty();

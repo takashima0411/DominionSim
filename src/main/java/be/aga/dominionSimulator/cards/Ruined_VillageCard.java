@@ -8,9 +8,9 @@ public class Ruined_VillageCard extends DomCard {
     public Ruined_VillageCard () {
       super( DomCardName.Ruined_Village);
     }
-    
+
     @Override
     public void play() {
-    	owner.addActions(1);
+        owner.addActions(1);
     }
 }

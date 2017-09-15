@@ -11,10 +11,10 @@ public class MountebankCard extends DomCard {
     }
 
     public void play() {
-        owner.addAvailableCoins( 2 ); 
+        owner.addAvailableCoins( 2 );
         for (DomPlayer thePlayer : owner.getOpponents()) {
-          if (thePlayer.checkDefense() || discardsCurse(thePlayer)) 
-        	continue;
+          if (thePlayer.checkDefense() || discardsCurse(thePlayer))
+            continue;
           if (owner.getCurrentGame().countInSupply(DomCardName.Curse )>0)
             thePlayer.gain(DomCardName.Curse);
           if (owner.getCurrentGame().countInSupply(DomCardName.Copper )>0)
@@ -22,13 +22,13 @@ public class MountebankCard extends DomCard {
         }
     }
 
-	private boolean discardsCurse(DomPlayer thePlayer) {
-		if (thePlayer.getCardsFromHand(DomCardName.Curse).isEmpty())
-	       return false;
-		if (thePlayer.getCurrentGame().countInSupply(DomCardName.Curse)==0
-		  && !thePlayer.getCardsFromHand(DomCardType.Trasher).isEmpty())
-			return false;
-		thePlayer.discardFromHand(DomCardName.Curse);		
-		return true;
-	}
+    private boolean discardsCurse(DomPlayer thePlayer) {
+        if (thePlayer.getCardsFromHand(DomCardName.Curse).isEmpty())
+           return false;
+        if (thePlayer.getCurrentGame().countInSupply(DomCardName.Curse)==0
+          && !thePlayer.getCardsFromHand(DomCardType.Trasher).isEmpty())
+            return false;
+        thePlayer.discardFromHand(DomCardName.Curse);
+        return true;
+    }
 }

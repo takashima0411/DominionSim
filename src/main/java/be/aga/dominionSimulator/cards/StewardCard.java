@@ -37,9 +37,9 @@ public class StewardCard extends DomCard {
              if (!playForTrash())
            //draw 2 cards
            if (!playForCards())
-        	 //if your deck is empty get $2 anyway (this might have positive effects with +buys
-        	 //which are not accounted for (yet)
-        	 owner.addAvailableCoins(2);
+             //if your deck is empty get $2 anyway (this might have positive effects with +buys
+             //which are not accounted for (yet)
+             owner.addAvailableCoins(2);
     }
 
         private boolean hasTwoCrapCards() {
@@ -53,7 +53,7 @@ public class StewardCard extends DomCard {
 
     private boolean playForCards() {
       if (owner.getDeckSize()==0){
-    	  return false;
+          return false;
       }
       owner.drawCards( 2 );
       return true;
@@ -61,7 +61,7 @@ public class StewardCard extends DomCard {
 
     private boolean playForMoney() {
       if (owner.addingThisIncreasesBuyingPower(new DomCost(2, 0))) {
-    	owner.addAvailableCoins(2);
+        owner.addAvailableCoins(2);
         return true;
       }
       return false;
@@ -74,14 +74,14 @@ public class StewardCard extends DomCard {
         }
         ArrayList<DomCard> cardsInHand = owner.getCardsInHand();
         if (cardsInHand.isEmpty())
-        	return false;
+            return false;
         if (cardsInHand.size()==1){
-        	if (cardsInHand.get(0).getTrashPriority()<16){
+            if (cardsInHand.get(0).getTrashPriority()<16){
               owner.trash(owner.removeCardFromHand( cardsInHand.get(0)));
               return true;
-        	} else {
+            } else {
               return false;
-        	}
+            }
         }
         Collections.sort(cardsInHand,SORT_FOR_TRASHING);
         if (owner.getPlayStrategyFor(this)==DomPlayStrategy.modestTrashing) {

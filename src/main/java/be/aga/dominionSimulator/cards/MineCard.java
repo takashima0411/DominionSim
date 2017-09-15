@@ -10,9 +10,9 @@ import be.aga.dominionSimulator.enums.DomPlayStrategy;
 
 public class MineCard extends DomCard {
     private DomCard myCardToTrash;
-	private DomCardName myDesiredCard;
+    private DomCardName myDesiredCard;
 
-	public MineCard () {
+    public MineCard () {
       super( DomCardName.Mine);
     }
 
@@ -24,43 +24,43 @@ public class MineCard extends DomCard {
       }
       checkForCardToMine();
       if (myCardToTrash==null)
-    	  //possible if played by Golem for instance
-    	  return;
+          //possible if played by Golem for instance
+          return;
       owner.trash(owner.removeCardFromHand( myCardToTrash));
-      if (myDesiredCard==null) 
+      if (myDesiredCard==null)
         //possible if card was throne roomed
-      	myDesiredCard=owner.getCurrentGame().getBestCardInSupplyFor(owner, DomCardType.Treasure, myCardToTrash.getCost(owner.getCurrentGame()).add(new DomCost(3,0)));
-      if (myDesiredCard!=null) 
+          myDesiredCard=owner.getCurrentGame().getBestCardInSupplyFor(owner, DomCardType.Treasure, myCardToTrash.getCost(owner.getCurrentGame()).add(new DomCost(3,0)));
+      if (myDesiredCard!=null)
         owner.gainInHand(myDesiredCard);
     }
-    
+
     @Override
     public boolean wantsToBePlayed() {
-    	checkForCardToMine();
-    	return myDesiredCard!=null;
+        checkForCardToMine();
+        return myDesiredCard!=null;
     }
 
-	private void checkForCardToMine() {
-		Collections.sort(owner.getCardsInHand(), SORT_FOR_TRASHING);
-		DomCardName thePossibleDesiredCard=null;
-		myDesiredCard=null;
-		myCardToTrash=null;
-    	//we try to get the best treasure which is important in Colony games (Golds into Platinums and not Silvers into Golds)
-    	for (DomCard card : owner.getCardsFromHand(DomCardType.Treasure)){
-	        DomCost theCostOfmyDesiredCard = card.getName().getCost(owner.getCurrentGame()).add(new DomCost(3,0)) ;
-    		thePossibleDesiredCard=owner.getDesiredCard(DomCardType.Treasure, theCostOfmyDesiredCard , false, false, null);
-    		if (thePossibleDesiredCard==null)
-    			continue;
-    		if ((card.getName()!=thePossibleDesiredCard || thePossibleDesiredCard==DomCardName.Ill_Gotten_Gains)) {
-	    		if (myCardToTrash==null
-	    		 || (thePossibleDesiredCard.getOrderInBuyRules(owner) <= card.getName().getOrderInBuyRules(owner)
-	    			  && (thePossibleDesiredCard.getOrderInBuyRules(owner) < myDesiredCard.getOrderInBuyRules(owner)
-	                    || (thePossibleDesiredCard.getOrderInBuyRules(owner) == myDesiredCard.getOrderInBuyRules(owner)
-	                     && myCardToTrash.getTrashPriority()>card.getTrashPriority())))){
-	    			myDesiredCard=thePossibleDesiredCard;
-	    			myCardToTrash=card;
-	    		}
-    		}
-     	}
-	}
+    private void checkForCardToMine() {
+        Collections.sort(owner.getCardsInHand(), SORT_FOR_TRASHING);
+        DomCardName thePossibleDesiredCard=null;
+        myDesiredCard=null;
+        myCardToTrash=null;
+        //we try to get the best treasure which is important in Colony games (Golds into Platinums and not Silvers into Golds)
+        for (DomCard card : owner.getCardsFromHand(DomCardType.Treasure)){
+            DomCost theCostOfmyDesiredCard = card.getName().getCost(owner.getCurrentGame()).add(new DomCost(3,0)) ;
+            thePossibleDesiredCard=owner.getDesiredCard(DomCardType.Treasure, theCostOfmyDesiredCard , false, false, null);
+            if (thePossibleDesiredCard==null)
+                continue;
+            if ((card.getName()!=thePossibleDesiredCard || thePossibleDesiredCard==DomCardName.Ill_Gotten_Gains)) {
+                if (myCardToTrash==null
+                 || (thePossibleDesiredCard.getOrderInBuyRules(owner) <= card.getName().getOrderInBuyRules(owner)
+                      && (thePossibleDesiredCard.getOrderInBuyRules(owner) < myDesiredCard.getOrderInBuyRules(owner)
+                        || (thePossibleDesiredCard.getOrderInBuyRules(owner) == myDesiredCard.getOrderInBuyRules(owner)
+                         && myCardToTrash.getTrashPriority()>card.getTrashPriority())))){
+                    myDesiredCard=thePossibleDesiredCard;
+                    myCardToTrash=card;
+                }
+            }
+         }
+    }
 }

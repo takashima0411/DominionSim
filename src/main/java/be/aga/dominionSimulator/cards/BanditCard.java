@@ -13,14 +13,14 @@ public class BanditCard extends DomCard {
     }
 
     public void play() {
-    	owner.gain(DomCardName.Gold);
+        owner.gain(DomCardName.Gold);
         for (DomPlayer thePlayer : owner.getOpponents()) {
             if (thePlayer.checkDefense())
-            	continue;
+                continue;
             ArrayList< DomCard > theCards = thePlayer.revealTopCards(2);
             DomCard theCardToTrash = null;
             for (DomCard theCard : theCards) {
-			  if (theCard.hasCardType(DomCardType.Treasure) && theCard.getName()!=DomCardName.Copper) {
+              if (theCard.hasCardType(DomCardType.Treasure) && theCard.getName()!=DomCardName.Copper) {
                 if (theCardToTrash==null
                 || theCard.getName().getTrashPriority(owner)<theCardToTrash.getName().getTrashPriority(owner)){
                   theCardToTrash = theCard;

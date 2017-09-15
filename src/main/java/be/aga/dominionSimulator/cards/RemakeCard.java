@@ -16,21 +16,21 @@ public class RemakeCard extends DomCard {
         int theTrashCount=0;
         Collections.sort( owner.getCardsInHand(), SORT_FOR_TRASHING);
         while (theTrashCount<2 && !owner.getCardsInHand().isEmpty()) {
-            DomCard theCardToTrash = owner.removeCardFromHand( owner.getCardsInHand().get( 0 ) ); 
+            DomCard theCardToTrash = owner.removeCardFromHand( owner.getCardsInHand().get( 0 ) );
             owner.trash( theCardToTrash );
             theTrashCount++;
             DomCardName theDesiredCard = owner.getDesiredCard(new DomCost( theCardToTrash.getCoinCost(owner.getCurrentGame()) + 1, theCardToTrash.getPotionCost()), true);
             if (theDesiredCard==null) {
               //it's mandatory to gain a card
               DomCost theCost = theCardToTrash.getCost(owner.getCurrentGame()).add(new DomCost(1,0));
-  			  theDesiredCard = owner.getCurrentGame().getBestCardInSupplyFor(owner, null, theCost,true);
+                theDesiredCard = owner.getCurrentGame().getBestCardInSupplyFor(owner, null, theCost,true);
             }
-			if (theDesiredCard!=null)
-			  owner.gain(theDesiredCard);
+            if (theDesiredCard!=null)
+              owner.gain(theDesiredCard);
         }
     }
 
-	@Override
+    @Override
     public boolean wantsToBePlayed() {
         int theTrashCount=0;
         for (DomCard theCard : owner.getCardsInHand()) {

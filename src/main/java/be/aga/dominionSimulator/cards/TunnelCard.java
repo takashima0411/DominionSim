@@ -11,11 +11,11 @@ public class TunnelCard extends DomCard {
 
     @Override
     public void doWhenDiscarded() {
-    	if (owner.getCurrentGame().getActivePlayer().getPhase()!=DomPhase.CleanUp)
-    		if (owner.getCurrentGame().countInSupply(DomCardName.Gold)>0)
-    			owner.gain(DomCardName.Gold);
+        if (owner.getCurrentGame().getActivePlayer().getPhase()!=DomPhase.CleanUp)
+            if (owner.getCurrentGame().countInSupply(DomCardName.Gold)>0)
+                owner.gain(DomCardName.Gold);
     }
-    
+
     @Override
     public int getTrashPriority() {
       if (owner!=null && owner.wantsToGainOrKeep(DomCardName.Tunnel))

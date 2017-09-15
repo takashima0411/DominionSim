@@ -9,11 +9,11 @@ public class EstateCard extends DomCard {
     public EstateCard () {
       super( DomCardName.Estate);
     }
-    
+
     @Override
     public int getTrashPriority() {
       if (owner!=null) {
-    	if (owner.wantsToGainOrKeep(DomCardName.Estate)) {
+        if (owner.wantsToGainOrKeep(DomCardName.Estate)) {
 //        	if (!owner.isInBuyPhase()) {
 //        		//fix for Remodel
 //        		owner.getCurrentGame().setBuyphase(true);
@@ -22,8 +22,8 @@ public class EstateCard extends DomCard {
 //        		  return 19;
 //        		}
 //        	}
-        	return 35;
-    	}
+            return 35;
+        }
       }
       return super.getTrashPriority();
     }
@@ -43,9 +43,9 @@ public class EstateCard extends DomCard {
         if (owner!=null && owner.isEstateTokenPlaced())
             return owner.getEstateTokenOn().getDiscardPriority(aActionsLeft);
         if (aActionsLeft>0 && owner.getCardsInHand().contains(this)
-    	&& !owner.getCardsFromHand(DomCardName.Baron).isEmpty() && owner.getCardsFromHand(DomCardName.Estate).size()==1)
-    		return 29;
-    	return super.getDiscardPriority(aActionsLeft);
+        && !owner.getCardsFromHand(DomCardName.Baron).isEmpty() && owner.getCardsFromHand(DomCardName.Estate).size()==1)
+            return 29;
+        return super.getDiscardPriority(aActionsLeft);
     }
 
     @Override

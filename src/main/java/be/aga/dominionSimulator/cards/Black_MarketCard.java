@@ -31,14 +31,14 @@ public class Black_MarketCard extends DomCard {
       ArrayList<DomCard> theRevealedCards = owner.getCurrentGame().revealFromBlackMarketDeck();
       if (DomEngine.haveToLog) DomEngine.addToLog( owner + " reveals " + theRevealedCards );
       if (theRevealedCards.isEmpty())
-    	return;
+        return;
         DomCard theCardToPlay;
         do {
             theCardToPlay = null;
             for (DomCard theCard1 : owner.getCardsInHand()) {
                 if (theCard1.hasCardType(DomCardType.Treasure)) {
                      if (theCardToPlay == null || theCard1.getPlayPriority()<theCardToPlay.getPlayPriority()) {
-                    	if (theCard1.wantsToBePlayed())
+                        if (theCard1.wantsToBePlayed())
                           theCardToPlay = theCard1;
                      }
                 }
@@ -51,7 +51,7 @@ public class Black_MarketCard extends DomCard {
         if (DomEngine.haveToLog) {
           if (owner.getPreviousPlayedCardName()!=null) {
             DomEngine.addToLog( owner + " plays " + (owner.getSameCardCount()+1)+" "+ owner.getPreviousPlayedCardName().toHTML()
-            		           + (owner.getSameCardCount()>0 ? "s" : ""));
+                               + (owner.getSameCardCount()>0 ? "s" : ""));
             owner.setPreviousPlayedCardName(null);
             owner.setSameCardCount(0);
           }
@@ -61,18 +61,18 @@ public class Black_MarketCard extends DomCard {
       DomCost theAvailableCurrency = owner.getTotalAvailableCurrency();
       DomCardName theDesiredCardName = owner.getDesiredCard(theAvailableCurrency, false);
       for (int i=theRevealedCards.size()-1 ; i>=0 ; i--) {
-    	DomCard theCard = theRevealedCards.get(i);
+        DomCard theCard = theRevealedCards.get(i);
         DomCost theCardCost = theCard.getName().getCost(owner.getCurrentGame());
-    	if (theAvailableCurrency.compareTo(theCardCost)>=0 && theDesiredCardName==null) {
-    		owner.buy(theRevealedCards.remove(i));
+        if (theAvailableCurrency.compareTo(theCardCost)>=0 && theDesiredCardName==null) {
+            owner.buy(theRevealedCards.remove(i));
             break;
-    	}
+        }
       }
-      if (DomEngine.haveToLog) 
-      	DomEngine.addToLog( owner + " returns " + theRevealedCards +" to the Black Market Deck");
+      if (DomEngine.haveToLog)
+          DomEngine.addToLog( owner + " returns " + theRevealedCards +" to the Black Market Deck");
       for (int i=theRevealedCards.size()-1 ; i>=0 ; i--) {
-      	DomCard theCard = theRevealedCards.get(i);
-      	owner.getCurrentGame().returnToBlackMarketDeck(theCard);
+          DomCard theCard = theRevealedCards.get(i);
+          owner.getCurrentGame().returnToBlackMarketDeck(theCard);
       }
     }
 }

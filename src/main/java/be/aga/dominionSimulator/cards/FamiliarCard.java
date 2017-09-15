@@ -10,8 +10,8 @@ public class FamiliarCard extends DomCard {
     }
 
     public void play() {
-    	owner.addActions(1);
-    	owner.drawCards(1);
+        owner.addActions(1);
+        owner.drawCards(1);
         for (DomPlayer thePlayer : owner.getOpponents()) {
           if (!thePlayer.checkDefense()) {
             thePlayer.gain(DomCardName.Curse);

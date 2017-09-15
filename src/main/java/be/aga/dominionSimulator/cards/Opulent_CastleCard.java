@@ -21,10 +21,10 @@ public class Opulent_CastleCard extends DomCard {
 
     @Override
     public int getDiscardPriority(int aActionsLeft) {
-    	if (aActionsLeft>0 && owner.getCardsInHand().contains(this) 
-    	&& owner.getCardsFromHand(DomCardName.Opulent_Castle).size()==1 && owner.getCardsFromHand(DomCardType.Victory).size()>1)
-    		return 29;
-    	return super.getDiscardPriority(aActionsLeft);
+        if (aActionsLeft>0 && owner.getCardsInHand().contains(this)
+        && owner.getCardsFromHand(DomCardName.Opulent_Castle).size()==1 && owner.getCardsFromHand(DomCardType.Victory).size()>1)
+            return 29;
+        return super.getDiscardPriority(aActionsLeft);
     }
 
 }

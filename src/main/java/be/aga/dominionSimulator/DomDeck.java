@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
 
-import be.aga.dominionSimulator.cards.Distant_LandsCard;
 import be.aga.dominionSimulator.cards.DuplicateCard;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Logger;
@@ -28,94 +27,94 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
     private ArrayList< DomCard > islandMat = new ArrayList<>();
 
     private DomPlayer owner;
-	private ArrayList<DomCard> putAsideCards=new ArrayList<>();
+    private ArrayList<DomCard> putAsideCards=new ArrayList<>();
     public static final int DISCARD = 0;
     public static final int TOP_OF_DECK = 1;
     public static final int HAND = 2;
 
     public DomDeck (DomPlayer aDomPlayer) {
       super( DomCardName.class );
-      owner = aDomPlayer; 
+      owner = aDomPlayer;
       islandMat = new ArrayList<>();
     }
 
     public void shuffle() {
       owner.setKnownTopCards(0);
-	  if (owner.getTypes().contains(DomBotType.RiffleShuffle) )
-		doRiffleShuffle();
-  	  else  
-  		if (owner.getTypes().contains(DomBotType.ShuffleOverhand))
-	  	  doOverhandShuffle();
-  	    else
+      if (owner.getTypes().contains(DomBotType.RiffleShuffle) )
+        doRiffleShuffle();
+        else
+          if (owner.getTypes().contains(DomBotType.ShuffleOverhand))
+            doOverhandShuffle();
+          else
           Collections.shuffle( drawDeck );
       if (DomEngine.haveToLog) DomEngine.addToLog( owner + " shuffles deck" );
-	  if (count(DomCardName.Stash)>0)
+      if (count(DomCardName.Stash)>0)
         handleStash();
     }
 
-	private void handleStash() {
-	  ArrayList<DomCard> theStashes= new ArrayList<>();
-	  for (DomCard card : drawDeck){
-		if (card.getName()==DomCardName.Stash){
-		  theStashes.add(card);
-		}
-	  }
-	  for (DomCard card : theStashes){
-		owner.putOnTopOfDeck(drawDeck.remove(drawDeck.indexOf(card)));
-	  }
-	}
+    private void handleStash() {
+      ArrayList<DomCard> theStashes= new ArrayList<>();
+      for (DomCard card : drawDeck){
+        if (card.getName()==DomCardName.Stash){
+          theStashes.add(card);
+        }
+      }
+      for (DomCard card : theStashes){
+        owner.putOnTopOfDeck(drawDeck.remove(drawDeck.indexOf(card)));
+      }
+    }
 
     private void doOverhandShuffle() {
       for (int j=0;j<2+Math.random()*4;j++){
         ArrayList<DomCard> newDeck = new ArrayList<>();
-    	while (!drawDeck.isEmpty()) {
-		    int theNumber = (int) (drawDeck.size()*Math.random()/3.0);
-		    for (int i=theNumber;i>=0;i--)
-			  newDeck.add(0,drawDeck.remove(i));
-    	}
-    	drawDeck=newDeck;
-     	LOGGER.debug("Iteratie " +j);
+        while (!drawDeck.isEmpty()) {
+            int theNumber = (int) (drawDeck.size()*Math.random()/3.0);
+            for (int i=theNumber;i>=0;i--)
+              newDeck.add(0,drawDeck.remove(i));
+        }
+        drawDeck=newDeck;
+         LOGGER.debug("Iteratie " +j);
         LOGGER.debug("-------------");
-    	for (DomCard card : drawDeck){
-    		LOGGER.debug(card.getName());
-    	}
+        for (DomCard card : drawDeck){
+            LOGGER.debug(card.getName());
+        }
       }
-	}
+    }
 
     private void doRiffleShuffle() {
         for (int j=0;j<2+Math.random()*4;j++){
           ArrayList<DomCard> newDeck = new ArrayList<>();
           ArrayList<DomCard> leftDeck = new ArrayList<>();
           ArrayList<DomCard> rightDeck = new ArrayList<>();
-		  int theSplit = (int) (drawDeck.size()/2.0 + drawDeck.size()*Math.random()/10.0);
-		  for (int i=0;i<theSplit;i++){
-			leftDeck.add(drawDeck.remove(0));
-		  }
-		  while (!drawDeck.isEmpty())
-			rightDeck.add(drawDeck.remove(0));
-		  
-      	  while (!leftDeck.isEmpty() || !rightDeck.isEmpty()) {
+          int theSplit = (int) (drawDeck.size()/2.0 + drawDeck.size()*Math.random()/10.0);
+          for (int i=0;i<theSplit;i++){
+            leftDeck.add(drawDeck.remove(0));
+          }
+          while (!drawDeck.isEmpty())
+            rightDeck.add(drawDeck.remove(0));
+
+            while (!leftDeck.isEmpty() || !rightDeck.isEmpty()) {
             int i=0;
-      		double theRiffledCards = Math.random()*4;
-  		    for (i=0;i<theRiffledCards && leftDeck.size()>0;i++){
-  		      newDeck.add(leftDeck.remove(leftDeck.size()-1));
-  		    }
-      		theRiffledCards = Math.random()*4;
-  		    for (i=0;i<theRiffledCards && rightDeck.size()>0;i++){
-  		      newDeck.add(rightDeck.remove(rightDeck.size()-1));
-  		    }
-      	  }
-      	  drawDeck=newDeck;
-         	LOGGER.debug("Iteratie " );
+              double theRiffledCards = Math.random()*4;
+              for (i=0;i<theRiffledCards && leftDeck.size()>0;i++){
+                newDeck.add(leftDeck.remove(leftDeck.size()-1));
+              }
+              theRiffledCards = Math.random()*4;
+              for (i=0;i<theRiffledCards && rightDeck.size()>0;i++){
+                newDeck.add(rightDeck.remove(rightDeck.size()-1));
+              }
+            }
+            drawDeck=newDeck;
+             LOGGER.debug("Iteratie " );
             LOGGER.debug("-------------");
-        	for (DomCard card : drawDeck){
-        		LOGGER.debug(card.getName());
-        	}
+            for (DomCard card : drawDeck){
+                LOGGER.debug(card.getName());
+            }
         }
-  	}
+      }
 
     public ArrayList< DomCard > getTopCards( int aI ) {
-    	owner.setKnownTopCards(owner.getKnownTopCards()-aI);
+        owner.setKnownTopCards(owner.getKnownTopCards()-aI);
         ArrayList< DomCard > theTopCards = new ArrayList<>();
         for (int i=0;i<aI ;i++) {
           if (drawDeck.isEmpty()) {
@@ -131,7 +130,7 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
     }
 
     public int count( DomCardName aCardName ) {
-      ArrayList< DomCard > theList = get(aCardName); 
+      ArrayList< DomCard > theList = get(aCardName);
       return theList==null ? 0 : theList.size();
     }
 
@@ -154,8 +153,8 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
     }
 
     public void addToDiscardPile( ArrayList< DomCard > aPile ) {
-    	for (DomCard card : aPile)
-    	  discard(card);
+        for (DomCard card : aPile)
+          discard(card);
     }
 
     public void discard( DomCard aCard ) {
@@ -171,24 +170,24 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
     }
 
     public void gain( DomCard aCard , int aLocation) {
-		if (gainIfPossessed(aCard) || !addPhysicalCard(aCard))
-		  return;
-		if (aLocation==HAND && aCard.getName()!=DomCardName.Villa){
-	      owner.getCardsInHand().add( aCard );
-	      if (DomEngine.haveToLog) DomEngine.addToLog( owner + " gains a " + aCard + " in hand" );
-		}
-		if (aLocation==TOP_OF_DECK && aCard.getName()!=DomCardName.Villa){
-		  owner.putOnTopOfDeck(aCard);      	
-		}
-		if (aLocation==DISCARD && aCard.getName()!=DomCardName.Villa){
-	    	if (aCard.getName()==DomCardName.Nomad_Camp
-	    	 || (!owner.getCardsFromPlay(DomCardName.Royal_Seal).isEmpty() && aCard.getDiscardPriority(1)>=16)
+        if (gainIfPossessed(aCard) || !addPhysicalCard(aCard))
+          return;
+        if (aLocation==HAND && aCard.getName()!=DomCardName.Villa){
+          owner.getCardsInHand().add( aCard );
+          if (DomEngine.haveToLog) DomEngine.addToLog( owner + " gains a " + aCard + " in hand" );
+        }
+        if (aLocation==TOP_OF_DECK && aCard.getName()!=DomCardName.Villa){
+          owner.putOnTopOfDeck(aCard);
+        }
+        if (aLocation==DISCARD && aCard.getName()!=DomCardName.Villa){
+            if (aCard.getName()==DomCardName.Nomad_Camp
+             || (!owner.getCardsFromPlay(DomCardName.Royal_Seal).isEmpty() && aCard.getDiscardPriority(1)>=16)
              || (owner.isTravellingFairActive() && (aCard.getDiscardPriority(1)>DomCardName.Copper.getDiscardPriority(1) || (aCard.getName()==DomCardName.Copper && getDrawDeckSize()<8)))) {
                 owner.putOnTopOfDeck(aCard);
             } else {
                discardPile.add(0,aCard);
             }
-		}
+        }
         if (aCard.hasCardType(DomCardType.Victory)) {
             if (owner.isCardInPlay(DomCardName.Groundskeeper)) {
                 for (DomCard theKeeper : owner.getCardsFromPlay(DomCardName.Groundskeeper)) {
@@ -234,10 +233,10 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
       //TODO Trader might conflict with Watchtower ????
       if (owner.countInDeck( DomCardName.Trader )>0 && owner.usesTrader(aCard))
         return false;
-    	
+
       if (owner.countInDeck( DomCardName.Watchtower )>0 && owner.usesWatchtower(aCard))
         return false;
-      
+
       if (!containsKey( aCard.getName() )) {
         put(aCard.getName(), new ArrayList<>());
       }
@@ -274,7 +273,7 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
     }
 
     /**
-     * 
+     *
      */
     public void discardTopCardFromDeck() {
       DomCard theCard = null;
@@ -289,13 +288,13 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
 
     private boolean gainIfPossessed(DomCard aCard) {
         if (owner.possessor!=null) {
-          if (DomEngine.haveToLog) 
+          if (DomEngine.haveToLog)
             DomEngine.addToLog( owner + " is Possessed by " + owner.possessor + " who will gain " + aCard);
           owner.possessor.gain(aCard);
           return true;
         }
         return false;
-	}
+    }
 
     public ArrayList< DomCard > revealTopCards( int aI ) {
         ArrayList< DomCard > theTopX = new ArrayList<>();
@@ -321,13 +320,13 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
     }
 
     /**
-     * 
+     *
      */
     public int countVictoryPoints() {
-      int count = 0; 
+      int count = 0;
       for (DomCardName theCardName : keySet()) {
         if (theCardName.hasCardType( DomCardType.Victory) || theCardName.hasCardType( DomCardType.Curse )) {
-          count += get( theCardName ).size()* theCardName.getVictoryValue(owner);    
+          count += get( theCardName ).size()* theCardName.getVictoryValue(owner);
         }
       }
       count+= owner.getAllFromTavernMat(DomCardName.Distant_Lands).size()*4;
@@ -340,29 +339,29 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
      */
     public void trash( DomCard aRemove ) {
       if (owner.possessor!=null && aRemove.getName()!= DomCardName.Fortress) {
-    	putCardAside(aRemove);
+        putCardAside(aRemove);
       } else {
-	      try {
-	        get(aRemove.getName()).remove( aRemove );
-	        aRemove.owner=null;
-	      } catch ( Exception e ) {
-	        LOGGER.error("Problem when trashing " + aRemove);
-	      }
+          try {
+            get(aRemove.getName()).remove( aRemove );
+            aRemove.owner=null;
+          } catch ( Exception e ) {
+            LOGGER.error("Problem when trashing " + aRemove);
+          }
       }
     }
 
     private void putCardAside(DomCard aRemove) {
       if (DomEngine.haveToLog) DomEngine.addToLog( owner + " puts aside "+aRemove );
-	  putAsideCards.add(aRemove);
-	}
+      putAsideCards.add(aRemove);
+    }
 
-	/**
-     * 
+    /**
+     *
      */
     public void showContents() {
         if (!DomEngine.haveToLog)
           return;
-            
+
         StringBuilder theMessage=null;
         for (DomCardName theCardName : keySet()) {
           if (get( theCardName ).size() >0) {
@@ -371,7 +370,7 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
             if (theMessage == null) {
               theMessage=new StringBuilder();
 //            	.append( owner + " shows this deck (");
-              theMessage.append("&nbsp;&nbsp;&nbsp;").append(countAllCards()).append(" cards : ["); 
+              theMessage.append("&nbsp;&nbsp;&nbsp;").append(countAllCards()).append(" cards : [");
             } else {
               theMessage.append( ", " );
             }
@@ -394,7 +393,7 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
             }
         }
         theMessage.append( "]" );
-        
+
         DomEngine.addToStartOfLog(theMessage.toString());
     }
 
@@ -423,7 +422,7 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
     /**
      */
     public void putOnTopOfDeck( DomCard aCard ) {
-    	owner.setKnownTopCards(owner.getKnownTopCards()+1);
+        owner.setKnownTopCards(owner.getKnownTopCards()+1);
        drawDeck.add(0, aCard );
     }
 
@@ -442,7 +441,7 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
     }
 
     /**
-     * 
+     *
      */
     public void returnCardsFromIslandMat() {
       if (DomEngine.haveToLog) DomEngine.addToLog( owner + " returns all cards from the Island Mat: " + getIslandMat() );
@@ -472,44 +471,44 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
     public ArrayList< DomCard > collectAllCards() {
         ArrayList< DomCard > theCards = new ArrayList<>();
         for (DomCardName theCardName : keySet()) {
-          theCards.addAll( get( theCardName ));    
+          theCards.addAll( get( theCardName ));
         }
         return theCards;
-    } 
+    }
 
-	public void putDeckInDiscard() {
+    public void putDeckInDiscard() {
         if (DomEngine.haveToLog) DomEngine.addToLog( owner + " discards entire deck" );
-    	discardPile.addAll(drawDeck);
-		drawDeck.clear();
-		owner.setKnownTopCards(0);
-	}
+        discardPile.addAll(drawDeck);
+        drawDeck.clear();
+        owner.setKnownTopCards(0);
+    }
 
-	public int countDifferentCards() {
-    	ArrayList<DomCardName> theSingleCards = new ArrayList<>();
-		int theCount=theSingleCards.size();
-		for (DomCardName theCardName : keySet()) {
-	      theCount+=get(theCardName).isEmpty()? 0 : 1;
-		}
-		return theCount;
-	}
-	
-	public DomCard getBottomCard(){
-	   if (drawDeck.isEmpty())
-		   return null;
-	   return drawDeck.remove(drawDeck.size()-1);	
-	}
+    public int countDifferentCards() {
+        ArrayList<DomCardName> theSingleCards = new ArrayList<>();
+        int theCount=theSingleCards.size();
+        for (DomCardName theCardName : keySet()) {
+          theCount+=get(theCardName).isEmpty()? 0 : 1;
+        }
+        return theCount;
+    }
 
-	public void putCardOnBottomOfDeck(DomCard theBottomCard) {
-		drawDeck.add(theBottomCard);
-	}
+    public DomCard getBottomCard(){
+       if (drawDeck.isEmpty())
+           return null;
+       return drawDeck.remove(drawDeck.size()-1);
+    }
 
-	public ArrayList<DomCard> getPutAsideCards() {
-		ArrayList<DomCard> thePutAsideCards = putAsideCards;
-		putAsideCards=new ArrayList<>();
-		return thePutAsideCards;
-	}
+    public void putCardOnBottomOfDeck(DomCard theBottomCard) {
+        drawDeck.add(theBottomCard);
+    }
 
-	public ArrayList<DomCard> revealUntilCost(int aCost) {
+    public ArrayList<DomCard> getPutAsideCards() {
+        ArrayList<DomCard> thePutAsideCards = putAsideCards;
+        putAsideCards=new ArrayList<>();
+        return thePutAsideCards;
+    }
+
+    public ArrayList<DomCard> revealUntilCost(int aCost) {
         ArrayList< DomCard > theTopCards = new ArrayList<>();
         int theTotalDeckSize = getDeckAndDiscardSize();
         for (int i = 0; i< theTotalDeckSize;i++){
@@ -520,34 +519,34 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
             break;
         }
         return theTopCards;
-	}
+    }
 
-	public DomCardName getMostLikelyCardOnTop() {
-		if (getDeckAndDiscardSize()==0)
-			return null;
-		if (drawDeck.isEmpty()){
-		  drawDeck.addAll(discardPile);
-		  discardPile.clear();
-		}
-		if (owner.getKnownTopCards()>0)
-			return drawDeck.get(0).getName();
-		shuffle();
-		DomCardName theMostLikelyCard=null;
-		EnumMap<DomCardName, Integer> theCounts = new EnumMap<>(DomCardName.class);
-		for (DomCard card : drawDeck){
-		  if (theCounts.get(card.getName())==null){
-			  theCounts.put(card.getName(),1);
-		  } else {
-			  theCounts.put(card.getName(),theCounts.get(card.getName())+1);
-		  }
-		}
-		for (DomCardName cardName : theCounts.keySet()){
-			if (theMostLikelyCard==null
-	           || theCounts.get(cardName)>theCounts.get(theMostLikelyCard))
-			  theMostLikelyCard=cardName;
-		}
-		return theMostLikelyCard;
-	}
+    public DomCardName getMostLikelyCardOnTop() {
+        if (getDeckAndDiscardSize()==0)
+            return null;
+        if (drawDeck.isEmpty()){
+          drawDeck.addAll(discardPile);
+          discardPile.clear();
+        }
+        if (owner.getKnownTopCards()>0)
+            return drawDeck.get(0).getName();
+        shuffle();
+        DomCardName theMostLikelyCard=null;
+        EnumMap<DomCardName, Integer> theCounts = new EnumMap<>(DomCardName.class);
+        for (DomCard card : drawDeck){
+          if (theCounts.get(card.getName())==null){
+              theCounts.put(card.getName(),1);
+          } else {
+              theCounts.put(card.getName(),theCounts.get(card.getName())+1);
+          }
+        }
+        for (DomCardName cardName : theCounts.keySet()){
+            if (theMostLikelyCard==null
+               || theCounts.get(cardName)>theCounts.get(theMostLikelyCard))
+              theMostLikelyCard=cardName;
+        }
+        return theMostLikelyCard;
+    }
 
     public DomCardName getMostWantedCardOnTop() {
         if (getDeckAndDiscardSize()==0)
@@ -578,9 +577,9 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
             break;
         }
         return theTopCards;
-	}
+    }
 
-	public ArrayList<DomCard> revealUntilActionOrTreasure() {
+    public ArrayList<DomCard> revealUntilActionOrTreasure() {
         ArrayList< DomCard > theTopCards = new ArrayList<>();
         int theTotalDeckSize = getDeckAndDiscardSize();
         for (int i = 0; i< theTotalDeckSize;i++){
@@ -591,83 +590,83 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
             break;
         }
         return theTopCards;
-	}
+    }
 
-	public boolean drawPileHasCard(DomCardName aCardName) {
-		for (DomCard card : drawDeck)
-			if (card.getName()== aCardName)
-				return true;
-		return false;
-	}
+    public boolean drawPileHasCard(DomCardName aCardName) {
+        for (DomCard card : drawDeck)
+            if (card.getName()== aCardName)
+                return true;
+        return false;
+    }
 
-	public int countInDrawAndDiscard(DomCardName aCardName) {
-		int theCount=0;
-		for (DomCard card : drawDeck)
-			theCount+=card.getName()== aCardName ? 1 : 0;
-		for (DomCard card : discardPile)
-			theCount+=card.getName()== aCardName ? 1 : 0;
-		return theCount;
-	}
+    public int countInDrawAndDiscard(DomCardName aCardName) {
+        int theCount=0;
+        for (DomCard card : drawDeck)
+            theCount+=card.getName()== aCardName ? 1 : 0;
+        for (DomCard card : discardPile)
+            theCount+=card.getName()== aCardName ? 1 : 0;
+        return theCount;
+    }
 
-	public void gain(DomCard aCard) {
-		gain(aCard,DISCARD);
-	}
+    public void gain(DomCard aCard) {
+        gain(aCard,DISCARD);
+    }
 
-	public void addPhysicalCardFromMasquerade(DomCard aCard) {
-		//cards that were passed are not considered 'gained' so can not be watchtowered...
-        if (!containsKey( aCard.getName() )) 
+    public void addPhysicalCardFromMasquerade(DomCard aCard) {
+        //cards that were passed are not considered 'gained' so can not be watchtowered...
+        if (!containsKey( aCard.getName() ))
           put(aCard.getName(), new ArrayList<>());
         get(aCard.getName()).add( aCard );
         aCard.setOwner(owner);
-	}
+    }
 
-	public ArrayList<DomCard> removeCardsFromDiscard(DomCardName aCardName) {
-		ArrayList<DomCard> theCards = new ArrayList<>();
-		for (DomCard theCard : discardPile) {
-			if (theCard.getName()==aCardName) 
-				theCards.add(theCard);
-		}
-		for (DomCard theCard : theCards) {
-		  discardPile.remove(theCard);
-		}
-		return theCards;
-	}
+    public ArrayList<DomCard> removeCardsFromDiscard(DomCardName aCardName) {
+        ArrayList<DomCard> theCards = new ArrayList<>();
+        for (DomCard theCard : discardPile) {
+            if (theCard.getName()==aCardName)
+                theCards.add(theCard);
+        }
+        for (DomCard theCard : theCards) {
+          discardPile.remove(theCard);
+        }
+        return theCards;
+    }
 
-	public double getDrawDeckSize() {
-		return drawDeck.size();
-	}
+    public double getDrawDeckSize() {
+        return drawDeck.size();
+    }
 
-	public ArrayList<DomCard> getDiscardPile() {
-		return discardPile;
-	}
-	@Override
-	public String toString() {
-		StringBuilder theString= new StringBuilder();
-		for (DomCardName cardName : keySet()){
-			theString.append(cardName + "[" +get(cardName).size()+"]");
-		}
-		return theString.toString();
-	}
+    public ArrayList<DomCard> getDiscardPile() {
+        return discardPile;
+    }
+    @Override
+    public String toString() {
+        StringBuilder theString= new StringBuilder();
+        for (DomCardName cardName : keySet()){
+            theString.append(cardName + "[" +get(cardName).size()+"]");
+        }
+        return theString.toString();
+    }
 
-	public DomCard lookAtTopCard() {
-		return drawDeck.get(0);
-	}
+    public DomCard lookAtTopCard() {
+        return drawDeck.get(0);
+    }
 
-	public boolean checkForcedStart() {
-		if (owner.getforcedStart()==0)
-		  return true;
-		int theCopperCount = 0;
-		for (int i=0;i<5;i++){
-		  theCopperCount+=drawDeck.get(i).getName()==DomCardName.Copper ? 1 : 0;
-		}
-		if ((theCopperCount==2 ||theCopperCount==5)
-		  && owner.getforcedStart()==52)
-		  return true;
-		if ((theCopperCount==3 ||theCopperCount==4)
-	 	  && owner.getforcedStart()==43)
-		  return true;
-		return false;
-	}
+    public boolean checkForcedStart() {
+        if (owner.getforcedStart()==0)
+          return true;
+        int theCopperCount = 0;
+        for (int i=0;i<5;i++){
+          theCopperCount+=drawDeck.get(i).getName()==DomCardName.Copper ? 1 : 0;
+        }
+        if ((theCopperCount==2 ||theCopperCount==5)
+          && owner.getforcedStart()==52)
+          return true;
+        if ((theCopperCount==3 ||theCopperCount==4)
+           && owner.getforcedStart()==43)
+          return true;
+        return false;
+    }
 
     public DomCardName getMostLikelyCrappyCard() {
         if (getDeckAndDiscardSize()==0)

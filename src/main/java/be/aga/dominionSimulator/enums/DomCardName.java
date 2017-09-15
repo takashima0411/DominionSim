@@ -1,13 +1,13 @@
 package be.aga.dominionSimulator.enums;
 
+import be.aga.dominionSimulator.*;
+import be.aga.dominionSimulator.cards.*;
+import be.aga.dominionSimulator.gui.EscapeDialog;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
-
-import be.aga.dominionSimulator.*;
-import be.aga.dominionSimulator.cards.*;
-import be.aga.dominionSimulator.gui.EscapeDialog;
 
 public enum DomCardName  {
     //common cards
@@ -21,7 +21,7 @@ public enum DomCardName  {
     Province (8, 0, 0, 6, 100, 7, new DomCardType[]{DomCardType.Victory,DomCardType.Base}),
     Colony (11, 0, 0, 10, 100, 6, new DomCardType[]{DomCardType.Victory,DomCardType.Base}),
     Curse (0, 0, 0, -1, 100, 10, new DomCardType[]{DomCardType.Curse,DomCardType.Base}),
-   
+
     //kingdom cards
     Abandoned_Mine (0, 0, 0, 0, 58, 13, new DomCardType[]{DomCardType.Action, DomCardType.Ruins, DomCardType.Kingdom, DomCardType.Terminal}) {},
     Advance (0, 0, 0, 0, 0, 0, new DomCardType[]{DomCardType.Event}),
@@ -192,7 +192,7 @@ public enum DomCardName  {
     Ironmonger (4, 0, 0, 0, 5, 16, new DomCardType[]{DomCardType.Action, DomCardType.Kingdom, DomCardType.Cycler}),
     Ironworks (4, 0, 0, 0, 25, 24, new DomCardType[]{DomCardType.Action, DomCardType.Kingdom}),
     Island (4, 0, 0, 2, 37, 22, new DomCardType[]{DomCardType.Victory, DomCardType.Kingdom, DomCardType.Action, DomCardType.Terminal}),
-    Jack_of_all_Trades (4, 0, 0, 0, 20, 22, new DomCardType[]{DomCardType.Action, DomCardType.Kingdom, DomCardType.Terminal}), 
+    Jack_of_all_Trades (4, 0, 0, 0, 20, 22, new DomCardType[]{DomCardType.Action, DomCardType.Kingdom, DomCardType.Terminal}),
     Jester (5, 0, 2, 0, 19, 26, new DomCardType[]{DomCardType.Action, DomCardType.Attack, DomCardType.Kingdom, DomCardType.Terminal}),
     Journeyman (5, 0, 0, 0, 19, 32, new DomCardType[]{DomCardType.Action, DomCardType.Kingdom, DomCardType.Terminal, DomCardType.Card_Advantage}),
     Junk_Dealer (5, 0, 1, 0, 16, 22, new DomCardType[]{DomCardType.Action, DomCardType.Kingdom, DomCardType.Cycler, DomCardType.Trasher}),
@@ -234,7 +234,7 @@ public enum DomCardName  {
     Miser (4, 0, 0, 0, 23, 21, new DomCardType[]{DomCardType.Action, DomCardType.Kingdom, DomCardType.Terminal}),
     Mission (4, 0, 0, 0, 0, 0, new DomCardType[]{DomCardType.Event}),
     Moat (2, 0, 0, 0, 33, 23, new DomCardType[]{DomCardType.Action, DomCardType.Reaction, DomCardType.Kingdom, DomCardType.Terminal, DomCardType.Card_Advantage}),
-    Moneylender (4, 0, 1, 0, 23, 21, new DomCardType[]{DomCardType.Action, DomCardType.Kingdom, DomCardType.Terminal}), 
+    Moneylender (4, 0, 1, 0, 23, 21, new DomCardType[]{DomCardType.Action, DomCardType.Kingdom, DomCardType.Terminal}),
     Monument (4, 0, 2, 0, 22, 26, new DomCardType[]{DomCardType.Action, DomCardType.Kingdom, DomCardType.Terminal}),
     Mountain_Pass (0, 0, 0, 0, 0, 0, new DomCardType[]{DomCardType.Landmark}),
     Mountebank (5, 0, 2, 0, 18, 30, new DomCardType[]{DomCardType.Action, DomCardType.Attack, DomCardType.Kingdom, DomCardType.Terminal}),
@@ -244,7 +244,7 @@ public enum DomCardName  {
     Navigator (4, 0, 2, 0, 29, 20, new DomCardType[]{DomCardType.Action, DomCardType.Kingdom, DomCardType.Terminal}),
     Necropolis (1, 0, 0, 0, 5, 17, new DomCardType[]{DomCardType.Village,DomCardType.Action,DomCardType.Shelter}),
     Noble_Brigand (4, 0, 1, 0, 23, 21, new DomCardType[]{DomCardType.Action, DomCardType.Attack, DomCardType.Kingdom, DomCardType.Terminal}),
-    Nomad_Camp (4, 0, 2, 0, 29, 20, new DomCardType[]{DomCardType.Action, DomCardType.Kingdom, DomCardType.Terminal}), 
+    Nomad_Camp (4, 0, 2, 0, 29, 20, new DomCardType[]{DomCardType.Action, DomCardType.Kingdom, DomCardType.Terminal}),
     Nobles (6, 0, 0, 2, 12, 32, new DomCardType[]{DomCardType.Action, DomCardType.Kingdom, DomCardType.Victory, DomCardType.Village,DomCardType.Card_Advantage}),
     Oasis (3, 0, 1, 0, 17, 21, new DomCardType[]{DomCardType.Action, DomCardType.Kingdom, DomCardType.Cycler}),
     Obelisk (0, 0, 0, 0, 0, 0, new DomCardType[]{DomCardType.Landmark}),
@@ -471,7 +471,7 @@ public enum DomCardName  {
             return (DomCardName[]) theCards.toArray(theArr);
         }
     }
-    
+
     /**
      * @return
      */
@@ -926,14 +926,14 @@ public enum DomCardName  {
             return new PathfindingCard();
         case Patrician:
             return new PatricianCard();
-	    case Pawn:
-	        return new PawnCard();
-	    case Pearl_Diver:
-	        return new Pearl_DiverCard();
+        case Pawn:
+            return new PawnCard();
+        case Pearl_Diver:
+            return new Pearl_DiverCard();
         case Peasant:
             return new PeasantCard();
-	    case Peddler:
-	        return new PeddlerCard();
+        case Peddler:
+            return new PeddlerCard();
         case Philosopher$s_Stone:
             return new Philosopher$s_StoneCard();
         case Pilgrimage:
@@ -1210,11 +1210,11 @@ public enum DomCardName  {
         return new DomCard( this );
     }
 
-    public DomCost getCost() { 
-      return cost; 
+    public DomCost getCost() {
+      return cost;
     }
-    public HashSet<DomCardType> types() { 
-      return types; 
+    public HashSet<DomCardType> types() {
+      return types;
     }
 
     /**
@@ -1231,36 +1231,36 @@ public enum DomCardName  {
         }
         return theCount;
     }
-    
+
     public Object[] getPlayStrategies() {
-    	ArrayList<DomPlayStrategy> theStrategies = new ArrayList<>();
-    	switch (this) {
-		case Ambassador:
+        ArrayList<DomPlayStrategy> theStrategies = new ArrayList<>();
+        switch (this) {
+        case Ambassador:
             theStrategies.add(DomPlayStrategy.ambassadorWar);
-			theStrategies.add(DomPlayStrategy.aggressiveTrashing);
-			break;
+            theStrategies.add(DomPlayStrategy.aggressiveTrashing);
+            break;
 
         case Amulet:
             theStrategies.add(DomPlayStrategy.silverGainer);
             theStrategies.add(DomPlayStrategy.aggressiveTrashing);
             break;
 
-    	case Apothecary:
-			theStrategies.add(DomPlayStrategy.ApothecaryNativeVillage);
-			break;
+        case Apothecary:
+            theStrategies.add(DomPlayStrategy.ApothecaryNativeVillage);
+            break;
 
-		case Chapel:
+        case Chapel:
             theStrategies.add(DomPlayStrategy.aggressiveTrashing);
             theStrategies.add(DomPlayStrategy.keepPayload);
-			break;
+            break;
 
         case Duplicate:
             theStrategies.add(DomPlayStrategy.dukeEnabler);
             break;
 
-		case Governor:
-			theStrategies.add(DomPlayStrategy.GoldEarlyTrashMid);
-			break;
+        case Governor:
+            theStrategies.add(DomPlayStrategy.GoldEarlyTrashMid);
+            break;
 
         case Hermit:
             theStrategies.add(DomPlayStrategy.MarketSquareCombo);
@@ -1288,11 +1288,11 @@ public enum DomCardName  {
             theStrategies.add(DomPlayStrategy.greedyDeckTracker);
             break;
 
-		case Native_Village:
-			theStrategies.add(DomPlayStrategy.bigTurnBridge);
-			theStrategies.add(DomPlayStrategy.bigTurnGoons);
-			theStrategies.add(DomPlayStrategy.ApothecaryNativeVillage);
-			break;
+        case Native_Village:
+            theStrategies.add(DomPlayStrategy.bigTurnBridge);
+            theStrategies.add(DomPlayStrategy.bigTurnGoons);
+            theStrategies.add(DomPlayStrategy.ApothecaryNativeVillage);
+            break;
 
         case Necropolis:
             theStrategies.add(DomPlayStrategy.trashWhenObsolete);
@@ -1302,9 +1302,9 @@ public enum DomCardName  {
             theStrategies.add(DomPlayStrategy.combo);
             break;
 
-		case Pirate_Ship:
-			theStrategies.add(DomPlayStrategy.attackUntil5Coins);
-			break;
+        case Pirate_Ship:
+            theStrategies.add(DomPlayStrategy.attackUntil5Coins);
+            break;
 
         case Ratcatcher:
             theStrategies.add(DomPlayStrategy.aggressiveTrashing);
@@ -1318,13 +1318,13 @@ public enum DomCardName  {
             theStrategies.add(DomPlayStrategy.trashWhenObsolete);
             break;
 
-		case Smithy:
-			theStrategies.add(DomPlayStrategy.playIfNotBuyingTopCard);
-			break;
+        case Smithy:
+            theStrategies.add(DomPlayStrategy.playIfNotBuyingTopCard);
+            break;
 
-		case Spice_Merchant:
-			theStrategies.add(DomPlayStrategy.FoolsGoldEnabler);
-			break;
+        case Spice_Merchant:
+            theStrategies.add(DomPlayStrategy.FoolsGoldEnabler);
+            break;
 
         case Squire:
             theStrategies.add(DomPlayStrategy.silverGainer);
@@ -1341,9 +1341,9 @@ public enum DomCardName  {
         case Storeroom:
             theStrategies.add(DomPlayStrategy.cityQuarterCombo);
 
-		case Tactician:
-			theStrategies.add(DomPlayStrategy.playIfNotBuyingTopCard);
-			break;
+        case Tactician:
+            theStrategies.add(DomPlayStrategy.playIfNotBuyingTopCard);
+            break;
 
         case Wild_Hunt:
             theStrategies.add(DomPlayStrategy.forEngines);
@@ -1354,11 +1354,11 @@ public enum DomCardName  {
             theStrategies.add(DomPlayStrategy.greedyDeckTracker);
             break;
 
-		default:
-			break;
-		}
-		theStrategies.add(0,DomPlayStrategy.standard);
-		return theStrategies.toArray();
+        default:
+            break;
+        }
+        theStrategies.add(0,DomPlayStrategy.standard);
+        return theStrategies.toArray();
     }
 
     /**
@@ -1366,17 +1366,17 @@ public enum DomCardName  {
      */
     public int getVictoryValue(DomPlayer aPlayer) {
       switch (this) {
-		case Duke:
-	  	    if (aPlayer != null ) {
-	 	      return aPlayer.countInDeck(Duchy);
-		    }
-	        break;
+        case Duke:
+              if (aPlayer != null ) {
+               return aPlayer.countInDeck(Duchy);
+            }
+            break;
 
-		case Fairgrounds:
-			if (aPlayer!=null) {
-		      return aPlayer.countDifferentCardsInDeck()/5*2;
-			}
-		    break;
+        case Fairgrounds:
+            if (aPlayer!=null) {
+              return aPlayer.countDifferentCardsInDeck()/5*2;
+            }
+            break;
 
         case Feodum:
             if (aPlayer!=null) {
@@ -1409,17 +1409,17 @@ public enum DomCardName  {
            break;
 
         case Vineyard:
-	        if (aPlayer!=null) {
+            if (aPlayer!=null) {
                 return aPlayer.count(DomCardType.Action) / 3;
             }
-		    break;
+            break;
 
- 		default:
-    	    break;
-	  }
+         default:
+            break;
+      }
       return victoryValue;
     }
-    
+
     /**
      * @return
      */
@@ -1435,7 +1435,7 @@ public enum DomCardName  {
     }
 
     /**
-     * @param aActionsLeft 
+     * @param aActionsLeft
      * @return
      */
     public int getDiscardPriority(int aActionsLeft) {
@@ -1451,12 +1451,12 @@ public enum DomCardName  {
     public int getTrashPriority() {
       return getDiscardPriority( 1 );
     }
-    
+
     public String toString(){
       String theString = super.toString().replaceAll( "_", " " ).replaceAll( "\\$", "'" );
       if (this==DomCardName.Ill_Gotten_Gains)
-    	  return "Ill-Gotten Gains";
-	  return theString;
+          return "Ill-Gotten Gains";
+      return theString;
     }
 
     public final int getCoinCost( DomGame aDomGame) {
@@ -1494,35 +1494,35 @@ public enum DomCardName  {
       return getCost().getPotions();
     }
 
-	public String getImageLocation() {
+    public String getImageLocation() {
       StringBuilder theLocation = new StringBuilder();
       theLocation.append("images/");
       theLocation.append(super.toString()).append(".jpg");
       return theLocation.toString().toLowerCase().replaceAll( "_", "" ).replaceAll( "\\$", "" );
-	}
+    }
 
-	public int getTrashPriority(DomPlayer player) {
-		//trash priorities depend on the owner of the card which is unknown in this enum
-		//so we quickly make a DomCard object and assign it to the player 
-		//this way we get a correct trash priority for that player
-		DomCard theIntermediateCard = createNewCardInstance();
-		theIntermediateCard.owner=player.getPossessor()==null ? player : player.getPossessor();
-		return theIntermediateCard.getTrashPriority();
-	}
+    public int getTrashPriority(DomPlayer player) {
+        //trash priorities depend on the owner of the card which is unknown in this enum
+        //so we quickly make a DomCard object and assign it to the player
+        //this way we get a correct trash priority for that player
+        DomCard theIntermediateCard = createNewCardInstance();
+        theIntermediateCard.owner=player.getPossessor()==null ? player : player.getPossessor();
+        return theIntermediateCard.getTrashPriority();
+    }
 
-	public static Object[] getPossibleBaneCards() {
-	    ArrayList<DomCardName> possibleBanes = new ArrayList<>();
-		for (DomCardName cardName : values()) {
-			if (cardName.getCost().compareTo(new DomCost(2, 0))==0
-			 || cardName.getCost().compareTo(new DomCost(3, 0))==0){
-				if (cardName.hasCardType(DomCardType.Kingdom))
-			  	  possibleBanes.add(cardName);
-			}
-		}
-		return possibleBanes.toArray();
-	}
+    public static Object[] getPossibleBaneCards() {
+        ArrayList<DomCardName> possibleBanes = new ArrayList<>();
+        for (DomCardName cardName : values()) {
+            if (cardName.getCost().compareTo(new DomCost(2, 0))==0
+             || cardName.getCost().compareTo(new DomCost(3, 0))==0){
+                if (cardName.hasCardType(DomCardType.Kingdom))
+                    possibleBanes.add(cardName);
+            }
+        }
+        return possibleBanes.toArray();
+    }
 
-	public String toHTML() {
+    public String toHTML() {
       String theString = toString();
       if (DomEngine.showColoredLog) {
           if (hasCardType(DomCardType.Curse))
@@ -1549,50 +1549,50 @@ public enum DomCardName  {
               return "<FONT style=\"BACKGROUND-COLOR: #339966 \">" + theString + "</FONT>";
       }
       return theString;
-	}
-	
-	public DomSet getSet() {
-		for (DomSet set : DomSet.values()){
-			if (set.contains(this))
-				return set;
-		}
-		return null;
-	}
+    }
 
-	public URL getImageURL() {
+    public DomSet getSet() {
+        for (DomSet set : DomSet.values()){
+            if (set.contains(this))
+                return set;
+        }
+        return null;
+    }
+
+    public URL getImageURL() {
 //		return null;
-		//TODO this should be called in some other way
-		return new EscapeDialog().getClass().getResource(getImageLocation());
-	}
-	public String getCompleteImageLocation() {
+        //TODO this should be called in some other way
+        return new EscapeDialog().getClass().getResource(getImageLocation());
+    }
+    public String getCompleteImageLocation() {
 //		return null;
-		//TODO this should be called in some other way
+        //TODO this should be called in some other way
 //		return new EscapeDialog().getClass().getResource(getImageLocation());
-		return  "C:/Documents and Settings/djag492/My Documents/Jeroen/Dominion/" + getImageLocation();
+        return  "C:/Documents and Settings/djag492/My Documents/Jeroen/Dominion/" + getImageLocation();
 //		return  "C:/Users/MEDION/Pictures/" + getImageLocation();
-	}
+    }
 
-	public static Object[] getKingdomCards() {
-		ArrayList<DomCardName> theCards = new ArrayList<>();
-		for (DomCardName cardName : values()){
-			if (!DomSet.Base.contains(cardName))
-				theCards.add(cardName);
-		}
-		return theCards.toArray();
-	}
+    public static Object[] getKingdomCards() {
+        ArrayList<DomCardName> theCards = new ArrayList<>();
+        for (DomCardName cardName : values()){
+            if (!DomSet.Base.contains(cardName))
+                theCards.add(cardName);
+        }
+        return theCards.toArray();
+    }
 
-	public int getOrderInBuyRules(DomPlayer owner) {
-		int i=0;
-		if (owner==null)
-			return 1000;
-		for (DomBuyRule rule : owner.getBuyRules()){
-		  if (rule.getCardToBuy()==this && owner.wantsToGainOrKeep(this)){
-		     return i;	  
-		  }
-		  i++;
-		}
-		return 1000;
-	}
+    public int getOrderInBuyRules(DomPlayer owner) {
+        int i=0;
+        if (owner==null)
+            return 1000;
+        for (DomBuyRule rule : owner.getBuyRules()){
+          if (rule.getCardToBuy()==this && owner.wantsToGainOrKeep(this)){
+             return i;
+          }
+          i++;
+        }
+        return 1000;
+    }
 
     public int getDebtCost() {
         return getCost().getDebt();

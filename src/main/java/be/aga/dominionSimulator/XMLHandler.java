@@ -1,12 +1,11 @@
 package be.aga.dominionSimulator;
 
-import java.util.ArrayList;
-import java.util.Stack;
-
+import be.aga.dominionSimulator.enums.DomBotType;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
-import be.aga.dominionSimulator.enums.DomBotType;
+import java.util.ArrayList;
+import java.util.Stack;
 
 /**
  * This class will load the Dominion bot players into memory
@@ -32,8 +31,8 @@ public final class XMLHandler extends DefaultHandler {
         stack.push( new ArrayList<>() );
       }else if( localName.equals( "player" ) ) {
           stack.push( new DomPlayer(resolveAttrib(uri, "name", attribs, null),
-        		                    resolveAttrib(uri, "author", attribs, null),
-        				            resolveAttrib(uri, "description", attribs, null)) );
+                                    resolveAttrib(uri, "author", attribs, null),
+                                    resolveAttrib(uri, "description", attribs, null)) );
       }else if( localName.equals( "type" )  ) {
         String attribValue = resolveAttrib(uri, "name", attribs, null);
         try {
@@ -42,7 +41,7 @@ public final class XMLHandler extends DefaultHandler {
           // Ignore unknown types.
         }
       }else if( localName.equals( "board" )  ) {
-    	  ((DomPlayer)stack.peek()).addBoard(resolveAttrib(uri, "contents", attribs, null), resolveAttrib(uri, "bane", attribs, null),resolveAttrib(uri, "Mountain_Pass_Bid", attribs, null), resolveAttrib(uri, "Obelisk_Choice", attribs, null) );
+          ((DomPlayer)stack.peek()).addBoard(resolveAttrib(uri, "contents", attribs, null), resolveAttrib(uri, "bane", attribs, null),resolveAttrib(uri, "Mountain_Pass_Bid", attribs, null), resolveAttrib(uri, "Obelisk_Choice", attribs, null) );
       }else if( localName.equals( "start_state" )  ) {
           stack.push(new StartState());
       }else if( localName.equals( "hand" )  ) {
@@ -68,7 +67,7 @@ public final class XMLHandler extends DefaultHandler {
           ((DomBuyCondition)stack.peek()).addExtraOperation(resolveAttrib(uri, "type", attribs, null), resolveAttrib(uri, "attribute", attribs, null));
       }else{
         // do nothing
-      }    
+      }
     }
 
     public void endElement( String uri, String localName, String qName ) {
@@ -83,7 +82,7 @@ public final class XMLHandler extends DefaultHandler {
       if( localName.equals( "player" ) ) {
           DomPlayer tmp = (DomPlayer) stack.pop();
           if (stack.isEmpty()) {
-        	  bots.add(tmp);
+              bots.add(tmp);
           } else {
             ((ArrayList<DomPlayer>)stack.peek()).add(tmp);
           }
@@ -110,13 +109,13 @@ public final class XMLHandler extends DefaultHandler {
         // read data which is not part of recognized element
       }
     }
-    
+
     private String resolveAttrib( String uri, String localName, Attributes attribs, String defaultValue ) {
       String tmp = attribs.getValue( uri, localName );
       return (tmp!=null)?(tmp):(defaultValue);
     }
 
-	public ArrayList<DomPlayer> getBots() {
-	  return bots;
-	}
+    public ArrayList<DomPlayer> getBots() {
+      return bots;
+    }
 }

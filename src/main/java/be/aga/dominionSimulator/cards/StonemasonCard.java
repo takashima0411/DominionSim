@@ -2,9 +2,7 @@ package be.aga.dominionSimulator.cards;
 
 import be.aga.dominionSimulator.DomCard;
 import be.aga.dominionSimulator.DomCost;
-import be.aga.dominionSimulator.DomEngine;
 import be.aga.dominionSimulator.enums.DomCardName;
-import be.aga.dominionSimulator.enums.DomCardType;
 import be.aga.dominionSimulator.enums.DomPlayStrategy;
 
 import java.util.Collections;
@@ -19,11 +17,11 @@ public class StonemasonCard extends DomCard {
         Collections.sort( owner.getCardsInHand() , SORT_FOR_TRASHING);
         DomCard theCardToTrash = owner.getCardsInHand().get(0);
         for (DomCard card : owner.getCardsInHand()){
-        	if ((card.getCoinCost(owner.getCurrentGame())==0 && card.getTrashPriority()<=DomCardName.Copper.getTrashPriority(owner))
-        			|| card.getTrashPriority()==0) {
-        		theCardToTrash = card;
-        		break;
-        	}
+            if ((card.getCoinCost(owner.getCurrentGame())==0 && card.getTrashPriority()<=DomCardName.Copper.getTrashPriority(owner))
+                    || card.getTrashPriority()==0) {
+                theCardToTrash = card;
+                break;
+            }
         }
         if (owner.getPlayStrategyFor(this)== DomPlayStrategy.combo) {
             if (!owner.getCardsFromHand(DomCardName.Peddler).isEmpty()) {
@@ -52,6 +50,6 @@ public class StonemasonCard extends DomCard {
          if (!owner.getCardsFromHand(DomCardName.Copper).isEmpty() || !owner.getCardsFromHand(DomCardName.Curse).isEmpty()) {
             return true;
         }
-    	return false;
+        return false;
     }
 }

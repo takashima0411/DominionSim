@@ -1,20 +1,20 @@
 package be.aga.dominionSimulator;
 
-import java.util.Comparator;
-
 import be.aga.dominionSimulator.cards.EstateCard;
 import be.aga.dominionSimulator.enums.DomCardName;
 import be.aga.dominionSimulator.enums.DomCardType;
+
+import java.util.Comparator;
 
 
 public class DomCard implements Comparable< DomCard >{
     DomCardName name;
     public DomPlayer owner = null;
-	private boolean isFromBlackMarket=false;
-	private boolean isTaggedByHerbalist;
-	private boolean isBane=false;
-	private boolean isTaggedByScheme;
-	private boolean discardAtCleanUp=true;
+    private boolean isFromBlackMarket=false;
+    private boolean isTaggedByHerbalist;
+    private boolean isBane=false;
+    private boolean isTaggedByScheme;
+    private boolean discardAtCleanUp=true;
 
     public static final Comparator SORT_BY_COST = new Comparator<DomCard>(){
         @Override
@@ -84,7 +84,7 @@ public class DomCard implements Comparable< DomCard >{
     public DomCardName getName() {
       return name;
     }
-    
+
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
@@ -116,7 +116,7 @@ public class DomCard implements Comparable< DomCard >{
      * @return
      */
     public int getPlayPriority() {
-      return name.getPlayPriority();  
+      return name.getPlayPriority();
     }
 
     /**
@@ -137,7 +137,7 @@ public class DomCard implements Comparable< DomCard >{
     public int getDiscardPriority( int aActionsLeft ) {
 //    	//TODO problem with Royal Seal whic
 //        if (aActionsLeft>0 && getTrashPriority()<16 && owner.getCardsFromHand(DomCardType.Trasher).size()>0)
-//          //added this to make sure player keeps Curse in hand when he also has a Bishop for instance 
+//          //added this to make sure player keeps Curse in hand when he also has a Bishop for instance
 //          return 36-getTrashPriority();
         return name.getDiscardPriority(aActionsLeft);
     }
@@ -171,11 +171,11 @@ public class DomCard implements Comparable< DomCard >{
     }
 
     /**
-     * 
+     *
      */
     public void play() {
       owner.addAvailableCoinsSilent(getCoinValue());
-      owner.availablePotions+=getPotionValue();        
+      owner.availablePotions+=getPotionValue();
     }
 
     /**
@@ -236,53 +236,53 @@ public class DomCard implements Comparable< DomCard >{
       return new DomCost( (int) getPotentialCoinValue(), getPotionValue());
     }
 
-	public void setFromBlackMarket(boolean b) {
-		isFromBlackMarket=b;
-	}
+    public void setFromBlackMarket(boolean b) {
+        isFromBlackMarket=b;
+    }
 
-	public boolean isFromBlackMarket() {
-		return isFromBlackMarket;
-	}
+    public boolean isFromBlackMarket() {
+        return isFromBlackMarket;
+    }
 
-	public void addHerbalistTag() {
-		isTaggedByHerbalist=true;
-	}
+    public void addHerbalistTag() {
+        isTaggedByHerbalist=true;
+    }
 
-	public boolean isTaggedByHerbalist() {
-		return isTaggedByHerbalist;
-	}
+    public boolean isTaggedByHerbalist() {
+        return isTaggedByHerbalist;
+    }
 
-	public  DomCost getCost(DomGame aDomGame) {
-		return name.getCost(aDomGame);
-	}
+    public  DomCost getCost(DomGame aDomGame) {
+        return name.getCost(aDomGame);
+    }
 
-	public boolean isBane() {
-		return isBane;
-	}
+    public boolean isBane() {
+        return isBane;
+    }
 
-	public void setAsBane() {
-		isBane=true;
-	}
-	
-	public void doWhenGained() {}
+    public void setAsBane() {
+        isBane=true;
+    }
 
-	public void doWhenDiscarded() {}
+    public void doWhenGained() {}
 
-	public boolean isTaggedByScheme() {
-		return isTaggedByScheme;
-	}
+    public void doWhenDiscarded() {}
 
-	public void addSchemeTag() {
-		isTaggedByScheme=true;
-	}
+    public boolean isTaggedByScheme() {
+        return isTaggedByScheme;
+    }
 
-	public boolean discardAtCleanUp() {
-		return discardAtCleanUp; 
-	}
+    public void addSchemeTag() {
+        isTaggedByScheme=true;
+    }
 
-	public void setDiscardAtCleanup(boolean b) {
-	  discardAtCleanUp=b;
-	}
+    public boolean discardAtCleanUp() {
+        return discardAtCleanUp;
+    }
+
+    public void setDiscardAtCleanup(boolean b) {
+      discardAtCleanUp=b;
+    }
 
     public void doWhenTrashed() {}
 

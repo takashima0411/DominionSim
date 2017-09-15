@@ -7,7 +7,6 @@ import be.aga.dominionSimulator.enums.DomCardName;
 import be.aga.dominionSimulator.enums.DomCardType;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class RebuildCard extends DomCard {
     public RebuildCard() {

@@ -18,11 +18,11 @@ public class Treasure_MapCard extends DomCard {
           DomCard theGold = theOwner.getCurrentGame().takeFromSupply( DomCardName.Gold );
           if (theGold!=null) {
             theOwner.gainOnTopOfDeck( theGold );
-          }  
+          }
         }
       }
     }
-    
+
     public boolean wantsToBePlayed() {
         if (owner.getCardsFromHand( DomCardName.Treasure_Map ).size()>1)
           return true;
@@ -30,10 +30,10 @@ public class Treasure_MapCard extends DomCard {
           return true;
         return false;
     }
-      
+
     @Override
     public int getDiscardPriority( int aActionsLeft ) {
-    	if (owner.getCardsInHand().contains(this))
+        if (owner.getCardsInHand().contains(this))
             return wantsToBePlayed() ? 50 : 5;
         return super.getDiscardPriority(1);
     }

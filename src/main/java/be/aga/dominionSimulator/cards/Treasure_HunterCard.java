@@ -1,12 +1,10 @@
 package be.aga.dominionSimulator.cards;
 
 import be.aga.dominionSimulator.DomCard;
-import be.aga.dominionSimulator.DomCost;
 import be.aga.dominionSimulator.DomPlayer;
 import be.aga.dominionSimulator.enums.DomCardName;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Treasure_HunterCard extends DomCard {
     public Treasure_HunterCard() {
@@ -17,7 +15,7 @@ public class Treasure_HunterCard extends DomCard {
       owner.addActions(1);
       owner.addAvailableCoins(1);
       if (owner.getOpponents().isEmpty())
-    	return;
+        return;
       DomPlayer theRightOpponent = owner.getOpponents().get(owner.getOpponents().size()-1);
       ArrayList<DomCardName> cardsGainedLastTurn = theRightOpponent.getCardsGainedLastTurn();
       for (int i=0;i<cardsGainedLastTurn.size();i++){

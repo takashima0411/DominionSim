@@ -12,8 +12,8 @@ public class Ghost_ShipCard extends DomCard {
     public void play() {
       owner.drawCards(2);
       for (DomPlayer thePlayer : owner.getOpponents()) {
-        if (thePlayer.checkDefense()) 
-        	continue;
+        if (thePlayer.checkDefense())
+            continue;
         thePlayer.doForcedDiscard(thePlayer.getCardsInHand().size()-3, true);
       }
     }

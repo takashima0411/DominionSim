@@ -9,7 +9,7 @@ import be.aga.dominionSimulator.enums.DomCardType;
 
 public class CellarCard extends DomCard {
     private int discardCount;
-	private int deckSize;
+    private int deckSize;
     private double drawDeckSize;
     private int badReshuffleTreshold;
 
@@ -19,7 +19,7 @@ public class CellarCard extends DomCard {
 
     public void play() {
       checkBadReshuffle();
-  	  deckSize = owner.getDeckSize();
+        deckSize = owner.getDeckSize();
       drawDeckSize = owner.getDrawDeckSize();
       owner.addActions( 1 );
       discardCount=0;
@@ -45,35 +45,35 @@ public class CellarCard extends DomCard {
     }
 
     private void discardOtherCellars() {
-	  ArrayList< DomCard > theCellarsInHand = owner.getCardsFromHand( DomCardName.Cellar);
-	  for (int i = 0;i<theCellarsInHand.size() && discardCount<deckSize;i++) {
-		owner.discardFromHand(theCellarsInHand.get(i));
-		discardCount++;
-	  }
-	}
+      ArrayList< DomCard > theCellarsInHand = owner.getCardsFromHand( DomCardName.Cellar);
+      for (int i = 0;i<theCellarsInHand.size() && discardCount<deckSize;i++) {
+        owner.discardFromHand(theCellarsInHand.get(i));
+        discardCount++;
+      }
+    }
 
-	private void discardBadCards() {
- 	  Collections.sort(owner.getCardsInHand(), SORT_FOR_DISCARD_FROM_HAND);
-	  while (!owner.getCardsInHand().isEmpty() && discardCount<deckSize ) {
+    private void discardBadCards() {
+       Collections.sort(owner.getCardsInHand(), SORT_FOR_DISCARD_FROM_HAND);
+      while (!owner.getCardsInHand().isEmpty() && discardCount<deckSize ) {
           //does not work well so removed for now
 //              && discardCount<badReshuffleTreshold) {
-		DomCard theCardToDiscard = owner.getCardsInHand().get(0);
-		if (theCardToDiscard.getDiscardPriority(1)<16) {
-	    	owner.discardFromHand(theCardToDiscard);
-	    	discardCount++;
-		} else {
-			break;
-		}
-	  }
-	}
+        DomCard theCardToDiscard = owner.getCardsInHand().get(0);
+        if (theCardToDiscard.getDiscardPriority(1)<16) {
+            owner.discardFromHand(theCardToDiscard);
+            discardCount++;
+        } else {
+            break;
+        }
+      }
+    }
 
-	private void discardExcessTerminalActions() {
-	  ArrayList< DomCard > theTerminalsInHand = owner.getCardsFromHand( DomCardType.Terminal );
-	  Collections.sort(theTerminalsInHand, DomCard.SORT_FOR_DISCARD_FROM_HAND);
-	  int theNumber=theTerminalsInHand.size()-owner.getActionsLeft();
-	  for (int i = 0;i<theNumber && discardCount<deckSize;i++) {
-		owner.discardFromHand(theTerminalsInHand.get(i));
-		discardCount++;
-	  }
-	}
+    private void discardExcessTerminalActions() {
+      ArrayList< DomCard > theTerminalsInHand = owner.getCardsFromHand( DomCardType.Terminal );
+      Collections.sort(theTerminalsInHand, DomCard.SORT_FOR_DISCARD_FROM_HAND);
+      int theNumber=theTerminalsInHand.size()-owner.getActionsLeft();
+      for (int i = 0;i<theNumber && discardCount<deckSize;i++) {
+        owner.discardFromHand(theTerminalsInHand.get(i));
+        discardCount++;
+      }
+    }
 }

@@ -8,9 +8,9 @@ public class Ruined_MarketCard extends DomCard {
     public Ruined_MarketCard () {
       super( DomCardName.Ruined_Market);
     }
-    
+
     @Override
     public void play() {
-    	owner.addAvailableBuys(1);
+        owner.addAvailableBuys(1);
     }
 }

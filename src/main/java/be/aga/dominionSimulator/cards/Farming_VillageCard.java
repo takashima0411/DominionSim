@@ -16,9 +16,9 @@ public class Farming_VillageCard extends DomCard {
       ArrayList<DomCard> theRevealedCards = owner.revealUntilActionOrTreasure();
       for (DomCard theCard : theRevealedCards) {
           if (theCard.hasCardType( DomCardType.Action) || theCard.hasCardType(DomCardType.Treasure)){
-          	owner.putInHand(theCard);
+              owner.putInHand(theCard);
           }else{
-          	owner.discard(theCard);
+              owner.discard(theCard);
           }
       }
     }

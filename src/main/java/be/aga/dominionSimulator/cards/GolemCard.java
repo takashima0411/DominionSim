@@ -16,18 +16,18 @@ public class GolemCard extends DomCard {
       ArrayList<DomCard> theRevealedActions = new ArrayList<>();
       ArrayList<DomCard> theCardsToDiscard = new ArrayList<>();
       while (theRevealedActions.size()<2 && owner.getDeckSize()>0) {
-    	 ArrayList<DomCard> theCards = owner.revealUntilType(DomCardType.Action);
-    	 for (DomCard theCard : theCards) {
-    		 if (theCard.hasCardType(DomCardType.Action)&& theCard.getName()!=DomCardName.Golem) {
-    			 theRevealedActions.add(theCards.remove(theCards.indexOf(theCard)));
-    			 break;
-    		 }
-    	 }
-		 theCardsToDiscard.addAll(theCards);
+         ArrayList<DomCard> theCards = owner.revealUntilType(DomCardType.Action);
+         for (DomCard theCard : theCards) {
+             if (theCard.hasCardType(DomCardType.Action)&& theCard.getName()!=DomCardName.Golem) {
+                 theRevealedActions.add(theCards.remove(theCards.indexOf(theCard)));
+                 break;
+             }
+         }
+         theCardsToDiscard.addAll(theCards);
       }
       owner.discard(theCardsToDiscard);
       if (theRevealedActions.isEmpty())
-    	  return;
+          return;
       //adding 2 actions = fix to make sure the Golemed cards can be played
       owner.actionsLeft+=2;
       Collections.sort(theRevealedActions,SORT_FOR_PLAYING);

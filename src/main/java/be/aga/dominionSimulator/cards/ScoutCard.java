@@ -17,11 +17,11 @@ public class ScoutCard extends DomCard {
       ArrayList< DomCard > theCards = owner.revealTopCards(4);
       Collections.sort(theCards,SORT_FOR_DISCARDING);
       for (DomCard theCard:theCards) {
-    	if (theCard.hasCardType(DomCardType.Victory)){
+        if (theCard.hasCardType(DomCardType.Victory)){
            owner.putInHand(theCard);
-    	} else {
-    	   owner.putOnTopOfDeck(theCard);
-    	}
+        } else {
+           owner.putOnTopOfDeck(theCard);
+        }
       }
     }
 }

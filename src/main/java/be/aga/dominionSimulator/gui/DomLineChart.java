@@ -8,7 +8,6 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.axis.NumberTickUnit;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
@@ -20,13 +19,13 @@ import be.aga.dominionSimulator.DomEngine;
 import be.aga.dominionSimulator.DomPlayer;
 
 public class DomLineChart {
-	private ArrayList<DomPlayer> players;
+    private ArrayList<DomPlayer> players;
     private ChartPanel myChartPanel;
     private String myType;
 
     public DomLineChart (ArrayList<DomPlayer> aPlayers, String aType) {
       myType = aType;
-   	  players = aPlayers;
+         players = aPlayers;
       XYDataset dataset = createDataset();
       JFreeChart chart = createChart(dataset);
       myChartPanel = new ChartPanel(chart);
@@ -66,24 +65,24 @@ public class DomLineChart {
         NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
         rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 //        rangeAxis.setTickUnit( new NumberTickUnit( 1 ) );
-                
-        return chart;
-	}
 
-	private XYDataset createDataset() {
+        return chart;
+    }
+
+    private XYDataset createDataset() {
         XYSeriesCollection dataset = new XYSeriesCollection();
-		for (DomPlayer thePlayer : players) {
-			XYSeries theSeries = new XYSeries(thePlayer.toString());
-			for (int i=0;i<thePlayer.getSumTurns()/DomEngine.NUMBER_OF_GAMES;i++){
+        for (DomPlayer thePlayer : players) {
+            XYSeries theSeries = new XYSeries(thePlayer.toString());
+            for (int i=0;i<thePlayer.getSumTurns()/DomEngine.NUMBER_OF_GAMES;i++){
                if (myType.equals( "VP" ))
                  theSeries.add(i+1,thePlayer.getVPCurve(i)/DomEngine.NUMBER_OF_GAMES);
                if (myType.equals( "Money" ))
                  theSeries.add(i+1,thePlayer.getMoneyCurve(i)/DomEngine.NUMBER_OF_GAMES);
-			}
-			dataset.addSeries(theSeries);
+            }
+            dataset.addSeries(theSeries);
         }
-		return dataset;
-	}
+        return dataset;
+    }
 
     public ChartPanel getChartPanel() {
        int theHeight = Toolkit.getDefaultToolkit().getScreenSize().height;

@@ -16,12 +16,12 @@ public class Scrying_PoolCard extends DomCard {
       owner.addActions(1);
       ArrayList< DomCard > theCards = owner.revealTopCards(1);
       if (!theCards.isEmpty()){
-    	  DomCard theTopCard = theCards.get(0);
-    	  if (theTopCard.hasCardType(DomCardType.Action)||theTopCard.getDiscardPriority(1)>29){
-    		  owner.putOnTopOfDeck(theTopCard);
-    	  }else{
-    		  owner.discard(theTopCard);
-    	  }
+          DomCard theTopCard = theCards.get(0);
+          if (theTopCard.hasCardType(DomCardType.Action)||theTopCard.getDiscardPriority(1)>29){
+              owner.putOnTopOfDeck(theTopCard);
+          }else{
+              owner.discard(theTopCard);
+          }
       }
       for (DomPlayer player : owner.getOpponents()){
         theCards = player.revealTopCards(1);
@@ -30,14 +30,14 @@ public class Scrying_PoolCard extends DomCard {
           if (theTopCard.getDiscardPriority(1)<16){
             player.putOnTopOfDeck(theTopCard);
           }else{
-        	player.discard(theTopCard);
+            player.discard(theTopCard);
           }
         }
       }
       do {
-    	  theCards = owner.revealTopCards(1);
+          theCards = owner.revealTopCards(1);
           if (!theCards.isEmpty()){
-    	    owner.putInHand(theCards.get(0));
+            owner.putInHand(theCards.get(0));
           }
       } while (!theCards.isEmpty() && theCards.get(0).hasCardType(DomCardType.Action));
     }

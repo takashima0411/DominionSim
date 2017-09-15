@@ -14,15 +14,15 @@ public class MargraveCard extends DomCard {
       owner.addAvailableBuys( 1 );
       owner.drawCards( 3 );
       for (DomPlayer thePlayer : owner.getOpponents()) {
-    	if (thePlayer.checkDefense())
-    		continue;
+        if (thePlayer.checkDefense())
+            continue;
         thePlayer.drawCards( 1 );
         thePlayer.doForcedDiscard(thePlayer.getCardsInHand().size()-3, false);
       }
     }
-    
+
     public int getPlayPriority() {
       //put this higher up on the play priority if we have some actions to spare (enabling engine chains)
-      return owner.getActionsLeft() > 1 && owner.getDeckSize()>0 ? 6 : super.getPlayPriority();  
+      return owner.getActionsLeft() > 1 && owner.getDeckSize()>0 ? 6 : super.getPlayPriority();
     }
 }

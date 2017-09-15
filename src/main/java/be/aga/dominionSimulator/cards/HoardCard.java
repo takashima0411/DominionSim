@@ -8,7 +8,7 @@ public class HoardCard extends DomCard {
     public HoardCard () {
       super( DomCardName.Hoard);
     }
-    
+
     @Override
     public void play() {
       owner.addAvailableCoins(2);

@@ -1,10 +1,8 @@
 package be.aga.dominionSimulator.cards;
 
 import be.aga.dominionSimulator.DomCard;
-import be.aga.dominionSimulator.DomEngine;
 import be.aga.dominionSimulator.enums.DomCardName;
 import be.aga.dominionSimulator.enums.DomCardType;
-import be.aga.dominionSimulator.enums.DomPlayStrategy;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,7 +16,7 @@ public class Wandering_MinstrelCard extends DomCard {
       owner.addActions(2);
       owner.drawCards(1);
       if (owner.getDeckSize()==0)
-    	return;
+        return;
       ArrayList<DomCard> theRevealedCards = owner.revealTopCards(3);
       Collections.sort(theRevealedCards,SORT_FOR_DISCARDING);
       for (DomCard theCard : theRevealedCards){

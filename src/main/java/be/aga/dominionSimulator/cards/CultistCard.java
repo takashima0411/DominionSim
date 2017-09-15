@@ -17,7 +17,7 @@ public class CultistCard extends DomCard {
         }
       }
       if (!owner.getCardsFromHand(DomCardName.Cultist).isEmpty()) {
-    	  owner.play(owner.removeCardFromHand( owner.getCardsFromHand(DomCardName.Cultist).get(0)));
+          owner.play(owner.removeCardFromHand( owner.getCardsFromHand(DomCardName.Cultist).get(0)));
       }
     }
 

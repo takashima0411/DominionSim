@@ -12,8 +12,8 @@ public class ConspiratorCard extends DomCard {
     public void play() {
       owner.addAvailableCoins(2);
       if (owner.getActionsPlayed()>=3) {
-    	  owner.addActions(1);
-    	  owner.drawCards(1);
+          owner.addActions(1);
+          owner.drawCards(1);
       }
     }
 
@@ -27,9 +27,9 @@ public class ConspiratorCard extends DomCard {
 
     @Override
     public int getPlayPriority() {
-    	if (owner.getActionsPlayed()>=2) {
-    		return 7;
-    	}
-    	return super.getPlayPriority();
+        if (owner.getActionsPlayed()>=2) {
+            return 7;
+        }
+        return super.getPlayPriority();
     }
 }

@@ -54,7 +54,7 @@ public enum DomSet {
            , DomCardName.Upgrade
            , DomCardName.Harem
            , DomCardName.Nobles}),
-   
+
    Seaside (new DomCardName[] {DomCardName.Embargo
            , DomCardName.Haven
            , DomCardName.Lighthouse
@@ -81,7 +81,7 @@ public enum DomSet {
            , DomCardName.Tactician
            , DomCardName.Treasury
            , DomCardName.Wharf}),
-           
+
    Alchemy (new DomCardName[] {DomCardName.Transmute
            , DomCardName.Vineyard
            , DomCardName.Apothecary
@@ -94,7 +94,7 @@ public enum DomSet {
            , DomCardName.Golem
            , DomCardName.Apprentice
            , DomCardName.Possession}),
-   
+
    Prosperity (new DomCardName[] {DomCardName.Loan
            , DomCardName.Trade_Route
            , DomCardName.Watchtower
@@ -120,7 +120,7 @@ public enum DomSet {
            , DomCardName.Forge
            , DomCardName.King$s_Court
            , DomCardName.Peddler}),
-           
+
    Cornucopia (new DomCardName[] {DomCardName.Bag_of_Gold
            , DomCardName.Diadem
            , DomCardName.Followers
@@ -140,7 +140,7 @@ public enum DomSet {
            , DomCardName.Jester
            , DomCardName.Fairgrounds
            }),
-                   
+
    Hinterlands (new DomCardName[] {DomCardName.Border_Village
            , DomCardName.Cache
            , DomCardName.Cartographer
@@ -168,13 +168,13 @@ public enum DomSet {
            , DomCardName.Trader
            , DomCardName.Tunnel
            }),
-           
+
    Promo (new DomCardName[] {DomCardName.Black_Market
            , DomCardName.Envoy
            , DomCardName.Governor
            , DomCardName.Walled_Village
            , DomCardName.Stash}),
-               
+
    Common (new DomCardName[] {DomCardName.Copper
            , DomCardName.Silver
            , DomCardName.Gold
@@ -188,20 +188,20 @@ public enum DomSet {
            }),
 
    ;
-   
+
    private final ArrayList< DomCardName> cards = new ArrayList<>();
-   
+
    DomSet(DomCardName[] aCards) {
      for (DomCardName theCard : aCards) {
        cards.add( theCard);
      }
    }
-   
+
    public boolean contains(DomCardName aCard) {
-	 return cards.contains(aCard);
+     return cards.contains(aCard);
    }
 
-	public  ArrayList<DomCardName> getCards() {
-		return cards;
-	}
+    public  ArrayList<DomCardName> getCards() {
+        return cards;
+    }
 }

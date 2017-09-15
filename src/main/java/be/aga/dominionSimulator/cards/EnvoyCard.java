@@ -23,7 +23,7 @@ public class EnvoyCard extends DomCard {
           owner.discard( aCardList.remove( aCardList.size()-1 ) );
         }
     }
-    
+
     @Override
     public int getPlayPriority() {
       return owner.getActionsLeft()>1 ? 8 : super.getPlayPriority();

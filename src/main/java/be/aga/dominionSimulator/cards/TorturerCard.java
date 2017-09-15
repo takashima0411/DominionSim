@@ -17,24 +17,24 @@ public class TorturerCard extends DomCard {
     public void play() {
       owner.drawCards(3);
       for (DomPlayer thePlayer : owner.getOpponents()) {
-          if (thePlayer.checkDefense()) 
-         	continue;
-	      boolean trashCardPresent=false;
-	      if (owner.getCurrentGame().countInSupply(DomCardName.Curse )==0){
-	         if (DomEngine.haveToLog) 
-	           DomEngine.addToLog( thePlayer + " chooses to gain a Curse because the Curse pile is empty");
-	         continue;
-	      }
-	      ArrayList<DomCard> cardsInHand = thePlayer.getCardsInHand();
-	      for (DomCard theCard : cardsInHand){
-	    	if (theCard.hasCardType(DomCardType.Trasher)){
-	    	   trashCardPresent = true;
-	    	   break;
-	    	}
-	      }
-	      if (trashCardPresent)
-	    	thePlayer.gainInHand(DomCardName.Curse);
-	      else
+          if (thePlayer.checkDefense())
+             continue;
+          boolean trashCardPresent=false;
+          if (owner.getCurrentGame().countInSupply(DomCardName.Curse )==0){
+             if (DomEngine.haveToLog)
+               DomEngine.addToLog( thePlayer + " chooses to gain a Curse because the Curse pile is empty");
+             continue;
+          }
+          ArrayList<DomCard> cardsInHand = thePlayer.getCardsInHand();
+          for (DomCard theCard : cardsInHand){
+            if (theCard.hasCardType(DomCardType.Trasher)){
+               trashCardPresent = true;
+               break;
+            }
+          }
+          if (trashCardPresent)
+            thePlayer.gainInHand(DomCardName.Curse);
+          else
             if (isHandTooStrongToDiscard(thePlayer))
                 thePlayer.gainInHand(DomCardName.Curse);
             else

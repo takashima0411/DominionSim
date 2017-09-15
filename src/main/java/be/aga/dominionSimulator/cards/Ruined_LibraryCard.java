@@ -8,9 +8,9 @@ public class Ruined_LibraryCard extends DomCard {
     public Ruined_LibraryCard () {
       super( DomCardName.Ruined_Library);
     }
-    
+
     @Override
     public void play() {
-    	owner.drawCards(1);
+        owner.drawCards(1);
     }
 }

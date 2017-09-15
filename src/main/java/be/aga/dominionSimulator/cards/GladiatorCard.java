@@ -1,6 +1,5 @@
 package be.aga.dominionSimulator.cards;
 
-import be.aga.dominionSimulator.DomBuyRule;
 import be.aga.dominionSimulator.DomCard;
 import be.aga.dominionSimulator.DomEngine;
 import be.aga.dominionSimulator.DomPlayer;
@@ -27,7 +26,7 @@ public class GladiatorCard extends DomCard {
               theChosenCard=theCard;
           }
       }
-  	  if (DomEngine.haveToLog) DomEngine.addToLog( owner + " reveals a "+theChosenCard);
+        if (DomEngine.haveToLog) DomEngine.addToLog( owner + " reveals a "+theChosenCard);
       if (theLeftOpponent.getCardsFromHand(theChosenCard.getName()).isEmpty()) {
           if (DomEngine.haveToLog) DomEngine.addToLog(theLeftOpponent + " reveals nothing");
           owner.addAvailableCoins(1);

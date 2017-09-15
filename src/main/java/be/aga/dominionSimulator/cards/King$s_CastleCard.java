@@ -7,7 +7,7 @@ public class King$s_CastleCard extends DomCard {
     public King$s_CastleCard() {
       super( DomCardName.King$s_Castle);
     }
-    
+
     @Override
     public int getTrashPriority() {
       return 70;

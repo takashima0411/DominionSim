@@ -17,7 +17,7 @@ public class Distant_LandsCard extends DomCard {
     @Override
     public int getTrashPriority() {
       if (owner!=null && owner.wantsToGainOrKeep(DomCardName.Distant_Lands))
-    	return 42;
+        return 42;
       return super.getTrashPriority();
     }
 

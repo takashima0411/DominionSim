@@ -64,8 +64,8 @@ public class MinionCard extends DomCard {
     }
     @Override
     public int getPlayPriority() {
-    	if (owner.getActionsLeft()>1)
-    		return 35;
-    	return super.getPlayPriority();
+        if (owner.getActionsLeft()>1)
+            return 35;
+        return super.getPlayPriority();
     }
 }

@@ -14,7 +14,7 @@ public class Wishing_WellCard extends DomCard {
       owner.addActions(1);
       owner.drawCards(1);
       if (owner.getDeckSize()==0)
-    	return;
+        return;
       DomCardName theChoice = null;
       if (owner.getPlayStrategyFor(this)==DomPlayStrategy.goodDeckTracker)
         theChoice=owner.getDeck().getMostLikelyCardOnTop();
@@ -25,9 +25,9 @@ public class Wishing_WellCard extends DomCard {
           theChoice=DomCardName.Wishing_Well;
       if (DomEngine.haveToLog) DomEngine.addToLog(owner + " names " + theChoice.toHTML());
       DomCard theRevealedCard = owner.revealTopCards(1).get(0);
-	  if (theRevealedCard.getName()==theChoice){
+      if (theRevealedCard.getName()==theChoice){
         owner.putInHand(theRevealedCard);
-	  }else{
+      }else{
         owner.putOnTopOfDeck(theRevealedCard);
       }
     }

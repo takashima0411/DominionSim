@@ -13,12 +13,12 @@ public class ForumCard extends DomCard {
       owner.drawCards( 3 );
       owner.doForcedDiscard( 2, false );
     }
-    
+
     @Override
     public boolean wantsToBePlayed() {
-    	if (owner.getDeckSize()<2)
-    	  return false;
-		return true;
+        if (owner.getDeckSize()<2)
+          return false;
+        return true;
     }
 
     public void doWhenBought() {

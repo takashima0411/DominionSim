@@ -6,7 +6,7 @@ import be.aga.dominionSimulator.enums.DomCardName;
 
 public class RaidCard extends DomCard {
 
-	public RaidCard() {
+    public RaidCard() {
       super( DomCardName.Raid);
     }
 

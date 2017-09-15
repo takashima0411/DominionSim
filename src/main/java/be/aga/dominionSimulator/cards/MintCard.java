@@ -14,27 +14,27 @@ public class MintCard extends DomCard {
     public void play() {
       DomCardName theCardToCopy=findCardToCopy();
       if (theCardToCopy!=null) {
-        if (DomEngine.haveToLog) 
+        if (DomEngine.haveToLog)
           DomEngine.addToLog( owner+ " reveals " +theCardToCopy + " from hand");
-    	owner.gain(theCardToCopy);
+        owner.gain(theCardToCopy);
       } else {
-        if (DomEngine.haveToLog) 
+        if (DomEngine.haveToLog)
           DomEngine.addToLog( " but does not find a suitable card to Mint");
       }
     }
 
     private DomCardName findCardToCopy() {
-    	for (DomBuyRule buyRule : owner.getBuyRules()){
-    	  DomCardName theCard = buyRule.getCardToBuy();
-    	  if (theCard.hasCardType(DomCardType.Treasure)
-    	   && owner.wants(theCard) 
-    	   && !owner.getCardsFromHand(theCard).isEmpty()) 
+        for (DomBuyRule buyRule : owner.getBuyRules()){
+          DomCardName theCard = buyRule.getCardToBuy();
+          if (theCard.hasCardType(DomCardType.Treasure)
+           && owner.wants(theCard)
+           && !owner.getCardsFromHand(theCard).isEmpty())
             return theCard;
-    	}
-		return null;
+        }
+        return null;
     }
-    
-	@Override
+
+    @Override
     public boolean wantsToBePlayed() {
       return findCardToCopy()!=null;
     }

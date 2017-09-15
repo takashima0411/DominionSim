@@ -1,7 +1,6 @@
 package be.aga.dominionSimulator.cards;
 
 import be.aga.dominionSimulator.DomCard;
-import be.aga.dominionSimulator.DomCost;
 import be.aga.dominionSimulator.DomPlayer;
 import be.aga.dominionSimulator.enums.DomCardName;
 
@@ -21,7 +20,7 @@ public class GiantCard extends DomCard {
       owner.addAvailableCoins(5);
       for (DomPlayer thePlayer : owner.getOpponents()) {
         if (thePlayer.checkDefense() )
-        	continue;
+            continue;
         ArrayList< DomCard > theCards = thePlayer.revealTopCards(1);
         if (theCards.isEmpty())
             continue;

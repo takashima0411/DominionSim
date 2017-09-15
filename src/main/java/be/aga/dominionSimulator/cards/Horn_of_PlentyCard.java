@@ -1,6 +1,5 @@
 package be.aga.dominionSimulator.cards;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 import be.aga.dominionSimulator.DomCard;
@@ -15,15 +14,15 @@ public class Horn_of_PlentyCard extends DomCard {
     }
 
     public void play() {
-  	  HashSet<DomCardName> theSingleCards = new HashSet<>();
+        HashSet<DomCardName> theSingleCards = new HashSet<>();
       for (DomCard card : owner.getCardsInPlay()) {
-    	theSingleCards.add(card.getName());
+        theSingleCards.add(card.getName());
       }
-      if (DomEngine.haveToLog) 
-      	DomEngine.addToLog( owner + " has " + theSingleCards.size() + " different cards in play");
+      if (DomEngine.haveToLog)
+          DomEngine.addToLog( owner + " has " + theSingleCards.size() + " different cards in play");
       DomCardName theCardToGain = owner.getDesiredCardWithRestriction(null,new DomCost(theSingleCards.size(), 0), false, DomCardName.Stonemason);
       if (theCardToGain==null) {
-    	//possibly null if played by Venture
+        //possibly null if played by Venture
         theCardToGain=owner.getCurrentGame().getBestCardInSupplyFor(owner, null, new DomCost(theSingleCards.size(), 0));
       }
       if (owner.stillInEarlyGame() && theCardToGain.hasCardType(DomCardType.Victory) && (theCardToGain.hasCardType(DomCardType.Action)||theCardToGain.hasCardType(DomCardType.Treasure)))
@@ -38,13 +37,13 @@ public class Horn_of_PlentyCard extends DomCard {
       if (theCardToGain.hasCardType(DomCardType.Victory)&& owner.getCardsFromPlay(getName()).contains(this))
         owner.trash(owner.removeCardFromPlay(this));
     }
-    
+
     @Override
     public boolean wantsToBePlayed() {
-    	  HashSet<DomCardName> theSingleCards = new HashSet<>();
-  		  theSingleCards.add(getName());
+          HashSet<DomCardName> theSingleCards = new HashSet<>();
+            theSingleCards.add(getName());
           for (DomCard card : owner.getCardsInPlay()) {
-        	  theSingleCards.add(card.getName());
+              theSingleCards.add(card.getName());
           }
           DomCardName theCardToGain = owner.getDesiredCard(new DomCost(theSingleCards.size(), 0), false);
           return theCardToGain != null;

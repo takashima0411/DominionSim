@@ -27,30 +27,30 @@ import be.aga.dominionSimulator.enums.DomPlayStrategy;
 
 public class DomBuyRulePanel extends JPanel implements ActionListener, ItemListener {
 
-	private JComboBox myCardToBuyBox;
+    private JComboBox myCardToBuyBox;
     private ArrayList<DomBuyConditionPanel> myBuyConditionPanels=new ArrayList<>();
-	private JPanel myConditionsPanel;
-	private DomBotEditor myParent;
-	private JComboBox myPlayStrategyBox;
-	private DomBuyRule domBuyRule;
-	private DomBotEditor domBotEditor;
-	private DomPlayStrategy thePlaystrategy;
-	private JLabel myPlayStrategyLBL;
-	private JComboBox myBaneBox;
-	private JLabel myBaneLBL;
+    private JPanel myConditionsPanel;
+    private DomBotEditor myParent;
+    private JComboBox myPlayStrategyBox;
+    private DomBuyRule domBuyRule;
+    private DomBotEditor domBotEditor;
+    private DomPlayStrategy thePlaystrategy;
+    private JLabel myPlayStrategyLBL;
+    private JComboBox myBaneBox;
+    private JLabel myBaneLBL;
 
-	public DomBuyRulePanel(DomBuyRule domBuyRule, DomBotEditor domBotEditor) {
-		myParent = domBotEditor;
+    public DomBuyRulePanel(DomBuyRule domBuyRule, DomBotEditor domBotEditor) {
+        myParent = domBotEditor;
         setLayout( new GridBagLayout() );
         setBorder( new TitledBorder( "" ));
         this.domBuyRule=domBuyRule;
         this.domBotEditor=domBotEditor;
         fill();
- 	}
+     }
 
-	private void fill() {
+    private void fill() {
         GridBagConstraints theCons = DomGui.getGridBagConstraints( 2 );
-		myCardToBuyBox = new JComboBox(DomCardName.getSafeValues());
+        myCardToBuyBox = new JComboBox(DomCardName.getSafeValues());
 //        myCardToBuyBox.setRenderer(new CustomComboBoxRenderer());
         myCardToBuyBox.setSelectedItem( domBuyRule.getCardToBuy() );
         myCardToBuyBox.addItemListener(this);
@@ -89,14 +89,14 @@ public class DomBuyRulePanel extends JPanel implements ActionListener, ItemListe
         myMoveUpBTN.addActionListener(domBotEditor);
         theCons.gridx++;
         add(myMoveUpBTN, theCons);
-        
+
         JButton myMoveDownBTN = new JButton(new ImageIcon(getClass().getResource("images/arrow_down.png")));
         myMoveDownBTN.setActionCommand( "Move Down" );
         myMoveDownBTN.putClientProperty("my rule box", this);
         myMoveDownBTN.addActionListener(domBotEditor);
         theCons.gridx++;
         add(myMoveDownBTN, theCons);
-        
+
         theCons.gridx++;
         DomGui.addHeavyLabel( this, theCons );
 
@@ -106,7 +106,7 @@ public class DomBuyRulePanel extends JPanel implements ActionListener, ItemListe
         myDuplicateBTN.addActionListener(domBotEditor);
         theCons.gridx++;
         add(myDuplicateBTN, theCons);
-        
+
         JButton myDeleteBTN = new JButton(new ImageIcon(getClass().getResource("images/delete_tb.gif")));
         myDeleteBTN.setActionCommand( "Delete" );
         myDeleteBTN.putClientProperty("my rule box", this);
@@ -118,14 +118,14 @@ public class DomBuyRulePanel extends JPanel implements ActionListener, ItemListe
           myBuyConditionPanels.add(theCondition.getGuiPanel(this));
           add(myBuyConditionPanels.get(myBuyConditionPanels.size()-1),theCons);
         }
-        
+
         myConditionsPanel = getConditionsPanel();
         fillConditionsPanel();
         theCons.gridx=0;
         theCons.gridy++;
         theCons.gridwidth=100;
         add(myConditionsPanel,theCons);
-	}
+    }
 
     /**
      * @return
@@ -136,28 +136,28 @@ public class DomBuyRulePanel extends JPanel implements ActionListener, ItemListe
       thePanel.setBorder( new TitledBorder( "Buy conditions" ));
       return thePanel;
     }
-	
-	@Override
-	public void actionPerformed(ActionEvent aE) {
+
+    @Override
+    public void actionPerformed(ActionEvent aE) {
       if (aE.getActionCommand().equals( "Delete" )) {
-       	 JButton theButton = (JButton) aE.getSource();
-       	 myBuyConditionPanels.remove(theButton.getParent());
- 	     fillConditionsPanel();
- 		 return;
+            JButton theButton = (JButton) aE.getSource();
+            myBuyConditionPanels.remove(theButton.getParent());
+          fillConditionsPanel();
+          return;
       }
       if (aE.getActionCommand().equals( "add buy condition" )) {
-    	DomBuyCondition theDummyCondition = new DomBuyCondition(DomBotFunction.countCardsInDeck
-    			,(DomCardName) myCardToBuyBox.getSelectedItem(), DomCardType.Action , "0"
-    			,DomBotComparator.equalTo
-    			,DomBotFunction.constant,DomCardName.Copper, DomCardType.Action, "0" , DomBotOperator.plus, "0")  ;
+        DomBuyCondition theDummyCondition = new DomBuyCondition(DomBotFunction.countCardsInDeck
+                ,(DomCardName) myCardToBuyBox.getSelectedItem(), DomCardType.Action , "0"
+                ,DomBotComparator.equalTo
+                ,DomBotFunction.constant,DomCardName.Copper, DomCardType.Action, "0" , DomBotOperator.plus, "0")  ;
         myBuyConditionPanels.add(theDummyCondition.getGuiPanel(this));
-  	    fillConditionsPanel();
-  		return;
+          fillConditionsPanel();
+          return;
       }
-	}
+    }
 
-	private void fillConditionsPanel() {
-		myConditionsPanel.removeAll();
+    private void fillConditionsPanel() {
+        myConditionsPanel.removeAll();
         final GridBagConstraints theCons = DomGui.getGridBagConstraints( 2 );
         theCons.fill=GridBagConstraints.NONE;
         JButton theBTN = new JButton("+");
@@ -167,9 +167,9 @@ public class DomBuyRulePanel extends JPanel implements ActionListener, ItemListe
         for (DomBuyConditionPanel thePanel : myBuyConditionPanels){
           theCons.gridx=1;
           if (myBuyConditionPanels.indexOf(thePanel)==0) {
-        	  myConditionsPanel.add(new JLabel("If"), theCons);
+              myConditionsPanel.add(new JLabel("If"), theCons);
           } else {
-        	  myConditionsPanel.add(new JLabel("and"), theCons);
+              myConditionsPanel.add(new JLabel("and"), theCons);
           }
           theCons.gridx++;
           myConditionsPanel.add(thePanel,theCons);
@@ -178,35 +178,35 @@ public class DomBuyRulePanel extends JPanel implements ActionListener, ItemListe
           theCons.gridy++;
         }
         myParent.validate();
-	}
+    }
 
-	public DomBuyRule getBuyRule(DomPlayer theNewPlayer) {
-		thePlaystrategy = (DomPlayStrategy) myPlayStrategyBox.getSelectedItem();
-		if (thePlaystrategy==null)
-			thePlaystrategy=DomPlayStrategy.standard;
-		DomCardName cardToBuy = (DomCardName) myCardToBuyBox.getSelectedItem();
-		String theBaneCard = null;
-		if (cardToBuy==DomCardName.Young_Witch)
-			theBaneCard = ((DomCardName) myBaneBox.getSelectedItem()).name();
-		DomBuyRule theRule = new DomBuyRule(cardToBuy.name(), thePlaystrategy.name(), theBaneCard);
-		if (theRule.getCardToBuy()==DomCardName.Young_Witch)
-		  theRule.setBaneCard((DomCardName)myBaneBox.getSelectedItem());
-		for (DomBuyConditionPanel theConditionPanel : myBuyConditionPanels) {
-		  theRule.addCondition(theConditionPanel.getBuyCondition());	
-		}
-		if (theRule.getPlayStrategy()!=DomPlayStrategy.standard) {
-     		theNewPlayer.addPlayStrategy(theRule.getCardToBuy().name(), theRule.getPlayStrategy().name());
-		}
-		return theRule;
-	}
+    public DomBuyRule getBuyRule(DomPlayer theNewPlayer) {
+        thePlaystrategy = (DomPlayStrategy) myPlayStrategyBox.getSelectedItem();
+        if (thePlaystrategy==null)
+            thePlaystrategy=DomPlayStrategy.standard;
+        DomCardName cardToBuy = (DomCardName) myCardToBuyBox.getSelectedItem();
+        String theBaneCard = null;
+        if (cardToBuy==DomCardName.Young_Witch)
+            theBaneCard = ((DomCardName) myBaneBox.getSelectedItem()).name();
+        DomBuyRule theRule = new DomBuyRule(cardToBuy.name(), thePlaystrategy.name(), theBaneCard);
+        if (theRule.getCardToBuy()==DomCardName.Young_Witch)
+          theRule.setBaneCard((DomCardName)myBaneBox.getSelectedItem());
+        for (DomBuyConditionPanel theConditionPanel : myBuyConditionPanels) {
+          theRule.addCondition(theConditionPanel.getBuyCondition());
+        }
+        if (theRule.getPlayStrategy()!=DomPlayStrategy.standard) {
+             theNewPlayer.addPlayStrategy(theRule.getCardToBuy().name(), theRule.getPlayStrategy().name());
+        }
+        return theRule;
+    }
 
-	@Override
-	public void itemStateChanged(ItemEvent e) {
-		myPlayStrategyBox.removeAllItems();
-		DomCardName theSelectedCardName = (DomCardName)myCardToBuyBox.getSelectedItem();
-		for (Object theStrategy : theSelectedCardName.getPlayStrategies()) {
-	      myPlayStrategyBox.addItem(theStrategy);
-		}
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+        myPlayStrategyBox.removeAllItems();
+        DomCardName theSelectedCardName = (DomCardName)myCardToBuyBox.getSelectedItem();
+        for (Object theStrategy : theSelectedCardName.getPlayStrategies()) {
+          myPlayStrategyBox.addItem(theStrategy);
+        }
         if (myPlayStrategyBox.getItemCount()==1) {
           myPlayStrategyBox.setVisible(false);
           myPlayStrategyLBL.setVisible(false);
@@ -221,9 +221,9 @@ public class DomBuyRulePanel extends JPanel implements ActionListener, ItemListe
             myBaneBox.setVisible(false);
             myBaneLBL.setVisible(false);
         }
-	}
+    }
 
-	public void toggleBuyConditions() {
-	  myConditionsPanel.setVisible(!myConditionsPanel.isVisible());
-	}
+    public void toggleBuyConditions() {
+      myConditionsPanel.setVisible(!myConditionsPanel.isVisible());
+    }
 }

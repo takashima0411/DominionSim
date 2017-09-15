@@ -30,8 +30,8 @@ public class ScavengerCard extends DomCard {
 
     @Override
     public int getPlayPriority() {
-    	if (owner.getActionsLeft()>1)
-    		return DomCardName.Counting_House.getPlayPriority()-1;
-    	return super.getPlayPriority();
+        if (owner.getActionsLeft()>1)
+            return DomCardName.Counting_House.getPlayPriority()-1;
+        return super.getPlayPriority();
     }
 }

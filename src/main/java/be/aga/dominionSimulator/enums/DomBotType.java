@@ -7,8 +7,8 @@ public enum DomBotType {
    BigMoney,
    Attacking,
    Engine,
-   Combo, 
-   SingleCard, 
+   Combo,
+   SingleCard,
    Province,
    Colony,
    TwoPlayer,
@@ -22,9 +22,9 @@ public enum DomBotType {
    AppliesPPR,
    ShuffleOverhand,
    RiffleShuffle
-   
+
    ;
-   
+
    public String toString() {
        switch ( this ) {
        case SingleCard:
@@ -50,7 +50,7 @@ public enum DomBotType {
 
        case BigMoney:
            return "Big Money";
-           
+
        case Colony:
            return "Colony";
 
@@ -59,7 +59,7 @@ public enum DomBotType {
 
        case Engine:
            return "Engine";
-   
+
        case AppliesPPR:
            return "Applies PPR";
 
@@ -72,7 +72,7 @@ public enum DomBotType {
     default :
         return super.toString();
     }
-       
+
    };
-   
+
 }

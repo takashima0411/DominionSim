@@ -21,27 +21,27 @@ public class Trading_PostCard extends DomCard {
         if (i==2)
           owner.gainInHand(DomCardName.Silver);
     }
-    
+
     @Override
     public boolean wantsToBePlayed() {
-    	int theCount = 0;
-    	int theSilverCount=0;
-    	DomCard theBadCard=null;
-    	for (DomCard card : owner.getCardsInHand()) {
-    	  if (card==this)
-    		  continue;
-    	  if (card.getTrashPriority()<20){
-    		  theCount++;
-    		  theBadCard=card;
-    	  }
-    	  theSilverCount+= card.getName()==DomCardName.Silver ? 1 : 0;
-    	}
-    	if (theSilverCount>0 && theCount==1) {
-          	if (owner.removingReducesBuyingPower(theBadCard))
-          	  return false;
-          	else 
-        	  return true;
-    	}
-    	return theCount>=2;
+        int theCount = 0;
+        int theSilverCount=0;
+        DomCard theBadCard=null;
+        for (DomCard card : owner.getCardsInHand()) {
+          if (card==this)
+              continue;
+          if (card.getTrashPriority()<20){
+              theCount++;
+              theBadCard=card;
+          }
+          theSilverCount+= card.getName()==DomCardName.Silver ? 1 : 0;
+        }
+        if (theSilverCount>0 && theCount==1) {
+              if (owner.removingReducesBuyingPower(theBadCard))
+                return false;
+              else
+              return true;
+        }
+        return theCount>=2;
     }
 }

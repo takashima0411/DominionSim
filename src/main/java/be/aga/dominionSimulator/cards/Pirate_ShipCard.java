@@ -36,8 +36,8 @@ public class Pirate_ShipCard extends DomCard {
             DomCard theCardToTrash = null;
             for (DomCard theCard : theTopTwo) {
                 if (theCard.hasCardType( DomCardType.Treasure )){
-                    if (theCardToTrash==null 
-                     || theCard.getTrashPriority()>theCardToTrash.getTrashPriority()){ 
+                    if (theCardToTrash==null
+                     || theCard.getTrashPriority()>theCardToTrash.getTrashPriority()){
                       theCardToTrash = theCard;
                     }
                 }
@@ -53,10 +53,10 @@ public class Pirate_ShipCard extends DomCard {
         }
         return attackSuccess;
     }
-    
+
     public double getPotentialCoinValue() {
-      if (owner.getActionsLeft()==0 && owner.getCardsInHand().contains( this ) ) 
+      if (owner.getActionsLeft()==0 && owner.getCardsInHand().contains( this ) )
         return 0;
       return owner.getPirateShipLevel();
-    }    
+    }
 }

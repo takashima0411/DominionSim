@@ -10,12 +10,12 @@ public class MarauderCard extends DomCard {
     }
 
     public void play() {
-	    for (DomPlayer thePlayer : owner.getOpponents()) {
-	      if (!thePlayer.checkDefense()) {
-	    	  if (owner.getCurrentGame().countInSupply(DomCardName.Ruins)>0)
-	    	    thePlayer.gain(DomCardName.Ruins);
-	      }
-	    }
+        for (DomPlayer thePlayer : owner.getOpponents()) {
+          if (!thePlayer.checkDefense()) {
+              if (owner.getCurrentGame().countInSupply(DomCardName.Ruins)>0)
+                thePlayer.gain(DomCardName.Ruins);
+          }
+        }
         owner.gain(DomCardName.Spoils);
     }
 }

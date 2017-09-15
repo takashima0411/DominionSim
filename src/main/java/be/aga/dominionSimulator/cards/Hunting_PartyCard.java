@@ -18,22 +18,22 @@ public class Hunting_PartyCard extends DomCard {
       for (;;){
         ArrayList<DomCard> theTopCard = owner.revealTopCards(1);
         if (theTopCard.isEmpty())
-    	  break;
+          break;
         if (!hasDuplicateInHand(theTopCard.get(0))){
-        	owner.putInHand(theTopCard.get(0));
-        	break;
+            owner.putInHand(theTopCard.get(0));
+            break;
         } else {
-			theRevealedCards.add(theTopCard.get(0));
+            theRevealedCards.add(theTopCard.get(0));
         }
       }
       owner.discard(theRevealedCards);
     }
 
-	public boolean hasDuplicateInHand(DomCard aCard) {
+    public boolean hasDuplicateInHand(DomCard aCard) {
         for (DomCard theCard : owner.getCardsInHand()) {
-        	if (theCard.getName()==aCard.getName())
-        		return true;
+            if (theCard.getName()==aCard.getName())
+                return true;
         }
-		return false;
-	}
+        return false;
+    }
 }

@@ -6,14 +6,14 @@ public enum DomBotComparator {
    smallerOrEqualThan,
    greaterThan,
    greaterOrEqualThan,
-   
+
    ;
-   
+
    public String toString() {
        switch ( this ) {
        case equalTo:
            return "=";
-           
+
        case greaterOrEqualThan :
            return ">=";
 
@@ -29,7 +29,7 @@ public enum DomBotComparator {
     default :
         return "=";
     }
-       
+
    };
-   
+
 }

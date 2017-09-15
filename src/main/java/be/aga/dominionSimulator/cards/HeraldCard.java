@@ -17,7 +17,7 @@ public class HeraldCard extends DomCard {
       owner.addActions(1);
       owner.drawCards(1);
       if (owner.getDeckSize()==0)
-    	return;
+        return;
       DomCard theRevealedCard = owner.revealTopCards(1).get(0);
       if (theRevealedCard.hasCardType(DomCardType.Action))
         owner.play(theRevealedCard);

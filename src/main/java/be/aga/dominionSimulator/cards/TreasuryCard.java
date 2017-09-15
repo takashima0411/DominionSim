@@ -14,7 +14,7 @@ public class TreasuryCard extends DomCard {
       owner.addAvailableCoins(1);
       owner.drawCards(1);
     }
-    
+
     @Override
     public void handleCleanUpPhase() {
       for (DomCard theCard : owner.getBoughtCards()) {

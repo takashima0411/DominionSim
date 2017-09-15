@@ -18,7 +18,7 @@ public class MasqueradeCard extends DomCard {
       }
       Collections.sort(owner.getCardsInHand(),SORT_FOR_TRASHING);
       if (owner.getCardsInHand().isEmpty())
-    	  return;
+          return;
       DomCard theCardToTrash=owner.getCardsInHand().get( 0 );
       if (theCardToTrash.getTrashPriority() < 16 && !owner.removingReducesBuyingPower( theCardToTrash )) {
         if (owner.countInDeck(DomCardName.Baron)>0 && owner.countInDeck(DomCardName.Estate)<3 && theCardToTrash.getName()==DomCardName.Estate){

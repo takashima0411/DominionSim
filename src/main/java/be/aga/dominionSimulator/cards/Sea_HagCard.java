@@ -11,8 +11,8 @@ public class Sea_HagCard extends DomCard {
 
     public void play() {
         for (DomPlayer thePlayer : owner.getOpponents()) {
-          if (thePlayer.checkDefense()) 
-        	continue;
+          if (thePlayer.checkDefense())
+            continue;
           thePlayer.discardTopCardFromDeck();
           DomCard theCard = owner.getCurrentGame().takeFromSupply(  DomCardName.Curse );
           if (theCard!=null) {
@@ -20,7 +20,7 @@ public class Sea_HagCard extends DomCard {
           }
         }
     }
-    
+
     @Override
     public int getTrashPriority() {
       if (owner!=null) {
@@ -29,7 +29,7 @@ public class Sea_HagCard extends DomCard {
       }
       return super.getTrashPriority();
     }
-    
+
     @Override
     public int getDiscardPriority( int aActionsLeft ) {
         if (owner!=null) {
@@ -38,7 +38,7 @@ public class Sea_HagCard extends DomCard {
         }
         return super.getDiscardPriority( aActionsLeft );
     }
-    
+
     @Override
     public int getPlayPriority( ) {
       if (owner!=null) {

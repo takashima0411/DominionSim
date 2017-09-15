@@ -10,22 +10,22 @@ public class CrossroadsCard extends DomCard {
     }
 
     public void play() {
-    	if (owner.getCardsFromPlay(DomCardName.Crossroads).size()==1)
+        if (owner.getCardsFromPlay(DomCardName.Crossroads).size()==1)
           owner.addActions(3);
-    	owner.drawCards(owner.getCardsFromHand(DomCardType.Victory).size());
+        owner.drawCards(owner.getCardsFromHand(DomCardType.Victory).size());
     }
-    
+
     @Override
     public int getPlayPriority() {
-    	//TODO probably doesn't cover everything
-    	if (owner.getCardsFromHand(DomCardType.Action).size()
-    	    -owner.getCardsFromHand(DomCardName.Crossroads).size()
-    	    -owner.getCardsFromHand(DomCardName.Nobles).size()
+        //TODO probably doesn't cover everything
+        if (owner.getCardsFromHand(DomCardType.Action).size()
+            -owner.getCardsFromHand(DomCardName.Crossroads).size()
+            -owner.getCardsFromHand(DomCardName.Nobles).size()
                 -owner.getCardsFromHand(DomCardName.Great_Hall).size()
                 -owner.getCardsFromHand(DomCardName.Mill).size()
-    	    >owner.getCardsFromHand(DomCardType.Terminal).size())
-    	  return 30;
-    	return super.getPlayPriority();
+            >owner.getCardsFromHand(DomCardType.Terminal).size())
+          return 30;
+        return super.getPlayPriority();
     }
 
     @Override

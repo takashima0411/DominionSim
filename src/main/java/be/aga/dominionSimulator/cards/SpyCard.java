@@ -19,46 +19,46 @@ public class SpyCard extends DomCard {
       spyOnOpponents();
     }
 
-	private void spyOnOpponents() {
-		DomCard theRevealedCard = null;
-		for (DomPlayer thePlayer : owner.getOpponents()) {
-	      if (thePlayer.checkDefense()) 
-	    	continue;
-	      ArrayList<DomCard> theRevealedCards = thePlayer.revealTopCards(1);
-	      if (theRevealedCards.isEmpty()) 
-	    	continue;
-	      theRevealedCard=theRevealedCards.get(0);
-    	  if (theRevealedCard.getDiscardPriority(1)<16
-    	  || (!owner.getCardsFromHand(DomCardName.Noble_Brigand).isEmpty() && findMoneyForNoble_Brigand(theRevealedCard)) 
-      	  || (!owner.getCardsFromHand(DomCardName.Thief).isEmpty() && findMoneyForThief(theRevealedCard))) {
-            thePlayer.putOnTopOfDeck(theRevealedCard);    		
-    	  } else {
-      		thePlayer.discard(theRevealedCard);
-    	  }
-	    }
-	}
+    private void spyOnOpponents() {
+        DomCard theRevealedCard = null;
+        for (DomPlayer thePlayer : owner.getOpponents()) {
+          if (thePlayer.checkDefense())
+            continue;
+          ArrayList<DomCard> theRevealedCards = thePlayer.revealTopCards(1);
+          if (theRevealedCards.isEmpty())
+            continue;
+          theRevealedCard=theRevealedCards.get(0);
+          if (theRevealedCard.getDiscardPriority(1)<16
+          || (!owner.getCardsFromHand(DomCardName.Noble_Brigand).isEmpty() && findMoneyForNoble_Brigand(theRevealedCard))
+            || (!owner.getCardsFromHand(DomCardName.Thief).isEmpty() && findMoneyForThief(theRevealedCard))) {
+            thePlayer.putOnTopOfDeck(theRevealedCard);
+          } else {
+              thePlayer.discard(theRevealedCard);
+          }
+        }
+    }
 
-	private boolean findMoneyForNoble_Brigand(DomCard theRevealedCard) {
-		if (theRevealedCard.getName()==DomCardName.Silver || theRevealedCard.getName()==DomCardName.Gold)
-			return true;
-		return false;
-	}
+    private boolean findMoneyForNoble_Brigand(DomCard theRevealedCard) {
+        if (theRevealedCard.getName()==DomCardName.Silver || theRevealedCard.getName()==DomCardName.Gold)
+            return true;
+        return false;
+    }
 
-	private boolean findMoneyForThief(DomCard theRevealedCard) {
-		if (theRevealedCard.hasCardType(DomCardType.Treasure)
-				&& theRevealedCard.getName().getTrashPriority(owner)>=20)
-			return true;
-		return false;
-	}
+    private boolean findMoneyForThief(DomCard theRevealedCard) {
+        if (theRevealedCard.hasCardType(DomCardType.Treasure)
+                && theRevealedCard.getName().getTrashPriority(owner)>=20)
+            return true;
+        return false;
+    }
 
-	private void spyOnYourself() {
-		ArrayList<DomCard> theRevealedCard = owner.revealTopCards(1);
-		  if (theRevealedCard.isEmpty()) 
-			  return;
-		  if (theRevealedCard.get(0).getDiscardPriority(1)<16) {
-			owner.discard(theRevealedCard);
-		  } else {
-	        owner.putOnTopOfDeck(theRevealedCard.get(0));    		
-		  }
-	}
+    private void spyOnYourself() {
+        ArrayList<DomCard> theRevealedCard = owner.revealTopCards(1);
+          if (theRevealedCard.isEmpty())
+              return;
+          if (theRevealedCard.get(0).getDiscardPriority(1)<16) {
+            owner.discard(theRevealedCard);
+          } else {
+            owner.putOnTopOfDeck(theRevealedCard.get(0));
+          }
+    }
 }

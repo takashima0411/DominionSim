@@ -14,18 +14,18 @@ public class DuchessCard extends DomCard {
     public void play() {
       owner.addAvailableCoins(2);
       selectTopCard(owner);
-	  for (DomPlayer player : owner.getOpponents())
-		selectTopCard(player);
+      for (DomPlayer player : owner.getOpponents())
+        selectTopCard(player);
     }
 
-	private void selectTopCard(DomPlayer player) {
-	  ArrayList<DomCard> theRevealedCard = player.revealTopCards(1);
-	  if (theRevealedCard.isEmpty()) 
-		return;
-	  if (theRevealedCard.get(0).getDiscardPriority(1)<16) {
-		player.discard(theRevealedCard.get(0));
-	  } else {
-        player.putOnTopOfDeck(theRevealedCard.get(0));    		
-	  }
-	}
+    private void selectTopCard(DomPlayer player) {
+      ArrayList<DomCard> theRevealedCard = player.revealTopCards(1);
+      if (theRevealedCard.isEmpty())
+        return;
+      if (theRevealedCard.get(0).getDiscardPriority(1)<16) {
+        player.discard(theRevealedCard.get(0));
+      } else {
+        player.putOnTopOfDeck(theRevealedCard.get(0));
+      }
+    }
 }

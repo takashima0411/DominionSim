@@ -12,12 +12,12 @@ public class IslandCard extends DomCard {
 
     public void play() {
       if (!owner.getCardsFromPlay(DomCardName.Island).isEmpty()) {
-    	//this is possible if card was throne roomed or king's courted
+        //this is possible if card was throne roomed or king's courted
         owner.moveToIslandMat(owner.removeCardFromPlay(this));
       }
       if (!owner.getCardsInHand().isEmpty()) {
         Collections.sort(owner.getCardsInHand(),SORT_FOR_DISCARDING);
-        owner.moveToIslandMat(owner.removeCardFromHand( owner.getCardsInHand().get( 0 )));  
+        owner.moveToIslandMat(owner.removeCardFromHand( owner.getCardsInHand().get( 0 )));
       }
     }
 

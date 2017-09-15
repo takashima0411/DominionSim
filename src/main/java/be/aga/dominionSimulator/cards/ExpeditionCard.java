@@ -5,7 +5,7 @@ import be.aga.dominionSimulator.enums.DomCardName;
 
 public class ExpeditionCard extends DomCard {
 
-	public ExpeditionCard() {
+    public ExpeditionCard() {
       super( DomCardName.Expedition);
     }
 

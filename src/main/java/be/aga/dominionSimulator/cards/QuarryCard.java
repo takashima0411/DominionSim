@@ -7,7 +7,7 @@ public class QuarryCard extends DomCard {
     public QuarryCard () {
       super( DomCardName.Quarry);
     }
-    
+
     @Override
     public void play() {
       owner.addAvailableCoins(1);

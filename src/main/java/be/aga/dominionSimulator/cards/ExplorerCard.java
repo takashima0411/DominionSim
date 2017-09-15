@@ -10,12 +10,12 @@ public class ExplorerCard extends DomCard {
     }
 
     public void play() {
-    	if (owner.getCardsFromHand(DomCardName.Province).isEmpty()) {
+        if (owner.getCardsFromHand(DomCardName.Province).isEmpty()) {
           owner.gainInHand(DomCardName.Silver);
-    	} else {
-          if (DomEngine.haveToLog) 
+        } else {
+          if (DomEngine.haveToLog)
             DomEngine.addToLog( owner + " reveals a Province");
           owner.gainInHand(DomCardName.Gold);
-    	}
+        }
     }
 }

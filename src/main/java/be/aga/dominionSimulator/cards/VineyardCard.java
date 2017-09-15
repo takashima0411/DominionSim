@@ -7,7 +7,7 @@ public class VineyardCard extends DomCard {
     public VineyardCard () {
       super( DomCardName.Vineyard);
     }
-    
+
     @Override
     public int getTrashPriority() {
       if (owner!=null && owner.wantsToGainOrKeep(DomCardName.Vineyard))

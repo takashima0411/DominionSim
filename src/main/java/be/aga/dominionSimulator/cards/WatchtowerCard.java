@@ -28,7 +28,7 @@ public class WatchtowerCard extends DrawUntilXCardsCard {
 
     public boolean wantsToBePlayed() {
       if (owner.getCardsInHand().size()<=6 && owner.getDeckSize()>0)
-    	  return super.wantsToBePlayed();
+          return super.wantsToBePlayed();
       return false;
     }
 
@@ -37,9 +37,9 @@ public class WatchtowerCard extends DrawUntilXCardsCard {
       if (lastWatchtoweredCard == aCard)
         return false;
       if (aCard.getName().getTrashPriority(owner)<35) {
-     	return true;
+         return true;
       } else {
-    	return false;
+        return false;
       }
     }
     @Override

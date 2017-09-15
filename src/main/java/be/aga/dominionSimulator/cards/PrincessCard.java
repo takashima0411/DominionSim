@@ -5,11 +5,11 @@ import be.aga.dominionSimulator.enums.DomCardName;
 
 public class PrincessCard extends DomCard {
 
-	public PrincessCard () {
+    public PrincessCard () {
       super( DomCardName.Princess);
     }
 
-    public void play() {        
+    public void play() {
       owner.addAvailableBuys(1);
    }
 }

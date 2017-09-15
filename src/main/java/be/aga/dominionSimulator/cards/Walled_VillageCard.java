@@ -18,6 +18,6 @@ public class Walled_VillageCard extends DomCard {
       if (owner.getCurrentGame().countActionsInPlay()<=2)
         owner.putOnTopOfDeck(this);
       else
-    	super.handleCleanUpPhase();
+        super.handleCleanUpPhase();
     }
 }

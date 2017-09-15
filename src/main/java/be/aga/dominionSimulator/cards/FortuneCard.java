@@ -8,7 +8,7 @@ public class FortuneCard extends DomCard {
     public FortuneCard() {
       super( DomCardName.Fortune);
     }
-    
+
     @Override
     public void play() {
       owner.addAvailableBuys(1);
@@ -21,7 +21,7 @@ public class FortuneCard extends DomCard {
     @Override
     public double getPotentialCoinValue() {
       if (!owner.getCardsInHand().contains(this))
-    	return super.getPotentialCoinValue();
+        return super.getPotentialCoinValue();
       return owner.getCardsFromHand(DomCardType.Treasure).size()+owner.getCardsFromPlay(DomCardType.Treasure).size();
     }
 

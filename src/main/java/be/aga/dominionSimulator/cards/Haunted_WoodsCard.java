@@ -25,7 +25,7 @@ public class Haunted_WoodsCard extends DomCard {
         protectedOpponents.clear();
         owner.drawCards(3);
     }
-    
+
     public boolean hasProtectedOpponent(DomPlayer domPlayer) {
         return protectedOpponents.contains(domPlayer);
     }

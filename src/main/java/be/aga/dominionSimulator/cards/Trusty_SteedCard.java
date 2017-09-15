@@ -12,7 +12,7 @@ public class Trusty_SteedCard extends DomCard {
       if (owner.getActionsLeft()>1) {
         owner.addAvailableCoins(2);
       } else {
-    	owner.addActions(2);
+        owner.addActions(2);
       }
       owner.drawCards(2);
     }

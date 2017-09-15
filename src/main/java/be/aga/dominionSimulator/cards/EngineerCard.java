@@ -14,7 +14,7 @@ public class EngineerCard extends DomCard {
       DomCardName theDesiredCard = owner.getDesiredCard(new DomCost( 4, 0), false);
       if (theDesiredCard==null) {
         //possible to get here if card was throne-roomed
-    	theDesiredCard=owner.getCurrentGame().getBestCardInSupplyFor(owner, null, new DomCost(4, 0));
+        theDesiredCard=owner.getCurrentGame().getBestCardInSupplyFor(owner, null, new DomCost(4, 0));
       }
       if (theDesiredCard!=null)
         owner.gain(theDesiredCard);
@@ -27,7 +27,7 @@ public class EngineerCard extends DomCard {
           }
       }
     }
-    
+
     @Override
     public boolean wantsToBePlayed() {
        return owner.getDesiredCard(new DomCost( 4, 0), false) != null ;

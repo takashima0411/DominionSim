@@ -7,12 +7,12 @@ public class PotionCard extends DomCard {
     public PotionCard () {
       super( DomCardName.Potion);
     }
-    
+
     @Override
     public int getPotionValue() {
       return 1;
     }
-    
+
 //    @Override
 //    public int getTrashPriority() {
 //    	if (owner==null || owner.getDeck()==null || owner.getDeck().get(getName())==null || owner.getDeck().get(getName()).isEmpty())

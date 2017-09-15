@@ -79,7 +79,7 @@ public class AmuletCard extends DomCard {
 
     private boolean playForMoney() {
       if (owner.addingThisIncreasesBuyingPower(new DomCost(1, 0))) {
-    	owner.addAvailableCoins(1);
+        owner.addAvailableCoins(1);
         return true;
       }
       return false;
@@ -88,7 +88,7 @@ public class AmuletCard extends DomCard {
     private boolean playForTrash() {
         ArrayList<DomCard> cardsInHand = owner.getCardsInHand();
         if (cardsInHand.isEmpty())
-        	return false;
+            return false;
         Collections.sort(cardsInHand,SORT_FOR_TRASHING);
 
         DomCard theCardToTrash = cardsInHand.get(0);

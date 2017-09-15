@@ -13,7 +13,7 @@ public class ExpandCard extends DomCard {
 
     public void play() {
       if (owner.getCardsInHand().isEmpty())
-    	return;
+        return;
       DomCard theCardToTrash = owner.findCardToRemodel(this, 3);
       if (theCardToTrash==null) {
         //this is needed when card is played with Throne Room effect
@@ -22,9 +22,9 @@ public class ExpandCard extends DomCard {
       }
       owner.trash(owner.removeCardFromHand( theCardToTrash));
       DomCost theMaxCostOfCardToGain = new DomCost( theCardToTrash.getCoinCost(owner.getCurrentGame()) + 3, theCardToTrash.getPotionCost());
-	  DomCardName theDesiredCard = owner.getDesiredCard(theMaxCostOfCardToGain, false);
+      DomCardName theDesiredCard = owner.getDesiredCard(theMaxCostOfCardToGain, false);
       if (theDesiredCard==null)
-    	theDesiredCard=owner.getCurrentGame().getBestCardInSupplyFor(owner, null, theMaxCostOfCardToGain);
+        theDesiredCard=owner.getCurrentGame().getBestCardInSupplyFor(owner, null, theMaxCostOfCardToGain);
       if (theDesiredCard!=null)
         owner.gain(theDesiredCard);
     }

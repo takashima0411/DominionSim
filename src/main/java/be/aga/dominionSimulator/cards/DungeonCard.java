@@ -22,8 +22,8 @@ public class DungeonCard extends DomCard {
 
     @Override
     public boolean wantsToBePlayed() {
-    	if (owner.getDeckSize()<2)
-    	  return false;
-		return true;
+        if (owner.getDeckSize()<2)
+          return false;
+        return true;
     }
 }

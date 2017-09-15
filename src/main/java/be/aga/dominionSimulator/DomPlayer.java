@@ -138,59 +138,59 @@ public class DomPlayer implements Comparable<DomPlayer> {
     }
 
     public DomCard findCardToRemodel(DomCard domCard, int theAmount) {
-    	ArrayList<DomCard> theCardsToConsiderTrashing=new ArrayList<>();
-    	ArrayList<DomCardName> theCardsToGain=new ArrayList<>();
-    	DomCardName theDesiredCardIfRemodelNotUsed = getDesiredCard(getTotalPotentialCurrency(), false);
+        ArrayList<DomCard> theCardsToConsiderTrashing=new ArrayList<>();
+        ArrayList<DomCardName> theCardsToGain=new ArrayList<>();
+        DomCardName theDesiredCardIfRemodelNotUsed = getDesiredCard(getTotalPotentialCurrency(), false);
         for (int i=0;i< getCardsInHand().size();i++) {
             if (getCardsInHand().get(i)== domCard)
                 continue;
-        	//temporarily remove the card from hand AND deck
-        	DomCard theCard = getCardsInHand().remove(i);
+            //temporarily remove the card from hand AND deck
+            DomCard theCard = getCardsInHand().remove(i);
             DomCost theMaxCostOfCardToGain = new DomCost( theCard.getCoinCost(getCurrentGame()) + theAmount, theCard.getPotionCost());
-        	getDeck().get(theCard.getName()).remove(theCard );
-      	    DomCardName theRemodelGainCard = getDesiredCard(theMaxCostOfCardToGain, false);
-        	DomCardName theDesiredCard = getDesiredCard(getTotalPotentialCurrency(), false);
-        	//first we will make a list of cards we consider good candidates for trashing
-        	//only add to the list if:
-        	//  -what we will gain is better than the card we trash (so of course it's not null)
-        	//  -(and the card we will gain is better than what we were able to buy without using Remodel
-        	//    or -trashing the card will not hinder our buying potential)
+            getDeck().get(theCard.getName()).remove(theCard );
+              DomCardName theRemodelGainCard = getDesiredCard(theMaxCostOfCardToGain, false);
+            DomCardName theDesiredCard = getDesiredCard(getTotalPotentialCurrency(), false);
+            //first we will make a list of cards we consider good candidates for trashing
+            //only add to the list if:
+            //  -what we will gain is better than the card we trash (so of course it's not null)
+            //  -(and the card we will gain is better than what we were able to buy without using Remodel
+            //    or -trashing the card will not hinder our buying potential)
             if (   (theRemodelGainCard!=null
-            	  && theRemodelGainCard.getTrashPriority(this)>theCard.getName().getTrashPriority(this)
-            	  && (theDesiredCardIfRemodelNotUsed == null
-            	  || theRemodelGainCard.getTrashPriority(this)>=theDesiredCardIfRemodelNotUsed.getTrashPriority(this)
-            	  || theDesiredCard==theDesiredCardIfRemodelNotUsed))){
-				theCardsToConsiderTrashing.add(theCard);
-				theCardsToGain.add(theRemodelGainCard);
+                  && theRemodelGainCard.getTrashPriority(this)>theCard.getName().getTrashPriority(this)
+                  && (theDesiredCardIfRemodelNotUsed == null
+                  || theRemodelGainCard.getTrashPriority(this)>=theDesiredCardIfRemodelNotUsed.getTrashPriority(this)
+                  || theDesiredCard==theDesiredCardIfRemodelNotUsed))){
+                theCardsToConsiderTrashing.add(theCard);
+                theCardsToGain.add(theRemodelGainCard);
             }
-        	getDeck().get(theCard.getName()).add(theCard );
-        	getCardsInHand().add(i, theCard);
+            getDeck().get(theCard.getName()).add(theCard );
+            getCardsInHand().add(i, theCard);
         }
         //nothing good found
         if (theCardsToConsiderTrashing.isEmpty())
-        	return null;
+            return null;
         //now we scan the lists to find the best possible trashing candidate
         DomCardName theBestCardToGain=null;
         DomCard theBestCardToTrash=null;
         for (int i=0;i<theCardsToGain.size();i++) {
           DomCardName theCardToGain = theCardsToGain.get(i);
           if (stillInEarlyGame()){
-	    	if (theBestCardToGain==null
-	        || theCardsToConsiderTrashing.get(i).getTrashPriority()<theBestCardToTrash.getTrashPriority()) {
-	    	    theBestCardToGain=theCardToGain;
-	    	    theBestCardToTrash=theCardsToConsiderTrashing.get(i);
-	    	}
-	      } else {
-	    	  if (theBestCardToGain==null
-	      	   //trashing this card will give us a better card
-	    	   || theCardToGain.getTrashPriority(this)>theBestCardToGain.getTrashPriority(this)
-	           //trashing this card is more desirable while still allowing us to gain the best card
-	    	   || ((theCardToGain.getTrashPriority(this)==theBestCardToGain.getTrashPriority(this)
-	               && theCardsToConsiderTrashing.get(i).getTrashPriority()<theBestCardToTrash.getTrashPriority()))) {
-	    	    theBestCardToGain=theCardToGain;
-	    	    theBestCardToTrash=theCardsToConsiderTrashing.get(i);
-	    	  }
-	      }
+            if (theBestCardToGain==null
+            || theCardsToConsiderTrashing.get(i).getTrashPriority()<theBestCardToTrash.getTrashPriority()) {
+                theBestCardToGain=theCardToGain;
+                theBestCardToTrash=theCardsToConsiderTrashing.get(i);
+            }
+          } else {
+              if (theBestCardToGain==null
+                 //trashing this card will give us a better card
+               || theCardToGain.getTrashPriority(this)>theBestCardToGain.getTrashPriority(this)
+               //trashing this card is more desirable while still allowing us to gain the best card
+               || ((theCardToGain.getTrashPriority(this)==theBestCardToGain.getTrashPriority(this)
+                   && theCardsToConsiderTrashing.get(i).getTrashPriority()<theBestCardToTrash.getTrashPriority()))) {
+                theBestCardToGain=theCardToGain;
+                theBestCardToTrash=theCardsToConsiderTrashing.get(i);
+              }
+          }
         }
         return theBestCardToTrash;
     }
@@ -1545,14 +1545,14 @@ public class DomPlayer implements Comparable<DomPlayer> {
             return;
 
 //    	if (!getCardsFromHand(DomCardName.Bishop).isEmpty()
-//    	 || !getCardsFromHand(DomCardName.Ambassador).isEmpty()	
-//    	 || !getCardsFromHand(DomCardName.Develop).isEmpty()	
-//    	 || !getCardsFromHand(DomCardName.Expand).isEmpty()	
-//    	 || !getCardsFromHand(DomCardName.Masquerade).isEmpty()	
-//    	 || !getCardsFromHand(DomCardName.Remodel).isEmpty()	
-//    	 || !getCardsFromHand(DomCardName.Salvager).isEmpty()	
-//    	 || !getCardsFromHand(DomCardName.Trader).isEmpty()	
-//    	 || !getCardsFromHand(DomCardName.Trade_Route).isEmpty()	
+//    	 || !getCardsFromHand(DomCardName.Ambassador).isEmpty()
+//    	 || !getCardsFromHand(DomCardName.Develop).isEmpty()
+//    	 || !getCardsFromHand(DomCardName.Expand).isEmpty()
+//    	 || !getCardsFromHand(DomCardName.Masquerade).isEmpty()
+//    	 || !getCardsFromHand(DomCardName.Remodel).isEmpty()
+//    	 || !getCardsFromHand(DomCardName.Salvager).isEmpty()
+//    	 || !getCardsFromHand(DomCardName.Trader).isEmpty()
+//    	 || !getCardsFromHand(DomCardName.Trade_Route).isEmpty()
 //    	 || !getCardsFromHand(DomCardName.Transmute).isEmpty()){
 //    	}
 

@@ -31,11 +31,11 @@ public class LookoutCard extends DomCard {
     }
     @Override
     public boolean wantsToBePlayed() {
-    	int theCount=0;
-    	for (DomCardName card : owner.getDeck().keySet()){
-    		if (card.getTrashPriority(owner)<16)
-    			theCount+=owner.countInDeck(card);
-    	}
-    	return theCount>=4;
+        int theCount=0;
+        for (DomCardName card : owner.getDeck().keySet()){
+            if (card.getTrashPriority(owner)<16)
+                theCount+=owner.countInDeck(card);
+        }
+        return theCount>=4;
     }
 }

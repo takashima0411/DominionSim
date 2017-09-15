@@ -9,10 +9,10 @@ public class DiademCard extends DomCard {
     public DiademCard () {
       super( DomCardName.Diadem);
     }
-    
+
     public void play() {
-      if (DomEngine.haveToLog) 
-    	  DomEngine.addToLog( owner + " has " + owner.getActionsLeft() + " unused actions left");
+      if (DomEngine.haveToLog)
+          DomEngine.addToLog( owner + " has " + owner.getActionsLeft() + " unused actions left");
       owner.addAvailableCoins(2+owner.getActionsLeft());
     }
 }

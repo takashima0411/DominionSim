@@ -14,9 +14,9 @@ public class FollowersCard extends DomCard {
       DomCard theEstate = owner.getCurrentGame().takeFromSupply( DomCardName.Estate);
       if (theEstate!=null) {
         owner.gain(theEstate);
-      } 
+      }
       for (DomPlayer thePlayer : owner.getOpponents()) {
-        if (thePlayer.checkDefense()) 
+        if (thePlayer.checkDefense())
           continue;
         if (owner.getCurrentGame().countInSupply(DomCardName.Curse )>0)
           thePlayer.gain(DomCardName.Curse);

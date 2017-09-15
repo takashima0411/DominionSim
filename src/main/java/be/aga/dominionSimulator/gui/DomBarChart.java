@@ -1,32 +1,30 @@
 package be.aga.dominionSimulator.gui;
 
 
-import java.awt.*;
-import java.util.ArrayList;
-
+import be.aga.dominionSimulator.DomEngine;
+import be.aga.dominionSimulator.DomPlayer;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.Plot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-import be.aga.dominionSimulator.DomEngine;
-import be.aga.dominionSimulator.DomPlayer;
+import java.awt.*;
+import java.util.ArrayList;
 
 /**
  */
 public class DomBarChart {
-	private ArrayList<DomPlayer> players;
+    private ArrayList<DomPlayer> players;
     private ChartPanel myChartPanel;
     private DefaultCategoryDataset dataset;
 
     /**
      */
     public DomBarChart (ArrayList<DomPlayer> aPlayers) {
-    	players = aPlayers;
+        players = aPlayers;
         dataset = createBarDataset();
         JFreeChart chart = createChart(dataset);
         myChartPanel = new ChartPanel(chart);
@@ -34,8 +32,8 @@ public class DomBarChart {
 
     private JFreeChart createChart(DefaultCategoryDataset defaultCategoryDataset) {
         String theTitle = "";
-        if (!players.isEmpty())            
-          theTitle = "Results (Average #turns = " + (players.get(0).getSumTurns()/DomEngine.NUMBER_OF_GAMES) + ")"; 
+        if (!players.isEmpty())
+          theTitle = "Results (Average #turns = " + (players.get(0).getSumTurns()/DomEngine.NUMBER_OF_GAMES) + ")";
 
         final JFreeChart chart = ChartFactory.createBarChart3D(
              theTitle,  // chart title
@@ -58,7 +56,7 @@ public class DomBarChart {
         return chart;
    }
 
-	/**
+    /**
      * @return
      */
     private DefaultCategoryDataset createBarDataset() {
@@ -76,7 +74,7 @@ public class DomBarChart {
         return theDataset;
     }
 
-	/**
+    /**
      * @return
      */
     public ChartPanel getChartPanel() {

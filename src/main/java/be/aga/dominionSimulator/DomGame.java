@@ -1,15 +1,14 @@
 package be.aga.dominionSimulator;
 
-import java.util.ArrayList;
-
 import be.aga.dominionSimulator.cards.*;
+import be.aga.dominionSimulator.enums.DomCardName;
+import be.aga.dominionSimulator.enums.DomCardType;
+import be.aga.dominionSimulator.enums.DomPhase;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.SimpleLayout;
 
-import be.aga.dominionSimulator.enums.DomCardName;
-import be.aga.dominionSimulator.enums.DomCardType;
-import be.aga.dominionSimulator.enums.DomPhase;
+import java.util.ArrayList;
 
 public class DomGame {
     private static final Logger LOGGER = Logger.getLogger( DomGame.class );
@@ -46,8 +45,8 @@ public class DomGame {
   }
 
 /**
- * @return 
- * 
+ * @return
+ *
  */
 private void initialize() {
     for (DomPlayer thePlayer : players) {
@@ -74,8 +73,8 @@ public DomCard takeFromSupply( DomCardName aCardName ) {
 }
 
 /**
- * @return 
- * 
+ * @return
+ *
  */
 public void run() {
     long theTime = System.currentTimeMillis();
@@ -88,19 +87,19 @@ public void run() {
           activePlayer = players.get(i);
           theTime = System.currentTimeMillis();
           //first take all possessed turns
-      	  while (!activePlayer.getPossessionTurns().isEmpty() && !isGameFinished()) {
-     	    activePlayer.setPossessor(activePlayer.getPossessionTurns().remove(0));
+            while (!activePlayer.getPossessionTurns().isEmpty() && !isGameFinished()) {
+             activePlayer.setPossessor(activePlayer.getPossessionTurns().remove(0));
             activePlayer.takeTurn();
             extraTurnsTakenByActivePlayer=true;
-      	  }
-      	  activePlayer.setPossessor(null);
-      	  //take normal turn
-      	  if (!isGameFinished()) {
+            }
+            activePlayer.setPossessor(null);
+            //take normal turn
+            if (!isGameFinished()) {
             activePlayer.takeTurn();
           }
-      	  //take Outpost turn
+            //take Outpost turn
           if (activePlayer.hasExtraOutpostTurn() && !isGameFinished()){
-        	activePlayer.takeTurn();
+            activePlayer.takeTurn();
             extraTurnsTakenByActivePlayer=true;
           }
           if (activePlayer.hasExtraMissionTurn() && !isGameFinished() && !extraTurnsTakenByActivePlayer) {
@@ -121,22 +120,22 @@ public void determineWinners() {
     int theMaxPoints = -1000;
     int theMinTurns = 10000;
     int winners = 0;
-     
+
     for (DomPlayer thePlayer : players) {
       thePlayer.handleGameEnd();
     }
     for (DomPlayer thePlayer : players) {
       if (DomEngine.haveToLog) DomEngine.addToStartOfLog( "");
       thePlayer.showDeck();
-      if (DomEngine.haveToLog) 
-    	  DomEngine.addToStartOfLog( "<B>"+thePlayer + "</B> has " +  thePlayer.countVictoryPoints() + " points "
-    			  +(thePlayer.getVictoryTokens()>0 ? (" ("+thePlayer.getVictoryTokens()+"&#x25BC;) ") : "")
+      if (DomEngine.haveToLog)
+          DomEngine.addToStartOfLog( "<B>"+thePlayer + "</B> has " +  thePlayer.countVictoryPoints() + " points "
+                  +(thePlayer.getVictoryTokens()>0 ? (" ("+thePlayer.getVictoryTokens()+"&#x25BC;) ") : "")
                   + getLandMarkText(thePlayer)
                   +"and took " + thePlayer.getTurns() + " turns");
       theMaxPoints = thePlayer.countVictoryPoints()>theMaxPoints ? thePlayer.countVictoryPoints() : theMaxPoints;
     }
     for (DomPlayer thePlayer : players) {
-      if (thePlayer.countVictoryPoints()>=theMaxPoints) { 
+      if (thePlayer.countVictoryPoints()>=theMaxPoints) {
         theMinTurns = thePlayer.getTurns()<theMinTurns ? thePlayer.getTurns() : theMinTurns;
       }
     }
@@ -157,7 +156,7 @@ public void determineWinners() {
 //          if (players.get(0).pprUsed)
           thePlayer.addWin();
         }
-      } 
+      }
     }
 }
 
@@ -210,14 +209,14 @@ boolean isGameFinished() {
       checkGameFinishTime+=System.currentTimeMillis()-theTime;
       return true;
     }
-    
+
     boolean isGameFinished;
-	if (players.size()==1) {
-    	isGameFinished = board.count( DomCardName.Province)<=4 
+    if (players.size()==1) {
+        isGameFinished = board.count( DomCardName.Province)<=4
             || (board.get(DomCardName.Colony)!=null && board.count( DomCardName.Colony)<=4 );
         checkGameFinishTime+=System.currentTimeMillis()-theTime;
     } else {
-    	isGameFinished = board.count( DomCardName.Province)==0 
+        isGameFinished = board.count( DomCardName.Province)==0
           || (board.get(DomCardName.Colony)!=null && board.count( DomCardName.Colony)==0 );
         checkGameFinishTime+=System.currentTimeMillis()-theTime;
     }
@@ -294,15 +293,15 @@ public DomCard removeFromTrash( DomCard aCard) {
 }
 
 public ArrayList<DomCard> revealFromBlackMarketDeck() {
-	return board.revealFromBlackMarketDeck();
+    return board.revealFromBlackMarketDeck();
 }
 
 public void returnToBlackMarketDeck(DomCard theCard) {
-	board.returnToBlackMarketDeck(theCard);
+    board.returnToBlackMarketDeck(theCard);
 }
 
 public int getEmbargoTokensOn(DomCardName aCard) {
-	return board.getEmbargoTokensOn(aCard);
+    return board.getEmbargoTokensOn(aCard);
 }
 
 public void putEmbargoTokenOn(DomCardName aCard) {
@@ -310,19 +309,19 @@ public void putEmbargoTokenOn(DomCardName aCard) {
 }
 
 public DomCardName getBestCardInSupplyFor(DomPlayer aPlayer, DomCardType aType, DomCost domCost, boolean anExactCost) {
-	return board.getBestCardInSupplyFor(aPlayer, aType, domCost, anExactCost, null);
+    return board.getBestCardInSupplyFor(aPlayer, aType, domCost, anExactCost, null);
 }
 
 public DomCardName getBestCardInSupplyFor(DomPlayer aPlayer, DomCardType aType, DomCost domCost) {
-	return board.getBestCardInSupplyFor(aPlayer, aType, domCost, false, null);
+    return board.getBestCardInSupplyFor(aPlayer, aType, domCost, false, null);
 }
 
 public DomCardName getCardForSwindler(DomPlayer aPlayer, DomCost domCost) {
-	return board.getCardForSwindler( aPlayer, domCost);
+    return board.getCardForSwindler( aPlayer, domCost);
 }
 
 public double countCardsInSmallestPile() {
-	return board.countCardsInSmallestPile();
+    return board.countCardsInSmallestPile();
 }
 
 public boolean isBuyPhase() {
@@ -330,7 +329,7 @@ public boolean isBuyPhase() {
 }
 
 public int getBridgesPlayed() {
-	return activePlayer.getBridgesPlayedCount();
+    return activePlayer.getBridgesPlayedCount();
 }
 
 public int getPrincessesInPlay() {
@@ -343,27 +342,27 @@ public int getQuarriesPlayed() {
 
   public int countActionsInPlay() {
     int theCount = 0;
-	for (DomCard theCard : activePlayer.getCardsInPlay()) {
-	  theCount+=theCard.hasCardType( DomCardType.Action ) ? 1 : 0;
-	}
+    for (DomCard theCard : activePlayer.getCardsInPlay()) {
+      theCount+=theCard.hasCardType( DomCardType.Action ) ? 1 : 0;
+    }
     return theCount;
   }
 
 public int getGainsNeededToEndGame() {
-	return getBoard().getGainsNeededToEndGame();
+    return getBoard().getGainsNeededToEndGame();
 }
 
 public DomCardName getBestCardInSupplyNotOfType(DomPlayer aPlayer,
-		DomCardType aType, DomCost domCost) {
-	return board.getBestCardInSupplyFor(aPlayer, null, domCost, false, aType);
+        DomCardType aType, DomCost domCost) {
+    return board.getBestCardInSupplyFor(aPlayer, null, domCost, false, aType);
 }
 
 public int getHighwaysInPlay() {
-	return activePlayer.getCardsFromPlay(DomCardName.Highway).size();
+    return activePlayer.getCardsFromPlay(DomCardName.Highway).size();
 }
 
 public DomPlayer getActivePlayer() {
-	return activePlayer;
+    return activePlayer;
 }
 
 public boolean isInKingDom(DomCardName aCard) {

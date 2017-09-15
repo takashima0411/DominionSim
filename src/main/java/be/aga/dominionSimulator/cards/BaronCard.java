@@ -24,13 +24,13 @@ public class BaronCard extends DomCard {
           || owner.wants( DomCardName.Estate)
           || owner.getCurrentGame().countInSupply( DomCardName.Estate )==0;
     }
-    
+
     @Override
     public int getDiscardPriority(int aActionsLeft) {
-    	if (aActionsLeft>0 && owner.getCardsInHand().contains(this) 
-    	&& owner.getCardsFromHand(DomCardName.Baron).size()==1 && !owner.getCardsFromHand(DomCardName.Estate).isEmpty())
-    		return 29;
-    	return super.getDiscardPriority(aActionsLeft);
+        if (aActionsLeft>0 && owner.getCardsInHand().contains(this)
+        && owner.getCardsFromHand(DomCardName.Baron).size()==1 && !owner.getCardsFromHand(DomCardName.Estate).isEmpty())
+            return 29;
+        return super.getDiscardPriority(aActionsLeft);
     }
 
 }

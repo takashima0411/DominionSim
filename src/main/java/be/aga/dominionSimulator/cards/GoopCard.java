@@ -15,9 +15,9 @@ package be.aga.dominionSimulator.cards;
 //    public void play() {
 //      owner.addAvailableCoins( 2 );
 //      Collections.sort( owner.getCardsInHand(), SORT_FOR_TRASHING);
-//      if (!owner.getCardsInHand().isEmpty()) 
+//      if (!owner.getCardsInHand().isEmpty())
 //        owner.trash(owner.removeCardFromHand( owner.getCardsInHand().get( 0 )));
-//        
+//
 //  	  for (DomPlayer thePlayer : owner.getOpponents()) {
 //  		  if (thePlayer.checkDefense())
 //  			  continue;

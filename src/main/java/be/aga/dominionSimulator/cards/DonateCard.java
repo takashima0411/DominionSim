@@ -15,7 +15,7 @@ public class DonateCard extends DomCard {
     public void play() {
         owner.triggerDonateAfterTurn();
    }
-    
+
     public static void trashStuff(DomPlayer owner) {
         owner.addCardsToHand(owner.removeAllCardsFromDiscardAndDeck());
         Collections.sort(owner.getCardsInHand(),SORT_FOR_TRASHING);

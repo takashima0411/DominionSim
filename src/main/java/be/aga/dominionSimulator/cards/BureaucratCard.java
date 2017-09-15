@@ -13,18 +13,18 @@ public class BureaucratCard extends DomCard {
     }
 
     public void play() {
-    	DomCard theSilver = owner.getCurrentGame().takeFromSupply(DomCardName.Silver);
-    	if (theSilver!=null)
-    	  owner.gainOnTopOfDeck(theSilver);
-    	for (DomPlayer thePlayer : owner.getOpponents()) {
-    	   if (thePlayer.checkDefense())
-    		   continue;
+        DomCard theSilver = owner.getCurrentGame().takeFromSupply(DomCardName.Silver);
+        if (theSilver!=null)
+          owner.gainOnTopOfDeck(theSilver);
+        for (DomPlayer thePlayer : owner.getOpponents()) {
+           if (thePlayer.checkDefense())
+               continue;
            ArrayList<DomCard> victoriesInHand = thePlayer.getCardsFromHand(DomCardType.Victory);
-		   if (victoriesInHand.isEmpty()) {
-        	 thePlayer.showHand();
+           if (victoriesInHand.isEmpty()) {
+             thePlayer.showHand();
            } else {
-        	 thePlayer.putOnTopOfDeck(thePlayer.removeCardFromHand(victoriesInHand.get(0)));
+             thePlayer.putOnTopOfDeck(thePlayer.removeCardFromHand(victoriesInHand.get(0)));
            }
-    	}
+        }
     }
 }

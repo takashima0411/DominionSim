@@ -5,7 +5,7 @@ import be.aga.dominionSimulator.enums.DomCardName;
 
 public class InheritanceCard extends DomCard {
 
-	public InheritanceCard() {
+    public InheritanceCard() {
       super( DomCardName.Inheritance);
     }
 

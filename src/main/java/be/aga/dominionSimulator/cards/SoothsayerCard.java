@@ -20,7 +20,7 @@ public class SoothsayerCard extends DomCard {
       }
       owner.gain(DomCardName.Gold);
     }
-    
+
     @Override
     public int getDiscardPriority( int aActionsLeft ) {
         if (owner!=null) {
@@ -29,7 +29,7 @@ public class SoothsayerCard extends DomCard {
         }
         return super.getDiscardPriority( aActionsLeft );
     }
-    
+
     @Override
     public int getPlayPriority( ) {
       if (owner!=null) {

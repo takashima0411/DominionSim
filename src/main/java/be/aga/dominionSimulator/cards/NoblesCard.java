@@ -14,9 +14,9 @@ public class NoblesCard extends DomCard {
           return;
       }
       if ( owner.getDeckSize()==0 || (owner.getNextActionToPlay()!=null && owner.getActionsLeft()==0)) {
-    	  owner.addActions(2);
+          owner.addActions(2);
       } else {
-    	  owner.drawCards(3);
+          owner.drawCards(3);
       }
     }
 }

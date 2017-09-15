@@ -35,7 +35,7 @@ public class TransmogrifyCard extends DomCard {
     @Override
     public void doWhenCalled() {
         if (owner.getCardsInHand().isEmpty())
-        	return;
+            return;
         Collections.sort( owner.getCardsInHand(), SORT_FOR_TRASHING);
         if (owner.getCardsInHand().get(0).getName()==DomCardName.Curse) {
             owner.trash( owner.removeCardFromHand( owner.getCardsInHand().get(0) ) );

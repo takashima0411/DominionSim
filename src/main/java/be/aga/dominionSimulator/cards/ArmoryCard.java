@@ -18,7 +18,7 @@ public class ArmoryCard extends DomCard {
         if (theDesiredCard!=null)
         owner.gainOnTopOfDeck(owner.getCurrentGame().takeFromSupply(theDesiredCard));
     }
-    
+
     @Override
     public boolean wantsToBePlayed() {
        return owner.getDesiredCard(new DomCost( 4, 0), false) != null ;

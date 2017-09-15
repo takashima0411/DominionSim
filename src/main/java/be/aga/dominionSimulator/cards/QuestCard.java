@@ -1,13 +1,12 @@
 package be.aga.dominionSimulator.cards;
 
 import be.aga.dominionSimulator.DomCard;
-import be.aga.dominionSimulator.DomCost;
 import be.aga.dominionSimulator.enums.DomCardName;
 import be.aga.dominionSimulator.enums.DomCardType;
 
 public class QuestCard extends DomCard {
 
-	public QuestCard() {
+    public QuestCard() {
       super( DomCardName.Quest);
     }
 

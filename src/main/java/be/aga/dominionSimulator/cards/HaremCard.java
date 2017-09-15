@@ -7,7 +7,7 @@ public class HaremCard extends DomCard {
     public HaremCard () {
       super( DomCardName.Harem);
     }
-    
+
     @Override
     public int getTrashPriority() {
       return 41;

@@ -16,18 +16,18 @@ public class InnCard extends DomCard {
       owner.drawCards(2);
       owner.doForcedDiscard(2, false);
     }
-    
+
     @Override
     public void doWhenGained() {
-    	HashSet<DomCard> theCards = new HashSet<>();
-		for (DomCard theCard : owner.getDeck().getDiscardPile()){
-			if (theCard.hasCardType(DomCardType.Action) && theCard.getDiscardPriority(1)>10)
-			  theCards.add(theCard);
-		}
-		for (DomCard card : theCards){
-		    owner.getDeck().getDiscardPile().remove(card);
-		    owner.putOnTopOfDeck(card);
-		}
-		owner.shuffleDeck();
+        HashSet<DomCard> theCards = new HashSet<>();
+        for (DomCard theCard : owner.getDeck().getDiscardPile()){
+            if (theCard.hasCardType(DomCardType.Action) && theCard.getDiscardPriority(1)>10)
+              theCards.add(theCard);
+        }
+        for (DomCard card : theCards){
+            owner.getDeck().getDiscardPile().remove(card);
+            owner.putOnTopOfDeck(card);
+        }
+        owner.shuffleDeck();
     }
 }

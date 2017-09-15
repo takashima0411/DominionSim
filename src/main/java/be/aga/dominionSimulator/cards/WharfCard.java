@@ -17,7 +17,7 @@ public class WharfCard extends DomCard {
         owner.addAvailableBuys(1);
         owner.drawCards(2);
     }
-    
+
     @Override
     public int getPlayPriority() {
       return owner.getActionsLeft()>1 ? 6 : super.getPlayPriority();

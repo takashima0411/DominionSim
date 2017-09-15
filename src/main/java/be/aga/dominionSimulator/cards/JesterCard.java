@@ -15,19 +15,19 @@ public class JesterCard extends DomCard {
     public void play() {
       owner.addAvailableCoins(2);
       for (DomPlayer thePlayer : owner.getOpponents()) {
-          if (thePlayer.checkDefense()) 
-        	continue;
+          if (thePlayer.checkDefense())
+            continue;
           ArrayList< DomCard > theCards = thePlayer.revealTopCards(1);
           if (theCards.isEmpty())
-        	continue;
+            continue;
           thePlayer.discard(theCards.get(0));
           if (theCards.get(0).hasCardType(DomCardType.Victory)){
-        	  if (owner.getCurrentGame().countInSupply(DomCardName.Curse)>0)
-        		thePlayer.gain(DomCardName.Curse);
-        	  continue;
+              if (owner.getCurrentGame().countInSupply(DomCardName.Curse)>0)
+                thePlayer.gain(DomCardName.Curse);
+              continue;
           }
           if (owner.getCurrentGame().countInSupply(theCards.get(0).getName())==0)
-        	continue;
+            continue;
           if (theCards.get(0).getTrashPriority()<16) {
             thePlayer.gain(theCards.get(0).getName());
           } else {

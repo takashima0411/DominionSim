@@ -13,7 +13,7 @@ public class ButcherCard extends DomCard {
     public void play() {
       owner.addCoinTokens(2);
       if (owner.getCardsInHand().isEmpty())
-    	return;
+        return;
       DomCard theCardToTrash = findCardToTrash();
       if (theCardToTrash==null) {
         if (DomEngine.haveToLog) DomEngine.addToLog( this + " trashes nothing." );
@@ -21,9 +21,9 @@ public class ButcherCard extends DomCard {
       }
       owner.trash(owner.removeCardFromHand( theCardToTrash));
       DomCost theMaxCostOfCardToGain = new DomCost( theCardToTrash.getCoinCost(owner.getCurrentGame()) + owner.getCoinTokens(), theCardToTrash.getPotionCost());
-	  DomCardName theDesiredCard = owner.getDesiredCard(theMaxCostOfCardToGain, false);
+      DomCardName theDesiredCard = owner.getDesiredCard(theMaxCostOfCardToGain, false);
       if (theDesiredCard==null)
-    	theDesiredCard=owner.getCurrentGame().getBestCardInSupplyFor(owner, null, theMaxCostOfCardToGain);
+        theDesiredCard=owner.getCurrentGame().getBestCardInSupplyFor(owner, null, theMaxCostOfCardToGain);
       if (theDesiredCard!=null) {
           int theCoinTokens = theDesiredCard.getCoinCost(owner.getCurrentGame()) - theCardToTrash.getCoinCost(owner.getCurrentGame());
           if (theCoinTokens>0)
@@ -31,7 +31,7 @@ public class ButcherCard extends DomCard {
           owner.gain(theDesiredCard);
       }
     }
-    
+
     private DomCard findCardToTrash() {
         if (!owner.getCardsFromHand(DomCardName.Curse).isEmpty())
             return owner.getCardsFromHand(DomCardName.Curse).get(0);

@@ -9,9 +9,9 @@ public class PossessionCard extends DomCard {
     }
 
     public void play() {
-    	if (!owner.getOpponents().isEmpty())
-    	  owner.getOpponents().get(0).addPossessionTurn(owner);
+        if (!owner.getOpponents().isEmpty())
+          owner.getOpponents().get(0).addPossessionTurn(owner);
     }
-    
+
     //handling is done mostly in DomPlayer and DomDeck
 }

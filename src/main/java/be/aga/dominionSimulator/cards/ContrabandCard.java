@@ -16,7 +16,7 @@ public class ContrabandCard extends DomCard {
       DomCardName theChosenCard = null;
       int theExpectedMoney=owner.getTotalMoneyInDeck()*5/owner.countAllCards();
       for (;theChosenCard==null && theExpectedMoney>0;theExpectedMoney--) {
-    	//forbid buying a good card (add $3 to the average money in the deck to simulate a good turn)  
+        //forbid buying a good card (add $3 to the average money in the deck to simulate a good turn)
         DomCost theExpectedCurrency = new DomCost(theExpectedMoney + 3, owner.countInDeck(DomCardName.Potion));
         theChosenCard = owner.getDesiredCard(theExpectedCurrency, false);
         //if multiple Contrabands played, make sure there are multiple forbidden cards to buy
@@ -24,7 +24,7 @@ public class ContrabandCard extends DomCard {
           theChosenCard=null;
       }
       owner.addForbiddenCardToBuy(theChosenCard);
-      if (DomEngine.haveToLog) 
+      if (DomEngine.haveToLog)
           DomEngine.addToLog( owner + " can't buy " + theChosenCard.toHTML() +" this turn");
     }
 }

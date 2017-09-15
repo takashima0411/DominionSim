@@ -31,45 +31,45 @@ public class BishopCard extends DomCard {
       handleOpponents();
     }
 
-	private DomCard findCardToTrash() {
+    private DomCard findCardToTrash() {
       Collections.sort( owner.getCardsInHand(), SORT_FOR_TRASHING);
       DomCard theCardToTrash = owner.getCardsInHand().get( 0 );
       if (theCardToTrash==this && owner.getCardsInHand().size()>1)
-    	  theCardToTrash = owner.getCardsInHand().get( 1 );
+          theCardToTrash = owner.getCardsInHand().get( 1 );
       if (owner.countAllCards()<10) {
-      	//this is to enable the 5-card deck of Bishop, 2 Silvers, a Gold and a Province
-      	ArrayList<DomCard> theProvinces = owner.getCardsFromHand(DomCardName.Province);
-      	if (!theProvinces.isEmpty()) {
-      		theCardToTrash=theProvinces.get(0);
-      	}
+          //this is to enable the 5-card deck of Bishop, 2 Silvers, a Gold and a Province
+          ArrayList<DomCard> theProvinces = owner.getCardsFromHand(DomCardName.Province);
+          if (!theProvinces.isEmpty()) {
+              theCardToTrash=theProvinces.get(0);
+          }
       }
       if (!owner.getCardsFromHand(DomCardName.Market_Square).isEmpty() && !owner.getCardsFromHand(DomCardName.Gold).isEmpty())
           theCardToTrash=owner.getCardsFromHand(DomCardName.Gold).get(0);
       return theCardToTrash;
-	}
+    }
 
-	private void handleOpponents() {
-		for (DomPlayer thePlayer : owner.getOpponents()) {
-		    boolean trashes=false;
-		    if (thePlayer.getCardsInHand().size()>0) {
-		      Collections.sort( thePlayer.getCardsInHand() , SORT_FOR_TRASHING);
-		      DomCard theCardToTrash = thePlayer.getCardsInHand().get( 0 );
-		      if (theCardToTrash.getTrashPriority()<16) {
-		        if (!thePlayer.removingReducesBuyingPower( theCardToTrash )){
-		          thePlayer.trash(thePlayer.removeCardFromHand( theCardToTrash));
-		          trashes=true;
-		        }
-		      }
-		    }
-		    if (DomEngine.haveToLog && !trashes) DomEngine.addToLog( thePlayer + " trashes nothing");
-		  }
-	}
+    private void handleOpponents() {
+        for (DomPlayer thePlayer : owner.getOpponents()) {
+            boolean trashes=false;
+            if (thePlayer.getCardsInHand().size()>0) {
+              Collections.sort( thePlayer.getCardsInHand() , SORT_FOR_TRASHING);
+              DomCard theCardToTrash = thePlayer.getCardsInHand().get( 0 );
+              if (theCardToTrash.getTrashPriority()<16) {
+                if (!thePlayer.removingReducesBuyingPower( theCardToTrash )){
+                  thePlayer.trash(thePlayer.removeCardFromHand( theCardToTrash));
+                  trashes=true;
+                }
+              }
+            }
+            if (DomEngine.haveToLog && !trashes) DomEngine.addToLog( thePlayer + " trashes nothing");
+          }
+    }
 
-	@Override
-	public boolean wantsToBePlayed() {
-		if (owner.getTotalMoneyInDeck()<7 && owner.countAllCards()<5)
-		  //little fix to prevent The Golden deck from trashing itself to death
-		  return false;
-		return super.wantsToBePlayed();
-	}
+    @Override
+    public boolean wantsToBePlayed() {
+        if (owner.getTotalMoneyInDeck()<7 && owner.countAllCards()<5)
+          //little fix to prevent The Golden deck from trashing itself to death
+          return false;
+        return super.wantsToBePlayed();
+    }
 }

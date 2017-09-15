@@ -15,16 +15,16 @@ public class HerbalistCard extends DomCard {
       owner.addAvailableCoins(1);
       owner.addAvailableBuys(1);
     }
-    
-	public void maybeAddTagFor(ArrayList<DomCard> theCardsToHandle) {
+
+    public void maybeAddTagFor(ArrayList<DomCard> theCardsToHandle) {
       for (int i=theCardsToHandle.size()-1;i>=0;i--) {
-    	DomCard theCard = theCardsToHandle.get(i);
-    	if (!theCard.isTaggedByHerbalist()
-    	 && theCard.getDiscardPriority(1)>20 
-    	 && theCard.hasCardType(DomCardType.Treasure) ) {
-    		theCard.addHerbalistTag();
-    		break;
-    	}
+        DomCard theCard = theCardsToHandle.get(i);
+        if (!theCard.isTaggedByHerbalist()
+         && theCard.getDiscardPriority(1)>20
+         && theCard.hasCardType(DomCardType.Treasure) ) {
+            theCard.addHerbalistTag();
+            break;
+        }
       }
-	}
+    }
 }

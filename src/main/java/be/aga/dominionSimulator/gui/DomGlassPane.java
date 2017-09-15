@@ -8,13 +8,13 @@ import javax.swing.JPanel;
 
 public class DomGlassPane extends JPanel {
 
-	public DomGlassPane() {
-	  addMouseListener( new MouseAdapter() {
-	    public void mouseClicked( MouseEvent anE ) {
-	      JOptionPane.showMessageDialog(null, "Close the editor first!", "", JOptionPane.INFORMATION_MESSAGE);
-	    }
-	   });
-	  setVisible(false);
-	  setOpaque(false);
-	}
+    public DomGlassPane() {
+      addMouseListener( new MouseAdapter() {
+        public void mouseClicked( MouseEvent anE ) {
+          JOptionPane.showMessageDialog(null, "Close the editor first!", "", JOptionPane.INFORMATION_MESSAGE);
+        }
+       });
+      setVisible(false);
+      setOpaque(false);
+    }
 }

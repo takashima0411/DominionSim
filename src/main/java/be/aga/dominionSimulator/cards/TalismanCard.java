@@ -8,7 +8,7 @@ public class TalismanCard extends DomCard {
     public TalismanCard () {
       super( DomCardName.Talisman);
     }
-    
+
     @Override
     public void play() {
       owner.addAvailableCoins(1);

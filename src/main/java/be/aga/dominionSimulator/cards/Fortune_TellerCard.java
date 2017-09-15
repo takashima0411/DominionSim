@@ -14,16 +14,16 @@ public class Fortune_TellerCard extends DomCard {
 
     @Override
     public void play() {
-    	owner.addAvailableCoins(2);
+        owner.addAvailableCoins(2);
         for (DomPlayer thePlayer : owner.getOpponents()) {
-            if (thePlayer.checkDefense()) 
-            	continue;
+            if (thePlayer.checkDefense())
+                continue;
             ArrayList< DomCard > theRevealedCards = thePlayer.revealUntilVictoryOrCurse();
             for (DomCard theCard : theRevealedCards) {
                 if (theCard.hasCardType( DomCardType.Victory ) || theCard.hasCardType(DomCardType.Curse)){
-                	thePlayer.putOnTopOfDeck(theCard);
+                    thePlayer.putOnTopOfDeck(theCard);
                 }else{
-                	thePlayer.discard(theCard);
+                    thePlayer.discard(theCard);
                 }
             }
         }

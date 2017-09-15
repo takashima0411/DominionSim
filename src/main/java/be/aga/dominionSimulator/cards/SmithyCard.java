@@ -13,18 +13,18 @@ public class SmithyCard extends DomCard {
     public void play() {
       owner.drawCards( 3 );
     }
-    
+
     @Override
     public int getPlayPriority() {
       return owner.getActionsLeft()>1 ? 6 : super.getPlayPriority();
     }
-    
+
     @Override
     public boolean wantsToBePlayed() {
-    	if (owner.getPlayStrategyFor(this)==DomPlayStrategy.playIfNotBuyingTopCard 
-    	  && owner.isGoingToBuyTopCardInBuyRules(owner.getTotalPotentialCurrency()))
-    	  return false;
+        if (owner.getPlayStrategyFor(this)==DomPlayStrategy.playIfNotBuyingTopCard
+          && owner.isGoingToBuyTopCardInBuyRules(owner.getTotalPotentialCurrency()))
+          return false;
 
-    	return super.wantsToBePlayed();
+        return super.wantsToBePlayed();
     }
 }

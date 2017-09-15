@@ -14,21 +14,21 @@ public class RabbleCard extends DomCard {
 
     @Override
     public void play() {
-    	owner.drawCards(3);
+        owner.drawCards(3);
         for (DomPlayer thePlayer : owner.getOpponents()) {
             if (thePlayer.checkDefense())
-            	continue;
+                continue;
             ArrayList< DomCard > theTopThree = thePlayer.revealTopCards(3);
             for (DomCard theCard : theTopThree) {
                 if (theCard.hasCardType( DomCardType.Treasure ) || theCard.hasCardType(DomCardType.Action)){
-                	thePlayer.discard(theCard);
+                    thePlayer.discard(theCard);
                 }else{
-                	thePlayer.putOnTopOfDeck(theCard);
+                    thePlayer.putOnTopOfDeck(theCard);
                 }
             }
         }
     }
-    
+
     public int getPlayPriority() {
       if (owner.getDeckSize() == 0)
           return 50;

@@ -15,7 +15,7 @@ public class CoppersmithCard extends DomCard {
 
     @Override
     public double getPotentialCoinValue() {
-      if (owner.getActionsLeft()==0 
+      if (owner.getActionsLeft()==0
        && owner.getCardsInHand().contains( this ) ) {
           return 0;
       }

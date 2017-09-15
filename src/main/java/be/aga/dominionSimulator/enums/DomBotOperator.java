@@ -5,9 +5,9 @@ public enum DomBotOperator {
    minus,
    multiplyWith,
    divideBy,
-   
+
    ;
-   
+
    public String toString() {
        switch ( this ) {
        case plus :

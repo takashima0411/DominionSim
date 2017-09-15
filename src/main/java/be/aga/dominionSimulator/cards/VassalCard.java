@@ -12,7 +12,7 @@ public class VassalCard extends DomCard {
     public void play() {
       owner.addAvailableCoins(2);
       if (owner.getDeckSize()==0)
-    	return;
+        return;
       DomCard theRevealedCard = owner.revealTopCards(1).get(0);
       if (theRevealedCard.hasCardType(DomCardType.Action) && theRevealedCard.wantsToBePlayed())
         owner.play(theRevealedCard);

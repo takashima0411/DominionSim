@@ -9,7 +9,7 @@ public class RocksCard extends DomCard {
     public RocksCard() {
       super( DomCardName.Rocks);
     }
-    
+
     @Override
     public void play() {
       owner.addAvailableCoins(1);

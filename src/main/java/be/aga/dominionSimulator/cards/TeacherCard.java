@@ -3,10 +3,7 @@ package be.aga.dominionSimulator.cards;
 import be.aga.dominionSimulator.DomBuyCondition;
 import be.aga.dominionSimulator.DomBuyRule;
 import be.aga.dominionSimulator.DomCard;
-import be.aga.dominionSimulator.DomCost;
-import be.aga.dominionSimulator.enums.DomBotFunction;
 import be.aga.dominionSimulator.enums.DomCardName;
-import be.aga.dominionSimulator.enums.DomPlayStrategy;
 
 public class TeacherCard extends DomCard {
     public TeacherCard() {

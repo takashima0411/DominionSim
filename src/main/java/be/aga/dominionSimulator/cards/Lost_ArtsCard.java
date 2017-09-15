@@ -5,7 +5,7 @@ import be.aga.dominionSimulator.enums.DomCardName;
 
 public class Lost_ArtsCard extends DomCard {
 
-	public Lost_ArtsCard() {
+    public Lost_ArtsCard() {
       super( DomCardName.Lost_Arts);
     }
 
