@@ -4,21 +4,12 @@ import be.aga.dominionSimulator.cards.*;
 import be.aga.dominionSimulator.enums.DomCardName;
 import be.aga.dominionSimulator.enums.DomCardType;
 import be.aga.dominionSimulator.enums.DomPhase;
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.Logger;
-import org.apache.log4j.SimpleLayout;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 
+@Slf4j
 public class DomGame {
-    private static final Logger LOGGER = Logger.getLogger(DomGame.class);
-
-    static {
-        LOGGER.setLevel(DomEngine.LEVEL);
-        LOGGER.removeAllAppenders();
-        if (DomEngine.addAppender)
-            LOGGER.addAppender(new ConsoleAppender(new SimpleLayout()));
-    }
 
     ArrayList<DomPlayer> players = new ArrayList<>();
     DomBoard board;
@@ -110,8 +101,6 @@ public class DomGame {
                 DomEngine.logPlayerIndentation++;
             }
         } while (!isGameFinished());
-//    if (turn<=10)
-//        LOGGER.info("Weinig beurten: " + turn);
         DomEngine.logPlayerIndentation = 0;
     }
 
@@ -148,11 +137,9 @@ public class DomGame {
             if (thePlayer.countVictoryPoints() >= theMaxPoints && thePlayer.getTurns() <= theMinTurns) {
                 if (winners > 1) {
                     if (DomEngine.haveToLog) DomEngine.addToStartOfLog(thePlayer + " ties for the win !!");
-//          if (players.get(0).pprUsed)
                     thePlayer.addTie(1.0 / winners);
                 } else {
                     if (DomEngine.haveToLog) DomEngine.addToStartOfLog(thePlayer + " wins this game!!");
-//          if (players.get(0).pprUsed)
                     thePlayer.addWin();
                 }
             }
@@ -204,7 +191,7 @@ public class DomGame {
     boolean isGameFinished() {
         long theTime = System.currentTimeMillis();
         if (players.get(0).getTurns() > 60) {
-            LOGGER.debug("Too many turns!!! Game ended!");
+            log.debug("Too many turns!!! Game ended!");
             checkGameFinishTime += System.currentTimeMillis() - theTime;
             return true;
         }

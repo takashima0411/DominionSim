@@ -413,6 +413,10 @@ public class DomBoard extends EnumMap<DomCardName, ArrayList<DomCard>> {
         Collections.shuffle(get(DomCardName.Ruins));
     }
 
+    public void addCardPile(List<DomCardName> cards) {
+        cards.forEach(this::addCardPile);
+    }
+
     public void addCardPile(DomCardName aCardName) {
         if (aCardName.hasCardType(DomCardType.Shelter)) {
             if (separatePiles.get(aCardName) == null) {
@@ -422,9 +426,12 @@ public class DomBoard extends EnumMap<DomCardName, ArrayList<DomCard>> {
             return;
         }
 
-        if (get(aCardName) != null)
+        if (get(aCardName) != null) {
             return;
+        }
+
         put(aCardName, new ArrayList<>());
+
         int theNumber = 10;
 
         if (aCardName.hasCardType(DomCardType.Event))
@@ -475,19 +482,14 @@ public class DomBoard extends EnumMap<DomCardName, ArrayList<DomCard>> {
     }
 
     private void addVictoriesAndCurses() {
-        addCardPile(DomCardName.Estate);
-        addCardPile(DomCardName.Duchy);
-        addCardPile(DomCardName.Province);
-        addCardPile(DomCardName.Curse);
+        addCardPile(Arrays.asList(DomCardName.Estate, DomCardName.Duchy, DomCardName.Province, DomCardName.Curse));
     }
 
     /**
      *
      */
     private void addTreasures() {
-        addCardPile(DomCardName.Copper);
-        addCardPile(DomCardName.Silver);
-        addCardPile(DomCardName.Gold);
+        addCardPile(DomCardName.getTreasures());
         if (get(DomCardName.Colony) != null) {
             addCardPile(DomCardName.Platinum);
         }
@@ -754,9 +756,10 @@ public class DomBoard extends EnumMap<DomCardName, ArrayList<DomCard>> {
 
     public double countCardsInSmallestPile() {
         int theSmallest = 10;
-        for (DomCardName cardName : keySet()) {
-            if (get(cardName).size() < theSmallest && get(cardName).size() > 0)
-                theSmallest = get(cardName).size();
+        for (Map.Entry<DomCardName, ArrayList<DomCard>> entry : entrySet()) {
+            int size = entry.getValue().size();
+            if (size < theSmallest && size > 0)
+                theSmallest = size;
         }
         return theSmallest;
     }

@@ -4,23 +4,15 @@ import be.aga.dominionSimulator.cards.DuplicateCard;
 import be.aga.dominionSimulator.enums.DomBotType;
 import be.aga.dominionSimulator.enums.DomCardName;
 import be.aga.dominionSimulator.enums.DomCardType;
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.Logger;
-import org.apache.log4j.SimpleLayout;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
+import java.util.Map;
 
+@Slf4j
 public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
-    protected static final Logger LOGGER = Logger.getLogger(DomDeck.class);
-
-    static {
-        LOGGER.setLevel(DomEngine.LEVEL);
-        LOGGER.removeAllAppenders();
-        if (DomEngine.addAppender)
-            LOGGER.addAppender(new ConsoleAppender(new SimpleLayout()));
-    }
 
     private ArrayList<DomCard> drawDeck = new ArrayList<>();
     private final ArrayList<DomCard> discardPile = new ArrayList<>();
@@ -72,10 +64,10 @@ public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
                     newDeck.add(0, drawDeck.remove(i));
             }
             drawDeck = newDeck;
-            LOGGER.debug("Iteratie " + j);
-            LOGGER.debug("-------------");
+            log.debug("Iteratie " + j);
+            log.debug("-------------");
             for (DomCard card : drawDeck) {
-                LOGGER.debug(card.getName());
+                log.debug(card.getName().toString());
             }
         }
     }
@@ -104,10 +96,10 @@ public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
                 }
             }
             drawDeck = newDeck;
-            LOGGER.debug("Iteratie ");
-            LOGGER.debug("-------------");
+            log.debug("Iteratie ");
+            log.debug("-------------");
             for (DomCard card : drawDeck) {
-                LOGGER.debug(card.getName());
+                log.debug(card.getName().toString());
             }
         }
     }
@@ -135,9 +127,9 @@ public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
 
     public int count(DomCardType aCardType) {
         int theCount = 0;
-        for (DomCardName theCardName : keySet()) {
-            if (theCardName.hasCardType(aCardType)) {
-                theCount += get(theCardName).size();
+        for (Map.Entry<DomCardName, ArrayList<DomCard>> name : entrySet()) {
+            if (name.getKey().hasCardType(aCardType)) {
+                theCount += 0;
             }
         }
         return theCount;
@@ -145,8 +137,9 @@ public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
 
     public double getTotalTreasure() {
         double theTotalMoney = 0;
-        for (DomCardName theCardName : keySet()) {
-            theTotalMoney += theCardName.hasCardType(DomCardType.Treasure) ? theCardName.getCoinValue() * get(theCardName).size() : 0;
+        for (Map.Entry<DomCardName, ArrayList<DomCard>> entry : entrySet()) {
+            DomCardName name = entry.getKey();
+            theTotalMoney += name.hasCardType(DomCardType.Treasure) ? name.getCoinValue() * get(name).size() : 0;
         }
         return theTotalMoney;
     }
@@ -324,9 +317,10 @@ public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
      */
     public int countVictoryPoints() {
         int count = 0;
-        for (DomCardName theCardName : keySet()) {
-            if (theCardName.hasCardType(DomCardType.Victory) || theCardName.hasCardType(DomCardType.Curse)) {
-                count += get(theCardName).size() * theCardName.getVictoryValue(owner);
+        for (Map.Entry<DomCardName, ArrayList<DomCard>> entry : entrySet()) {
+            DomCardName name = entry.getKey();
+            if (name.hasCardType(DomCardType.Victory) || name.hasCardType(DomCardType.Curse)) {
+                count += get(name).size() * name.getVictoryValue(owner);
             }
         }
         count += owner.getAllFromTavernMat(DomCardName.DistantLands).size() * 4;
@@ -345,7 +339,7 @@ public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
                 get(aRemove.getName()).remove(aRemove);
                 aRemove.owner = null;
             } catch (Exception e) {
-                LOGGER.error("Problem when trashing " + aRemove);
+                log.error("Problem when trashing " + aRemove);
             }
         }
     }
@@ -363,22 +357,21 @@ public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
             return;
 
         StringBuilder theMessage = null;
-        for (DomCardName theCardName : keySet()) {
-            if (get(theCardName).size() > 0) {
-                if (theCardName == DomCardName.DistantLands)
-                    continue;
-                if (theMessage == null) {
-                    theMessage = new StringBuilder();
-//            	.append( owner + " shows this deck (");
-                    theMessage.append("&nbsp;&nbsp;&nbsp;").append(countAllCards()).append(" cards : [");
-                } else {
-                    theMessage.append(", ");
-                }
-                theMessage.append(get(theCardName).size()).append(" ").append(theCardName.toHTML());
-                int theVP = theCardName.getVictoryValue(owner);
-                if (theVP != 0)
-                    theMessage.append(" (" + theVP * get(theCardName).size() + "&#x25BC;)");
+
+        for (Map.Entry<DomCardName, ArrayList<DomCard>> entry : entrySet()) {
+            DomCardName name = entry.getKey();
+            if (name == DomCardName.DistantLands)
+                continue;
+            if (theMessage == null) {
+                theMessage = new StringBuilder();
+                theMessage.append("&nbsp;&nbsp;&nbsp;").append(countAllCards()).append(" cards : [");
+            } else {
+                theMessage.append(", ");
             }
+            theMessage.append(get(name).size()).append(" ").append(name.toHTML());
+            int theVP = name.getVictoryValue(owner);
+            if (theVP != 0)
+                theMessage.append(" (" + theVP * get(name).size() + "&#x25BC;)");
         }
         //special handling for Distant Lands
         if (get(DomCardName.DistantLands) != null) {
@@ -402,8 +395,9 @@ public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
      */
     public int countAllCards() {
         int theCount = 0;
-        for (DomCardName theName : keySet()) {
-            theCount += get(theName).size();
+        for (Map.Entry<DomCardName, ArrayList<DomCard>> entry : entrySet()) {
+            DomCardName name = entry.getKey();
+            theCount += get(name).size();
         }
         return theCount;
     }
@@ -413,8 +407,9 @@ public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
      */
     public int getTotalMoney() {
         int theTotal = 0;
-        for (DomCardName theCardName : keySet()) {
-            theTotal += get(theCardName).size() * theCardName.getCoinValue();
+        for (Map.Entry<DomCardName, ArrayList<DomCard>> entry : entrySet()) {
+            DomCardName name = entry.getKey();
+            theTotal += get(name).size() * name.getCoinValue();
         }
         return theTotal;
     }
@@ -471,8 +466,9 @@ public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
      */
     public ArrayList<DomCard> collectAllCards() {
         ArrayList<DomCard> theCards = new ArrayList<>();
-        for (DomCardName theCardName : keySet()) {
-            theCards.addAll(get(theCardName));
+        for (Map.Entry<DomCardName, ArrayList<DomCard>> entry : entrySet()) {
+            DomCardName name = entry.getKey();
+            theCards.addAll(get(name));
         }
         return theCards;
     }
@@ -487,8 +483,9 @@ public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
     public int countDifferentCards() {
         ArrayList<DomCardName> theSingleCards = new ArrayList<>();
         int theCount = theSingleCards.size();
-        for (DomCardName theCardName : keySet()) {
-            theCount += get(theCardName).isEmpty() ? 0 : 1;
+        for (Map.Entry<DomCardName, ArrayList<DomCard>> entry : entrySet()) {
+            DomCardName name = entry.getKey();
+            theCount += get(name).isEmpty() ? 0 : 1;
         }
         return theCount;
     }
@@ -541,10 +538,11 @@ public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
                 theCounts.put(card.getName(), theCounts.get(card.getName()) + 1);
             }
         }
-        for (DomCardName cardName : theCounts.keySet()) {
+        for (Map.Entry<DomCardName, ArrayList<DomCard>> entry : entrySet()) {
+            DomCardName name = entry.getKey();
             if (theMostLikelyCard == null
-                    || theCounts.get(cardName) > theCounts.get(theMostLikelyCard))
-                theMostLikelyCard = cardName;
+                    || theCounts.get(name) > theCounts.get(theMostLikelyCard))
+                theMostLikelyCard = name;
         }
         return theMostLikelyCard;
     }
@@ -644,8 +642,9 @@ public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
     @Override
     public String toString() {
         StringBuilder theString = new StringBuilder();
-        for (DomCardName cardName : keySet()) {
-            theString.append(cardName + "[" + get(cardName).size() + "]");
+        for (Map.Entry<DomCardName, ArrayList<DomCard>> entry : entrySet()) {
+            DomCardName name = entry.getKey();
+            theString.append(name + "[" + get(name).size() + "]");
         }
         return theString.toString();
     }
@@ -696,10 +695,11 @@ public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
                 }
             }
         }
-        for (DomCardName cardName : theCounts.keySet()) {
+        for (Map.Entry<DomCardName, ArrayList<DomCard>> entry : entrySet()) {
+            DomCardName name = entry.getKey();
             if (theMostLikelyCard == null
-                    || theCounts.get(cardName) > theCounts.get(theMostLikelyCard))
-                theMostLikelyCard = cardName;
+                    || theCounts.get(name) > theCounts.get(theMostLikelyCard))
+                theMostLikelyCard = name;
         }
         if (theMostLikelyCard == null)
             return DomCardName.Copper;
@@ -763,7 +763,6 @@ public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
     }
 
     public DomCard removeFromDiscard(DomCardName cardName) {
-        ArrayList<DomCard> theCards = new ArrayList<>();
         for (DomCard theCard : discardPile) {
             if (theCard.getName() == cardName) {
                 discardPile.remove(theCard);
@@ -775,8 +774,9 @@ public class DomDeck extends EnumMap<DomCardName, ArrayList<DomCard>> {
 
     public int countSingletonCards() {
         int theCount = 0;
-        for (DomCardName theCard : keySet()) {
-            if (get(theCard).size() == 1)
+        for (Map.Entry<DomCardName, ArrayList<DomCard>> entry : entrySet()) {
+            DomCardName name = entry.getKey();
+            if (get(name).size() == 1)
                 theCount++;
         }
         return theCount;

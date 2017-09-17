@@ -5,9 +5,7 @@ import be.aga.dominionSimulator.cards.*;
 import be.aga.dominionSimulator.gui.EscapeDialog;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
+import java.util.*;
 
 public enum DomCardName {
     //common cards
@@ -413,9 +411,8 @@ public enum DomCardName {
             return 0;
         }
     };
-
-    private DomCost cost = null;
     private final HashSet<DomCardType> types = new HashSet<>();
+    private DomCost cost = null;
     private int coinValue;
     private int victoryValue;
     private int playPriority;
@@ -473,6 +470,352 @@ public enum DomCardName {
     /**
      * @return
      */
+    public boolean hasCardType(DomCardType aCardType) {
+        return types.contains(aCardType);
+    }
+
+    public static List<DomCardName> getTreasures() {
+        return Arrays.asList(DomCardName.Copper, DomCardName.Silver, DomCardName.Gold);
+    }
+
+    public static Object[] getPossibleBaneCards() {
+        ArrayList<DomCardName> possibleBanes = new ArrayList<>();
+        for (DomCardName cardName : values()) {
+            if (cardName.getCost().compareTo(new DomCost(2, 0)) == 0
+                    || cardName.getCost().compareTo(new DomCost(3, 0)) == 0) {
+                if (cardName.hasCardType(DomCardType.Kingdom))
+                    possibleBanes.add(cardName);
+            }
+        }
+        return possibleBanes.toArray();
+    }
+
+    public static Object[] getKingdomCards() {
+        ArrayList<DomCardName> theCards = new ArrayList<>();
+        for (DomCardName cardName : values()) {
+            if (!DomSet.Base.contains(cardName))
+                theCards.add(cardName);
+        }
+        return theCards.toArray();
+    }
+
+    public HashSet<DomCardType> types() {
+        return types;
+    }
+
+    public int countLegalCardTypes() {
+        int theCount = 0;
+        for (DomCardType domCardType : types) {
+            theCount += domCardType.isLegal() ? 1 : 0;
+        }
+        return theCount;
+    }
+
+    public Object[] getPlayStrategies() {
+        ArrayList<DomPlayStrategy> theStrategies = new ArrayList<>();
+        switch (this) {
+            case Ambassador:
+                theStrategies.add(DomPlayStrategy.ambassadorWar);
+                theStrategies.add(DomPlayStrategy.aggressiveTrashing);
+                break;
+
+            case Amulet:
+                theStrategies.add(DomPlayStrategy.silverGainer);
+                theStrategies.add(DomPlayStrategy.aggressiveTrashing);
+                break;
+
+            case Apothecary:
+                theStrategies.add(DomPlayStrategy.ApothecaryNativeVillage);
+                break;
+
+            case Chapel:
+                theStrategies.add(DomPlayStrategy.aggressiveTrashing);
+                theStrategies.add(DomPlayStrategy.keepPayload);
+                break;
+
+            case Duplicate:
+                theStrategies.add(DomPlayStrategy.dukeEnabler);
+                break;
+
+            case Governor:
+                theStrategies.add(DomPlayStrategy.GoldEarlyTrashMid);
+                break;
+
+            case Hermit:
+                theStrategies.add(DomPlayStrategy.MarketSquareCombo);
+                theStrategies.add(DomPlayStrategy.bigTurnBridge);
+                break;
+
+            case Lurker:
+                theStrategies.add(DomPlayStrategy.playOnlyIfGaining);
+                break;
+
+            case Mine:
+                theStrategies.add(DomPlayStrategy.mineCopperFirst);
+                break;
+
+            case MiningVillage:
+                theStrategies.add(DomPlayStrategy.forEngines);
+                break;
+
+            case Miser:
+                theStrategies.add(DomPlayStrategy.removeAllCoppers);
+                break;
+
+            case Mystic:
+                theStrategies.add(DomPlayStrategy.goodDeckTracker);
+                theStrategies.add(DomPlayStrategy.greedyDeckTracker);
+                break;
+
+            case NativeVillage:
+                theStrategies.add(DomPlayStrategy.bigTurnBridge);
+                theStrategies.add(DomPlayStrategy.bigTurnGoons);
+                theStrategies.add(DomPlayStrategy.ApothecaryNativeVillage);
+                break;
+
+            case Necropolis:
+                theStrategies.add(DomPlayStrategy.trashWhenObsolete);
+                break;
+
+            case Peddler:
+                theStrategies.add(DomPlayStrategy.combo);
+                break;
+
+            case PirateShip:
+                theStrategies.add(DomPlayStrategy.attackUntil5Coins);
+                break;
+
+            case Ratcatcher:
+                theStrategies.add(DomPlayStrategy.aggressiveTrashing);
+                break;
+
+            case RoyalCarriage:
+                theStrategies.add(DomPlayStrategy.bigTurnBridge);
+                break;
+
+            case Silver:
+                theStrategies.add(DomPlayStrategy.trashWhenObsolete);
+                break;
+
+            case Smithy:
+                theStrategies.add(DomPlayStrategy.playIfNotBuyingTopCard);
+                break;
+
+            case SpiceMerchant:
+                theStrategies.add(DomPlayStrategy.FoolsGoldEnabler);
+                break;
+
+            case Squire:
+                theStrategies.add(DomPlayStrategy.silverGainer);
+                break;
+
+            case Steward:
+                theStrategies.add(DomPlayStrategy.modestTrashing);
+                break;
+
+            case Stonemason:
+                theStrategies.add(DomPlayStrategy.combo);
+                break;
+
+            case Storeroom:
+                theStrategies.add(DomPlayStrategy.cityQuarterCombo);
+
+            case Tactician:
+                theStrategies.add(DomPlayStrategy.playIfNotBuyingTopCard);
+                break;
+
+            case WildHunt:
+                theStrategies.add(DomPlayStrategy.forEngines);
+                break;
+
+            case WishingWell:
+                theStrategies.add(DomPlayStrategy.goodDeckTracker);
+                theStrategies.add(DomPlayStrategy.greedyDeckTracker);
+                break;
+
+            default:
+                break;
+        }
+        theStrategies.add(0, DomPlayStrategy.standard);
+        return theStrategies.toArray();
+    }
+
+    /**
+     * @return
+     */
+    public int getVictoryValue(DomPlayer aPlayer) {
+        switch (this) {
+            case Duke:
+                if (aPlayer != null) {
+                    return aPlayer.countInDeck(Duchy);
+                }
+                break;
+
+            case Fairgrounds:
+                if (aPlayer != null) {
+                    return aPlayer.countDifferentCardsInDeck() / 5 * 2;
+                }
+                break;
+
+            case Feodum:
+                if (aPlayer != null) {
+                    return aPlayer.countInDeck(Silver) / 3;
+                }
+                break;
+
+            case Gardens:
+                if (aPlayer != null) {
+                    return aPlayer.countAllCards() / 10;
+                }
+                break;
+
+            case HumbleCastle:
+                if (aPlayer != null) {
+                    return aPlayer.count(DomCardType.Castle);
+                }
+                break;
+
+            case KingsCastle:
+                if (aPlayer != null) {
+                    return aPlayer.count(DomCardType.Castle) * 2;
+                }
+                break;
+
+            case SilkRoad:
+                if (aPlayer != null) {
+                    return aPlayer.count(DomCardType.Victory) / 4;
+                }
+                break;
+
+            case Vineyard:
+                if (aPlayer != null) {
+                    return aPlayer.count(DomCardType.Action) / 3;
+                }
+                break;
+
+            default:
+                break;
+        }
+        return victoryValue;
+    }
+
+    /**
+     * @return
+     */
+    public int getCoinValue() {
+        return coinValue;
+    }
+
+    /**
+     * @return
+     */
+    public int getPlayPriority() {
+        return playPriority;
+    }
+
+    /**
+     * @return
+     */
+    public int getTrashPriority() {
+        return getDiscardPriority(1);
+    }
+
+    /**
+     * @param aActionsLeft
+     * @return
+     */
+    public int getDiscardPriority(int aActionsLeft) {
+        //TODO to review (warehouse draws village + Terminal...)
+        if (aActionsLeft < 1 && hasCardType(DomCardType.Action))
+            return 1;
+        return discardPriority;
+    }
+
+    /**
+     * @return
+     */
+    public final DomCost getCost(DomGame aDomGame) {
+        DomCost theCost = new DomCost(getCoinCost(aDomGame), getPotionCost());
+        theCost.setDebt(cost.getDebt());
+        return theCost;
+    }
+
+    public final int getCoinCost(DomGame aDomGame) {
+        if (hasCardType(DomCardType.Event))
+            return getCost().getCoins();
+        int theCoins = getCost().getCoins();
+        if (aDomGame != null) {
+            if (this == DomCardName.Peddler && aDomGame.isBuyPhase()) {
+                theCoins -= aDomGame.countActionsInPlay() * 2;
+            }
+            theCoins -= aDomGame.getBridgesPlayed();
+            theCoins -= aDomGame.getPrincessesInPlay() * 2;
+            if (hasCardType(DomCardType.Action))
+                theCoins -= aDomGame.getQuarriesPlayed() * 2;
+            theCoins -= aDomGame.getHighwaysInPlay();
+            theCoins -= aDomGame.getBridgeTrollsInPlay();
+            theCoins -= aDomGame.getActivePlayer().getMinus$2TokenOn() == isFromPile() ? 2 : 0;
+        }
+        return theCoins < 0 ? 0 : theCoins;
+    }
+
+    public DomCost getCost() {
+        return cost;
+    }
+
+    public DomCardName isFromPile() {
+        if (hasCardType(DomCardType.SplitPile)) {
+            switch (this) {
+                case Settlers:
+                case BustlingVillage:
+                    return DomCardName.Settlers;
+                case Catapult:
+                case Rocks:
+                    return DomCardName.Catapult;
+                case Patrician:
+                case Emporium:
+                    return DomCardName.Patrician;
+                case Encampment:
+                case Plunder:
+                    return DomCardName.Encampment;
+                case Gladiator:
+                case Fortune:
+                    return DomCardName.Gladiator;
+                case Sauna:
+                case Avanto:
+                    return DomCardName.Sauna;
+
+            }
+        }
+
+        if (hasCardType(DomCardType.Ruins))
+            return DomCardName.Ruins;
+
+        if (hasCardType(DomCardType.Knight))
+            return DomCardName.Knights;
+
+        if (hasCardType(DomCardType.Castle))
+            return DomCardName.Castles;
+
+        return this;
+    }
+
+    /**
+     * @return
+     */
+    public final int getPotionCost() {
+        return getCost().getPotions();
+    }
+
+    public int getTrashPriority(DomPlayer player) {
+        //trash priorities depend on the owner of the card which is unknown in this enum
+        //so we quickly make a DomCard object and assign it to the player
+        //this way we get a correct trash priority for that player
+        DomCard theIntermediateCard = createNewCardInstance();
+        theIntermediateCard.owner = player.getPossessor() == null ? player : player.getPossessor();
+        return theIntermediateCard.getTrashPriority();
+    }
+
     public DomCard createNewCardInstance() {
         //TODO look into Dynamic Class Loading (tried it, but took way too long)
         switch (this) {
@@ -1208,319 +1551,6 @@ public enum DomCardName {
         return new DomCard(this);
     }
 
-    public DomCost getCost() {
-        return cost;
-    }
-
-    public HashSet<DomCardType> types() {
-        return types;
-    }
-
-    /**
-     * @return
-     */
-    public boolean hasCardType(DomCardType aCardType) {
-        return types.contains(aCardType);
-    }
-
-    public int countLegalCardTypes() {
-        int theCount = 0;
-        for (DomCardType domCardType : types) {
-            theCount += domCardType.isLegal() ? 1 : 0;
-        }
-        return theCount;
-    }
-
-    public Object[] getPlayStrategies() {
-        ArrayList<DomPlayStrategy> theStrategies = new ArrayList<>();
-        switch (this) {
-            case Ambassador:
-                theStrategies.add(DomPlayStrategy.ambassadorWar);
-                theStrategies.add(DomPlayStrategy.aggressiveTrashing);
-                break;
-
-            case Amulet:
-                theStrategies.add(DomPlayStrategy.silverGainer);
-                theStrategies.add(DomPlayStrategy.aggressiveTrashing);
-                break;
-
-            case Apothecary:
-                theStrategies.add(DomPlayStrategy.ApothecaryNativeVillage);
-                break;
-
-            case Chapel:
-                theStrategies.add(DomPlayStrategy.aggressiveTrashing);
-                theStrategies.add(DomPlayStrategy.keepPayload);
-                break;
-
-            case Duplicate:
-                theStrategies.add(DomPlayStrategy.dukeEnabler);
-                break;
-
-            case Governor:
-                theStrategies.add(DomPlayStrategy.GoldEarlyTrashMid);
-                break;
-
-            case Hermit:
-                theStrategies.add(DomPlayStrategy.MarketSquareCombo);
-                theStrategies.add(DomPlayStrategy.bigTurnBridge);
-                break;
-
-            case Lurker:
-                theStrategies.add(DomPlayStrategy.playOnlyIfGaining);
-                break;
-
-            case Mine:
-                theStrategies.add(DomPlayStrategy.mineCopperFirst);
-                break;
-
-            case MiningVillage:
-                theStrategies.add(DomPlayStrategy.forEngines);
-                break;
-
-            case Miser:
-                theStrategies.add(DomPlayStrategy.removeAllCoppers);
-                break;
-
-            case Mystic:
-                theStrategies.add(DomPlayStrategy.goodDeckTracker);
-                theStrategies.add(DomPlayStrategy.greedyDeckTracker);
-                break;
-
-            case NativeVillage:
-                theStrategies.add(DomPlayStrategy.bigTurnBridge);
-                theStrategies.add(DomPlayStrategy.bigTurnGoons);
-                theStrategies.add(DomPlayStrategy.ApothecaryNativeVillage);
-                break;
-
-            case Necropolis:
-                theStrategies.add(DomPlayStrategy.trashWhenObsolete);
-                break;
-
-            case Peddler:
-                theStrategies.add(DomPlayStrategy.combo);
-                break;
-
-            case PirateShip:
-                theStrategies.add(DomPlayStrategy.attackUntil5Coins);
-                break;
-
-            case Ratcatcher:
-                theStrategies.add(DomPlayStrategy.aggressiveTrashing);
-                break;
-
-            case RoyalCarriage:
-                theStrategies.add(DomPlayStrategy.bigTurnBridge);
-                break;
-
-            case Silver:
-                theStrategies.add(DomPlayStrategy.trashWhenObsolete);
-                break;
-
-            case Smithy:
-                theStrategies.add(DomPlayStrategy.playIfNotBuyingTopCard);
-                break;
-
-            case SpiceMerchant:
-                theStrategies.add(DomPlayStrategy.FoolsGoldEnabler);
-                break;
-
-            case Squire:
-                theStrategies.add(DomPlayStrategy.silverGainer);
-                break;
-
-            case Steward:
-                theStrategies.add(DomPlayStrategy.modestTrashing);
-                break;
-
-            case Stonemason:
-                theStrategies.add(DomPlayStrategy.combo);
-                break;
-
-            case Storeroom:
-                theStrategies.add(DomPlayStrategy.cityQuarterCombo);
-
-            case Tactician:
-                theStrategies.add(DomPlayStrategy.playIfNotBuyingTopCard);
-                break;
-
-            case WildHunt:
-                theStrategies.add(DomPlayStrategy.forEngines);
-                break;
-
-            case WishingWell:
-                theStrategies.add(DomPlayStrategy.goodDeckTracker);
-                theStrategies.add(DomPlayStrategy.greedyDeckTracker);
-                break;
-
-            default:
-                break;
-        }
-        theStrategies.add(0, DomPlayStrategy.standard);
-        return theStrategies.toArray();
-    }
-
-    /**
-     * @return
-     */
-    public int getVictoryValue(DomPlayer aPlayer) {
-        switch (this) {
-            case Duke:
-                if (aPlayer != null) {
-                    return aPlayer.countInDeck(Duchy);
-                }
-                break;
-
-            case Fairgrounds:
-                if (aPlayer != null) {
-                    return aPlayer.countDifferentCardsInDeck() / 5 * 2;
-                }
-                break;
-
-            case Feodum:
-                if (aPlayer != null) {
-                    return aPlayer.countInDeck(Silver) / 3;
-                }
-                break;
-
-            case Gardens:
-                if (aPlayer != null) {
-                    return aPlayer.countAllCards() / 10;
-                }
-                break;
-
-            case HumbleCastle:
-                if (aPlayer != null) {
-                    return aPlayer.count(DomCardType.Castle);
-                }
-                break;
-
-            case KingsCastle:
-                if (aPlayer != null) {
-                    return aPlayer.count(DomCardType.Castle) * 2;
-                }
-                break;
-
-            case SilkRoad:
-                if (aPlayer != null) {
-                    return aPlayer.count(DomCardType.Victory) / 4;
-                }
-                break;
-
-            case Vineyard:
-                if (aPlayer != null) {
-                    return aPlayer.count(DomCardType.Action) / 3;
-                }
-                break;
-
-            default:
-                break;
-        }
-        return victoryValue;
-    }
-
-    /**
-     * @return
-     */
-    public int getCoinValue() {
-        return coinValue;
-    }
-
-    /**
-     * @return
-     */
-    public int getPlayPriority() {
-        return playPriority;
-    }
-
-    /**
-     * @param aActionsLeft
-     * @return
-     */
-    public int getDiscardPriority(int aActionsLeft) {
-        //TODO to review (warehouse draws village + Terminal...)
-        if (aActionsLeft < 1 && hasCardType(DomCardType.Action))
-            return 1;
-        return discardPriority;
-    }
-
-    /**
-     * @return
-     */
-    public int getTrashPriority() {
-        return getDiscardPriority(1);
-    }
-
-    public String toString() {
-        String theString = super.toString().replaceAll("_", " ").replaceAll("\\$", "'");
-        if (this == DomCardName.IllGottenGains)
-            return "Ill-Gotten Gains";
-        return theString;
-    }
-
-    public final int getCoinCost(DomGame aDomGame) {
-        if (hasCardType(DomCardType.Event))
-            return getCost().getCoins();
-        int theCoins = getCost().getCoins();
-        if (aDomGame != null) {
-            if (this == DomCardName.Peddler && aDomGame.isBuyPhase()) {
-                theCoins -= aDomGame.countActionsInPlay() * 2;
-            }
-            theCoins -= aDomGame.getBridgesPlayed();
-            theCoins -= aDomGame.getPrincessesInPlay() * 2;
-            if (hasCardType(DomCardType.Action))
-                theCoins -= aDomGame.getQuarriesPlayed() * 2;
-            theCoins -= aDomGame.getHighwaysInPlay();
-            theCoins -= aDomGame.getBridgeTrollsInPlay();
-            theCoins -= aDomGame.getActivePlayer().getMinus$2TokenOn() == isFromPile() ? 2 : 0;
-        }
-        return theCoins < 0 ? 0 : theCoins;
-    }
-
-    /**
-     * @return
-     */
-    public final DomCost getCost(DomGame aDomGame) {
-        DomCost theCost = new DomCost(getCoinCost(aDomGame), getPotionCost());
-        theCost.setDebt(cost.getDebt());
-        return theCost;
-    }
-
-    /**
-     * @return
-     */
-    public final int getPotionCost() {
-        return getCost().getPotions();
-    }
-
-    public String getImageLocation() {
-        StringBuilder theLocation = new StringBuilder();
-        theLocation.append("images/");
-        theLocation.append(super.toString()).append(".jpg");
-        return theLocation.toString().toLowerCase().replaceAll("_", "").replaceAll("\\$", "");
-    }
-
-    public int getTrashPriority(DomPlayer player) {
-        //trash priorities depend on the owner of the card which is unknown in this enum
-        //so we quickly make a DomCard object and assign it to the player
-        //this way we get a correct trash priority for that player
-        DomCard theIntermediateCard = createNewCardInstance();
-        theIntermediateCard.owner = player.getPossessor() == null ? player : player.getPossessor();
-        return theIntermediateCard.getTrashPriority();
-    }
-
-    public static Object[] getPossibleBaneCards() {
-        ArrayList<DomCardName> possibleBanes = new ArrayList<>();
-        for (DomCardName cardName : values()) {
-            if (cardName.getCost().compareTo(new DomCost(2, 0)) == 0
-                    || cardName.getCost().compareTo(new DomCost(3, 0)) == 0) {
-                if (cardName.hasCardType(DomCardType.Kingdom))
-                    possibleBanes.add(cardName);
-            }
-        }
-        return possibleBanes.toArray();
-    }
-
     public String toHTML() {
         String theString = toString();
         if (DomEngine.showColoredLog) {
@@ -1550,6 +1580,13 @@ public enum DomCardName {
         return theString;
     }
 
+    public String toString() {
+        String theString = super.toString().replaceAll("_", " ").replaceAll("\\$", "'");
+        if (this == DomCardName.IllGottenGains)
+            return "Ill-Gotten Gains";
+        return theString;
+    }
+
     public DomSet getSet() {
         for (DomSet set : DomSet.values()) {
             if (set.contains(this))
@@ -1564,21 +1601,19 @@ public enum DomCardName {
         return new EscapeDialog().getClass().getResource(getImageLocation());
     }
 
+    public String getImageLocation() {
+        StringBuilder theLocation = new StringBuilder();
+        theLocation.append("images/");
+        theLocation.append(super.toString()).append(".jpg");
+        return theLocation.toString().toLowerCase().replaceAll("_", "").replaceAll("\\$", "");
+    }
+
     public String getCompleteImageLocation() {
 //		return null;
         //TODO this should be called in some other way
 //		return new EscapeDialog().getClass().getResource(getImageLocation());
         return "C:/Documents and Settings/djag492/My Documents/Jeroen/Dominion/" + getImageLocation();
 //		return  "C:/Users/MEDION/Pictures/" + getImageLocation();
-    }
-
-    public static Object[] getKingdomCards() {
-        ArrayList<DomCardName> theCards = new ArrayList<>();
-        for (DomCardName cardName : values()) {
-            if (!DomSet.Base.contains(cardName))
-                theCards.add(cardName);
-        }
-        return theCards.toArray();
     }
 
     public int getOrderInBuyRules(DomPlayer owner) {
@@ -1596,43 +1631,6 @@ public enum DomCardName {
 
     public int getDebtCost() {
         return getCost().getDebt();
-    }
-
-    public DomCardName isFromPile() {
-        if (hasCardType(DomCardType.SplitPile)) {
-            switch (this) {
-                case Settlers:
-                case BustlingVillage:
-                    return DomCardName.Settlers;
-                case Catapult:
-                case Rocks:
-                    return DomCardName.Catapult;
-                case Patrician:
-                case Emporium:
-                    return DomCardName.Patrician;
-                case Encampment:
-                case Plunder:
-                    return DomCardName.Encampment;
-                case Gladiator:
-                case Fortune:
-                    return DomCardName.Gladiator;
-                case Sauna:
-                case Avanto:
-                    return DomCardName.Sauna;
-
-            }
-        }
-
-        if (hasCardType(DomCardType.Ruins))
-            return DomCardName.Ruins;
-
-        if (hasCardType(DomCardType.Knight))
-            return DomCardName.Knights;
-
-        if (hasCardType(DomCardType.Castle))
-            return DomCardName.Castles;
-
-        return this;
     }
 
 }

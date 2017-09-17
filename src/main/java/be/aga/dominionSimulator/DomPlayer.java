@@ -2,21 +2,12 @@ package be.aga.dominionSimulator;
 
 import be.aga.dominionSimulator.cards.*;
 import be.aga.dominionSimulator.enums.*;
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.Logger;
-import org.apache.log4j.SimpleLayout;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
 
+@Slf4j
 public class DomPlayer implements Comparable<DomPlayer> {
-    protected static final Logger LOGGER = Logger.getLogger(DomPlayer.class);
-
-    static {
-        LOGGER.setLevel(DomEngine.LEVEL);
-        LOGGER.removeAllAppenders();
-        if (DomEngine.addAppender)
-            LOGGER.addAppender(new ConsoleAppender(new SimpleLayout()));
-    }
 
     public int actionsLeft = 1;
     public int availablePotions = 0;
@@ -945,7 +936,7 @@ public class DomPlayer implements Comparable<DomPlayer> {
         if (availableCoins < 0) {
             spendCoinTokens(-availableCoins);
             if (coinTokens < 0) {
-                LOGGER.error("Coin tokens: " + coinTokens);
+                log.error("Coin tokens: " + coinTokens);
             }
             availableCoins = 0;
         }
@@ -1839,9 +1830,6 @@ public class DomPlayer implements Comparable<DomPlayer> {
         return false;
     }
 
-    /**
-     * @return
-     */
     public ArrayList<DomCard> getCardsFromHand(DomCardName theCardName) {
         ArrayList<DomCard> theCards = new ArrayList<>();
         for (DomCard theCard : cardsInHand) {
@@ -2751,7 +2739,7 @@ public class DomPlayer implements Comparable<DomPlayer> {
         }
     }
 
-    public boolean addBoard(String contents, String bane, String aMountainPassBid, String anObeliskChoice) {
+    public boolean addBoard(String contents, String bane, Integer aMountainPassBid, String anObeliskChoice) {
         if (!StartState.dissectAndAdd(contents, mySuggestedBoardCards))
             return false;
         if (bane != null) {
@@ -2767,7 +2755,7 @@ public class DomPlayer implements Comparable<DomPlayer> {
         } else {
             myBaneCard = null;
         }
-        setMountainPassBid(Integer.valueOf(aMountainPassBid));
+        setMountainPassBid(aMountainPassBid);
         setObeliskCard(anObeliskChoice);
         return true;
     }

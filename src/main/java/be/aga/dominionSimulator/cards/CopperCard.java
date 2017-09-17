@@ -4,9 +4,11 @@ import be.aga.dominionSimulator.DomCard;
 import be.aga.dominionSimulator.DomCost;
 import be.aga.dominionSimulator.DomEngine;
 import be.aga.dominionSimulator.enums.DomCardName;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 
+@Slf4j
 public class CopperCard extends DomCard {
 
     public CopperCard() {
@@ -21,8 +23,8 @@ public class CopperCard extends DomCard {
     @Override
     public boolean wantsToBePlayed() {
         if (owner == null) {
-            System.out.println("Copper owner = null: " + DomEngine.currentPlayer.getDeck());
-            System.out.println("opp deck: " + DomEngine.currentPlayer.getOpponents().get(0).getDeck());
+            log.warn("Copper owner = null: {}", DomEngine.currentPlayer.getDeck());
+            log.warn("opp deck: : {}", DomEngine.currentPlayer.getOpponents().get(0).getDeck());
         }
         if (owner.isTrashingTokenSet()
                 && countCrapCards() == 0

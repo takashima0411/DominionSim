@@ -407,7 +407,7 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Fool$sGold"/>
+        <buy name="FoolsGold"/>
     </player>
 
     <player name="Treasure Map/Dungeon"
@@ -1394,7 +1394,7 @@
                 <left type="countCardsInDeck" attribute="MarketSquare"/>
                 <operator type="smallerThan"/>
                 <right type="countCardsInDeck" attribute="Apprentice"/>
-                <extra_operation type="minus" attribute="1.0"/>
+                <extraOperation type="minus" attribute="1.0"/>
             </condition>
         </buy>
         <buy name="Apprentice"/>
@@ -1410,7 +1410,7 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Market_Square"/>
+        <buy name="MarketSquare"/>
     </player>
 
     <player name="Peasant"
@@ -1520,7 +1520,7 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
             <condition>
-                <left type="isPlusOneCoinTokenSet" attribute="Pearl_Diver"/>
+                <left type="isPlusOneCoinTokenSet" attribute="PearlDiver"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
@@ -1585,7 +1585,7 @@
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Pearl_Diver"/>
+        <buy name="PearlDiver"/>
     </player>
 
     <player name="Horn of Plenty/Plan/Nobles"
@@ -1595,7 +1595,7 @@
         <type name="Province"/>
         <buy name="Province">
             <condition>
-                <left type="countCardsInHand" attribute="Horn_of_Plenty"/>
+                <left type="countCardsInHand" attribute="HornOfPlenty"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="2.0"/>
             </condition>
@@ -1636,9 +1636,9 @@
             </condition>
         </buy>
         <buy name="Nobles"/>
-        <buy name="Horn_of_Plenty">
+        <buy name="HornOfPlenty">
             <condition>
-                <left type="countCardsInDeck" attribute="Horn_of_Plenty"/>
+                <left type="countCardsInDeck" attribute="HornOfPlenty"/>
                 <operator type="smallerThan"/>
                 <right type="countCardsInDeck" attribute="Festival"/>
             </condition>
@@ -1742,9 +1742,9 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Black_Market">
+        <buy name="BlackMarket">
             <condition>
-                <left type="countCardsInDeck" attribute="Black_Market"/>
+                <left type="countCardsInDeck" attribute="BlackMarket"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="2.0"/>
             </condition>
@@ -1806,7 +1806,7 @@
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Travelling_Fair">
+        <buy name="TravellingFair">
             <condition>
                 <left type="countAvailableMoney"/>
                 <operator type="greaterOrEqualThan"/>
@@ -1827,21 +1827,21 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Travelling_Fair">
+        <buy name="TravellingFair">
             <condition>
                 <left type="countAvailableMoney"/>
                 <operator type="greaterOrEqualThan"/>
                 <right type="constant" attribute="7.0"/>
             </condition>
         </buy>
-        <buy name="Counting_House">
+        <buy name="CountingHouse">
             <condition>
                 <left type="countBuysLeft"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Travelling_Fair">
+        <buy name="TravellingFair">
             <condition>
                 <left type="countAvailableMoney"/>
                 <operator type="smallerThan"/>
@@ -1954,40 +1954,40 @@
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Market_Square">
+        <buy name="MarketSquare">
             <condition>
-                <left type="countCardsInDeck" attribute="Market_Square"/>
+                <left type="countCardsInDeck" attribute="MarketSquare"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="6.0"/>
             </condition>
         </buy>
-        <buy name="Market_Square">
+        <buy name="MarketSquare">
             <condition>
                 <left type="countCardsInDeck" attribute="Madman"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="3.0"/>
             </condition>
         </buy>
-        <buy name="Market_Square">
+        <buy name="MarketSquare">
             <condition>
                 <left type="countCardsInPlay" attribute="Hermit"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Market_Square">
+        <buy name="MarketSquare">
             <condition>
                 <left type="isActionPhase"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Market_Square">
+        <buy name="MarketSquare">
             <condition>
                 <left type="countCardsInDeck" attribute="Hermit"/>
                 <operator type="smallerThan"/>
                 <right type="countCardsInDeck" attribute="Madman"/>
-                <extra_operation type="minus" attribute="2.0"/>
+                <extraOperation type="minus" attribute="2.0"/>
             </condition>
             <condition>
                 <left type="countCardsInPlay" attribute="Hermit"/>
@@ -2000,7 +2000,7 @@
                 <left type="countCardsInDeck" attribute="Hermit"/>
                 <operator type="smallerThan"/>
                 <right type="countCardsInDeck" attribute="Madman"/>
-                <extra_operation type="minus" attribute="2.0"/>
+                <extraOperation type="minus" attribute="2.0"/>
             </condition>
             <condition>
                 <left type="countCardsInPlay" attribute="Hermit"/>
@@ -2162,14 +2162,14 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Market_Square">
+        <buy name="MarketSquare">
             <condition>
                 <left type="countAvailableMoney"/>
                 <operator type="greaterOrEqualThan"/>
                 <right type="constant" attribute="6.0"/>
             </condition>
             <condition>
-                <left type="countCardsInDeck" attribute="Market_Square"/>
+                <left type="countCardsInDeck" attribute="MarketSquare"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="3.0"/>
             </condition>
@@ -2194,7 +2194,7 @@
                 <right type="constant" attribute="1.0"/>
             </condition>
             <condition>
-                <left type="countCardsInHand" attribute="Market_Square"/>
+                <left type="countCardsInHand" attribute="MarketSquare"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
@@ -2224,7 +2224,7 @@
             </condition>
         </buy>
         <buy name="Peddler"/>
-        <buy name="Market_Square"/>
+        <buy name="MarketSquare"/>
         <buy name="Silver"/>
     </player>
 
@@ -2287,15 +2287,15 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Mining_Village" strategy="forEngines">
+        <buy name="MiningVillage" strategy="forEngines">
             <condition>
-                <left type="countCardsInDeck" attribute="Mining_Village"/>
+                <left type="countCardsInDeck" attribute="MiningVillage"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardTypeInDeck" attribute="Terminal"/>
             </condition>
         </buy>
         <buy name="Journeyman"/>
-        <buy name="Mining_Village" strategy="forEngines"/>
+        <buy name="MiningVillage" strategy="forEngines"/>
         <buy name="Silver"/>
         <buy name="Hamlet"/>
     </player>
@@ -2305,7 +2305,7 @@
             description="A massive engine powered by KC and Hireling with Monuments for payload">
         <type name="TwoPlayer"/>
         <type name="Province"/>
-        <buy name="Travelling_Fair">
+        <buy name="TravellingFair">
             <condition>
                 <left type="countBuysLeft"/>
                 <operator type="equalTo"/>
@@ -2319,7 +2319,7 @@
         </buy>
         <buy name="Province">
             <condition>
-                <left type="countCardsInDeck" attribute="King$s_Court"/>
+                <left type="countCardsInDeck" attribute="KingsCourt"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="4.0"/>
             </condition>
@@ -2338,7 +2338,7 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Travelling_Fair">
+        <buy name="TravellingFair">
             <condition>
                 <left type="countBuysLeft"/>
                 <operator type="equalTo"/>
@@ -2350,18 +2350,18 @@
                 <right type="constant" attribute="9.0"/>
             </condition>
         </buy>
-        <buy name="King$s_Court">
+        <buy name="KingsCourt">
             <condition>
-                <left type="countCardsInDeck" attribute="King$s_Court"/>
+                <left type="countCardsInDeck" attribute="KingsCourt"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardsInDeck" attribute="Hireling"/>
-                <extra_operation type="plus" attribute="1.0"/>
+                <extraoperation type="plus" attribute="1.0"/>
             </condition>
         </buy>
         <buy name="Hireling"/>
-        <buy name="Ghost_Ship">
+        <buy name="GhostShip">
             <condition>
-                <left type="countCardsInDeck" attribute="Ghost_Ship"/>
+                <left type="countCardsInDeck" attribute="GhostShip"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
@@ -2380,15 +2380,15 @@
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Fishing_Village">
+        <buy name="FishingVillage">
             <condition>
-                <left type="countCardsInDeck" attribute="Fishing_Village"/>
+                <left type="countCardsInDeck" attribute="FishingVillage"/>
                 <operator type="smallerThan"/>
                 <right type="countCardsInDeck" attribute="Monument"/>
             </condition>
         </buy>
         <buy name="Monument"/>
-        <buy name="Fishing_Village"/>
+        <buy name="FishingVillage"/>
         <buy name="Silver"/>
     </player>
 
@@ -2550,7 +2550,7 @@
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Wishing_Well" strategy="goodDeckTracker"/>
+        <buy name="WishingWell" strategy="goodDeckTracker"/>
         <buy name="Silver"/>
         <buy name="Lighthouse"/>
     </player>
@@ -2590,7 +2590,7 @@
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Lost_Arts">
+        <buy name="LostArts">
             <condition>
                 <left type="isPlusOneActionTokenSet"/>
                 <operator type="equalTo"/>
@@ -2705,9 +2705,9 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Fishing_Village">
+        <buy name="FishingVillage">
             <condition>
-                <left type="countCardsInDeck" attribute="Fishing_Village"/>
+                <left type="countCardsInDeck" attribute="FishingVillage"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardsInDeck" attribute="Rabble"/>
             </condition>
@@ -2720,7 +2720,7 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Fishing_Village"/>
+        <buy name="FishingVillage"/>
         <buy name="Silver"/>
     </player>
 
@@ -2737,7 +2737,7 @@
                 <right type="constant" attribute="7.0"/>
             </condition>
         </buy>
-        <buy name="Silk_Road"/>
+        <buy name="SilkRoad"/>
         <buy name="Island"/>
         <buy name="Ironworks"/>
         <buy name="Estate">
@@ -2747,7 +2747,7 @@
                 <right type="constant" attribute="5.0"/>
             </condition>
         </buy>
-        <buy name="Fishing_Village"/>
+        <buy name="FishingVillage"/>
         <buy name="Copper"/>
     </player>
 
@@ -2758,7 +2758,7 @@
         <type name="Province"/>
         <buy name="Province">
             <condition>
-                <left type="countCardsInPlay" attribute="Bridge_Troll"/>
+                <left type="countCardsInPlay" attribute="BridgeTroll"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="4.0"/>
             </condition>
@@ -2795,8 +2795,8 @@
             <condition>
                 <left type="countCardsInDeck" attribute="Embassy"/>
                 <operator type="smallerThan"/>
-                <right type="countCardsInDeck" attribute="Bridge_Troll"/>
-                <extra_operation type="minus" attribute="1.0"/>
+                <right type="countCardsInDeck" attribute="BridgeTroll"/>
+                <extraOperation type="minus" attribute="1.0"/>
             </condition>
             <condition>
                 <left type="countCardsInDeck" attribute="Champion"/>
@@ -2804,11 +2804,11 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Bridge_Troll"/>
+        <buy name="BridgeTroll"/>
         <buy name="Champion"/>
         <buy name="Hero"/>
         <buy name="Warrior"/>
-        <buy name="Treasure_Hunter"/>
+        <buy name="TreasureHunter"/>
         <buy name="Page">
             <condition>
                 <left type="countCardTypeInDeck" attribute="Traveller"/>
@@ -2934,7 +2934,7 @@
         </buy>
         <buy name="Hero"/>
         <buy name="Warrior"/>
-        <buy name="Treasure_Hunter"/>
+        <buy name="TreasureHunter"/>
         <buy name="Page">
             <condition>
                 <left type="countCardTypeInDeck" attribute="Traveller"/>
@@ -2954,7 +2954,7 @@
         <type name="Province"/>
         <buy name="Province">
             <condition>
-                <left type="countCardsInHand" attribute="Horn_of_Plenty"/>
+                <left type="countCardsInHand" attribute="HornOfPlenty"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="2.0"/>
             </condition>
@@ -2987,11 +2987,11 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Horn_of_Plenty">
+        <buy name="HornOfPlenty">
             <condition>
-                <left type="countCardsInDeck" attribute="Horn_of_Plenty"/>
+                <left type="countCardsInDeck" attribute="HornOfPlenty"/>
                 <operator type="smallerThan"/>
-                <right type="countCardsInDeck" attribute="Hunting_Party"/>
+                <right type="countCardsInDeck" attribute="HuntingParty"/>
             </condition>
         </buy>
         <buy name="Festival">
@@ -3001,7 +3001,7 @@
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Hunting_Party"/>
+        <buy name="HuntingParty"/>
         <buy name="Forager">
             <condition>
                 <left type="countCardsInDeck" attribute="Forager"/>
@@ -3016,7 +3016,7 @@
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Wishing_Well" strategy="goodDeckTracker"/>
+        <buy name="WishingWell" strategy="goodDeckTracker"/>
     </player>
 
     <player name="Death Cart/Gardens"
@@ -3056,7 +3056,7 @@
                 <right type="constant" attribute="7.0"/>
             </condition>
         </buy>
-        <buy name="Death_Cart"/>
+        <buy name="DeathCart"/>
         <buy name="Silver"/>
         <buy name="Copper"/>
     </player>
@@ -3267,8 +3267,8 @@
             <condition>
                 <left type="countCardsInDeck" attribute="Gold"/>
                 <operator type="smallerThan"/>
-                <right type="countCardsInDeck" attribute="Council_Room"/>
-                <extra_operation type="minus" attribute="1.0"/>
+                <right type="countCardsInDeck" attribute="CouncilRoom"/>
+                <extraOperation type="minus" attribute="1.0"/>
             </condition>
             <condition>
                 <left type="getTotalMoney"/>
@@ -3276,19 +3276,19 @@
                 <right type="constant" attribute="16.0"/>
             </condition>
         </buy>
-        <buy name="Council_Room">
+        <buy name="CouncilRoom">
             <condition>
-                <left type="countCardsInDeck" attribute="Council_Room"/>
+                <left type="countCardsInDeck" attribute="CouncilRoom"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Council_Room">
+        <buy name="CouncilRoom">
             <condition>
-                <left type="countCardsInDeck" attribute="Council_Room"/>
+                <left type="countCardsInDeck" attribute="CouncilRoom"/>
                 <operator type="smallerThan"/>
                 <right type="countCardsInDeck" attribute="Village"/>
-                <extra_operation type="minus" attribute="1.0"/>
+                <extraOperation type="minus" attribute="1.0"/>
             </condition>
         </buy>
         <buy name="Militia">
@@ -3338,14 +3338,14 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Treasure_Map">
+        <buy name="TreasureMap">
             <condition>
-                <left type="countCardsInDeck" attribute="Council_Room"/>
+                <left type="countCardsInDeck" attribute="CouncilRoom"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="3.0"/>
             </condition>
             <condition>
-                <left type="countCardsInDeck" attribute="Treasure_Map"/>
+                <left type="countCardsInDeck" attribute="TreasureMap"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="2.0"/>
             </condition>
@@ -3355,19 +3355,19 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Council_Room">
+        <buy name="CouncilRoom">
             <condition>
-                <left type="countCardsInDeck" attribute="Council_Room"/>
+                <left type="countCardsInDeck" attribute="CouncilRoom"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Council_Room">
+        <buy name="CouncilRoom">
             <condition>
-                <left type="countCardsInDeck" attribute="Council_Room"/>
+                <left type="countCardsInDeck" attribute="CouncilRoom"/>
                 <operator type="smallerThan"/>
                 <right type="countCardsInDeck" attribute="Village"/>
-                <extra_operation type="minus" attribute="1.0"/>
+                <extraOperation type="minus" attribute="1.0"/>
             </condition>
         </buy>
         <buy name="Militia">
@@ -3415,21 +3415,21 @@
             </condition>
         </buy>
         <buy name="Platinum"/>
-        <buy name="Grand_Market">
+        <buy name="GrandMarket">
             <condition>
-                <left type="countCardsInDeck" attribute="Border_Village"/>
+                <left type="countCardsInDeck" attribute="BorderVillage"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="3.0"/>
             </condition>
         </buy>
         <buy name="Gold">
             <condition>
-                <left type="countCardsInDeck" attribute="Border_Village"/>
+                <left type="countCardsInDeck" attribute="BorderVillage"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="3.0"/>
             </condition>
         </buy>
-        <buy name="Border_Village"/>
+        <buy name="BorderVillage"/>
         <buy name="Cultist">
             <condition>
                 <left type="countCardsInSupply" attribute="Ruins"/>
@@ -3437,7 +3437,7 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Hunting_Party"/>
+        <buy name="HuntingParty"/>
         <buy name="Procession">
             <condition>
                 <left type="countCardsInDeck" attribute="Procession"/>
@@ -3445,9 +3445,9 @@
                 <right type="countCardsInDeck" attribute="Cultist"/>
             </condition>
         </buy>
-        <buy name="Sea_Hag">
+        <buy name="SeaHag">
             <condition>
-                <left type="countCardsInDeck" attribute="Sea_Hag"/>
+                <left type="countCardsInDeck" attribute="SeaHag"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
@@ -3552,7 +3552,7 @@
                 <right type="countCardTypeInDeck" attribute="Village"/>
             </condition>
         </buy>
-        <buy name="Worker$s_Village"/>
+        <buy name="WorkersVillage"/>
         <buy name="Smithy">
             <condition>
                 <left type="countCardsInDeck" attribute="Vineyard"/>
@@ -3571,7 +3571,7 @@
             <condition>
                 <left type="countCardsInDeck" attribute="Workshop"/>
                 <operator type="smallerThan"/>
-                <right type="countCardsInDeck" attribute="Worker$s_Village"/>
+                <right type="countCardsInDeck" attribute="WorkersVillage"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -3625,7 +3625,7 @@
                 <right type="countCardTypeInDeck" attribute="Village"/>
             </condition>
         </buy>
-        <buy name="Worker$s_Village"/>
+        <buy name="WorkersVillage"/>
         <buy name="Smithy">
             <condition>
                 <left type="countCardsInDeck" attribute="Vineyard"/>
@@ -3644,7 +3644,7 @@
             <condition>
                 <left type="countCardsInDeck" attribute="Workshop"/>
                 <operator type="smallerThan"/>
-                <right type="countCardsInDeck" attribute="Worker$s_Village"/>
+                <right type="countCardsInDeck" attribute="WorkersVillage"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -3931,7 +3931,7 @@
         <type name="Province"/>
         <type name="TwoPlayer"/>
         <buy name="Ironworks"/>
-        <buy name="Great_Hall"/>
+        <buy name="GreatHall"/>
         <buy name="Island"/>
     </player>
 
@@ -3977,16 +3977,16 @@
                 <right type="constant" attribute="10.0"/>
             </condition>
         </buy>
-        <buy name="Fishing_Village">
+        <buy name="FishingVillage">
             <condition>
-                <left type="countCardsInDeck" attribute="Fishing_Village"/>
+                <left type="countCardsInDeck" attribute="FishingVillage"/>
                 <operator type="smallerThan"/>
                 <right type="countCardsInDeck" attribute="Wharf"/>
-                <extra_operation type="minus" attribute="1.0"/>
+                <extraOperation type="minus" attribute="1.0"/>
             </condition>
         </buy>
         <buy name="Wharf"/>
-        <buy name="Fishing_Village"/>
+        <buy name="FishingVillage"/>
         <buy name="Silver"/>
     </player>
 
@@ -4079,11 +4079,11 @@
         <type name="Generated"/>
         <type name="BigMoney"/>
         <type name="TwoPlayer"/>
-        <start_state>
+        <startState>
             <hand contents="Potion, 2 Estate, 2 Copper"/>
             <drawdeck contents="5 Copper, Silver, Estate" shuffle="true"/>
             <discard contents=""/>
-        </start_state>
+        </startState>
 
         <buy name="Province"/>
         <buy name="Duchy">
@@ -4119,11 +4119,11 @@
         <type name="Generated"/>
         <type name="BigMoney"/>
         <type name="TwoPlayer"/>
-        <start_state>
+        <startState>
             <hand contents="Potion, Estate, 3 Copper"/>
             <drawdeck contents="4 Copper, Silver, 2 Estate" shuffle="true"/>
             <discard contents=""/>
-        </start_state>
+        </startState>
 
         <buy name="Province"/>
         <buy name="Duchy">
@@ -4213,7 +4213,7 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Border_Village"/>
+        <buy name="BorderVillage"/>
         <buy name="Gold"/>
         <buy name="Smithy">
             <condition>
@@ -4234,7 +4234,7 @@
                 <left type="countCardTypeInDeck" attribute="Terminal"/>
                 <operator type="smallerThan"/>
                 <right type="countCardTypeInDeck" attribute="Village"/>
-                <extra_operation type="minus" attribute="1.0"/>
+                <extraOperation type="minus" attribute="1.0"/>
             </condition>
             <condition>
                 <left type="countCardsInDeck" attribute="Smithy"/>
@@ -4247,7 +4247,7 @@
                 <left type="countCardTypeInDeck" attribute="Terminal"/>
                 <operator type="smallerThan"/>
                 <right type="countCardTypeInDeck" attribute="Village"/>
-                <extra_operation type="minus" attribute="1.0"/>
+                <extraOperation type="minus" attribute="1.0"/>
             </condition>
         </buy>
         <buy name="Silver">
@@ -4373,7 +4373,7 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
             <condition>
-                <left type="countCardsInDeck" attribute="Hunting_Party"/>
+                <left type="countCardsInDeck" attribute="HuntingParty"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="1.0"/>
             </condition>
@@ -4399,7 +4399,7 @@
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Hunting_Party"/>
+        <buy name="HuntingParty"/>
         <buy name="Baron">
             <condition>
                 <left type="countCardsInDeck" attribute="Baron"/>
@@ -4442,12 +4442,12 @@
             </condition>
         </buy>
         <buy name="Gold"/>
-        <buy name="Young_Witch" bane="Ambassador">
+        <buy name="YoungWitch" bane="Ambassador">
             <condition>
-                <left type="countCardsInDeck" attribute="Young_Witch"/>
+                <left type="countCardsInDeck" attribute="YoungWitch"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardsInDeck" attribute="Tunnel"/>
-                <extra_operation type="plus" attribute="1.0"/>
+                <extraOperation type="plus" attribute="1.0"/>
             </condition>
         </buy>
         <buy name="Tunnel"/>
@@ -4492,9 +4492,9 @@
                 <right type="constant" attribute="8.0"/>
             </condition>
         </buy>
-        <buy name="Native_Village" strategy="ApothecaryNativeVillage">
+        <buy name="NativeVillage" strategy="ApothecaryNativeVillage">
             <condition>
-                <left type="countCardsInDeck" attribute="Native_Village"/>
+                <left type="countCardsInDeck" attribute="NativeVillage"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
@@ -4509,7 +4509,7 @@
         <type name="TwoPlayer"/>
         <type name="SingleCard"/>
         <type name="Competitive"/>
-        <buy name="Ill_Gotten_Gains"/>
+        <buy name="IllGottenGains"/>
         <buy name="Duchy"/>
         <buy name="Estate">
             <condition>
@@ -4541,9 +4541,9 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Black_Market">
+        <buy name="BlackMarket">
             <condition>
-                <left type="countCardsInDeck" attribute="Black_Market"/>
+                <left type="countCardsInDeck" attribute="BlackMarket"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="1.0"/>
             </condition>
@@ -4580,9 +4580,9 @@
             </condition>
         </buy>
         <buy name="Gold"/>
-        <buy name="Jack_of_all_Trades">
+        <buy name="JackOfAllTrades">
             <condition>
-                <left type="countCardsInDeck" attribute="Jack_of_all_Trades"/>
+                <left type="countCardsInDeck" attribute="JackOfAllTrades"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="2.0"/>
             </condition>
@@ -4612,9 +4612,9 @@
             </condition>
         </buy>
         <buy name="Gold"/>
-        <buy name="Sea_Hag">
+        <buy name="SeaHag">
             <condition>
-                <left type="countCardsInDeck" attribute="Sea_Hag"/>
+                <left type="countCardsInDeck" attribute="SeaHag"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="1.0"/>
             </condition>
@@ -4651,14 +4651,14 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Council_Room">
+        <buy name="CouncilRoom">
             <condition>
-                <left type="countCardsInDeck" attribute="Council_Room"/>
+                <left type="countCardsInDeck" attribute="CouncilRoom"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Fool$s_Gold"/>
+        <buy name="FoolsGold"/>
     </player>
 
     <player name="Tunnel/Embassy" author="Geronimoo"
@@ -4790,7 +4790,7 @@
                 <left type="countCardsInDeck" attribute="Duchess"/>
                 <operator type="smallerThan"/>
                 <right type="countAllCardsInDeck"/>
-                <extra_operation type="divideBy" attribute="4.0"/>
+                <extraOperation type="divideBy" attribute="4.0"/>
             </condition>
         </buy>
     </player>
@@ -4817,7 +4817,7 @@
             </condition>
         </buy>
         <buy name="Gold"/>
-        <buy name="Ill_Gotten_Gains"/>
+        <buy name="IllGottenGains"/>
         <buy name="Caravan"/>
         <buy name="Develop">
             <condition>
@@ -4844,7 +4844,7 @@
                 <right type="constant" attribute="3.0"/>
             </condition>
         </buy>
-        <buy name="Border_Village"/>
+        <buy name="BorderVillage"/>
         <buy name="Duchy">
             <condition>
                 <left type="countCardsInSupply" attribute="Province"/>
@@ -4863,12 +4863,12 @@
             <condition>
                 <left type="countCardsInDeck" attribute="Torturer"/>
                 <operator type="smallerOrEqualThan"/>
-                <right type="countCardsInDeck" attribute="Border_Village"/>
+                <right type="countCardsInDeck" attribute="BorderVillage"/>
             </condition>
         </buy>
         <buy name="Silver">
             <condition>
-                <left type="countCardsInDeck" attribute="Border_Village"/>
+                <left type="countCardsInDeck" attribute="BorderVillage"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
@@ -4881,10 +4881,10 @@
         <type name="Combo"/>
         <type name="TwoPlayer"/>
         <type name="Province"/>
-        <buy name="Ill_Gotten_Gains"/>
+        <buy name="IllGottenGains"/>
         <buy name="Gardens">
             <condition>
-                <left type="countCardsInDeck" attribute="Ill_Gotten_Gains"/>
+                <left type="countCardsInDeck" attribute="IllGottenGains"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="2.0"/>
             </condition>
@@ -4951,9 +4951,9 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Secret_Chamber">
+        <buy name="SecretChamber">
             <condition>
-                <left type="countCardsInDeck" attribute="Secret_Chamber"/>
+                <left type="countCardsInDeck" attribute="SecretChamber"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="2.0"/>
             </condition>
@@ -4990,14 +4990,14 @@
         </buy>
         <buy name="Bank"/>
         <buy name="Gold"/>
-        <buy name="Trading_Post">
+        <buy name="TradingPost">
             <condition>
                 <left type="countCardsInSupply" attribute="Witch"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="10.0"/>
             </condition>
             <condition>
-                <left type="countCardsInDeck" attribute="Trading_Post"/>
+                <left type="countCardsInDeck" attribute="TradingPost"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
@@ -5231,24 +5231,24 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Trade_Route">
+        <buy name="TradeRoute">
             <condition>
                 <left type="countCardsInDeck" attribute="Silver"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
             <condition>
-                <left type="countCardsInDeck" attribute="Trade_Route"/>
+                <left type="countCardsInDeck" attribute="TradeRoute"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Mining_Village"/>
+        <buy name="MiningVillage"/>
         <buy name="Silver"/>
     </player>
 
-    <player name="ann game #4 - Captain_Frisk" author="Geronimoo"
-            description="This bot is based on the strategy used by Captain_Frisk in the fourth annotated game: XXXXhttp://dominionstrategy.com/2011/03/04/guest-article-annotated-game-4/XXXXIt opens Quarry/Warehouse to get two Witches asap.">
+    <player name="ann game #4 - CaptainFrisk" author="Geronimoo"
+            description="This bot is based on the strategy used by CaptainFrisk in the fourth annotated game: XXXXhttp://dominionstrategy.com/2011/03/04/guest-article-annotated-game-4/XXXXIt opens Quarry/Warehouse to get two Witches asap.">
         <type name="Attacking"/>
         <type name="Competitive"/>
         <type name="Province"/>
@@ -5527,10 +5527,10 @@
             </condition>
         </buy>
         <buy name="Hoard"/>
-        <buy name="Mining_Village"/>
-        <buy name="Trade_Route">
+        <buy name="MiningVillage"/>
+        <buy name="TradeRoute">
             <condition>
-                <left type="countCardsInDeck" attribute="Trade_Route"/>
+                <left type="countCardsInDeck" attribute="TradeRoute"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
@@ -5547,7 +5547,7 @@
         <type name="AnnotatedGames"/>
         <buy name="Province">
             <condition>
-                <left type="countCardsInDeck" attribute="Grand_Market"/>
+                <left type="countCardsInDeck" attribute="GrandMarket"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="2.0"/>
             </condition>
@@ -5559,7 +5559,7 @@
                 <right type="constant" attribute="4.0"/>
             </condition>
         </buy>
-        <buy name="Great_Hall">
+        <buy name="GreatHall">
             <condition>
                 <left type="countCardsInSupply" attribute="Province"/>
                 <operator type="smallerOrEqualThan"/>
@@ -5573,7 +5573,7 @@
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Grand_Market"/>
+        <buy name="GrandMarket"/>
         <buy name="Vault">
             <condition>
                 <left type="countCardsInDeck" attribute="Vault"/>
@@ -5589,21 +5589,21 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Throne_Room">
+        <buy name="ThroneRoom">
             <condition>
                 <left type="countCardTypeInDeck" attribute="Action"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="3.0"/>
             </condition>
         </buy>
-        <buy name="Great_Hall">
+        <buy name="GreatHall">
             <condition>
                 <left type="countCardsInSupply" attribute="Province"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="8.0"/>
             </condition>
         </buy>
-        <buy name="Wishing_Well"/>
+        <buy name="WishingWell"/>
         <buy name="Silver"/>
     </player>
 
@@ -5687,7 +5687,7 @@
         <type name="AnnotatedGames"/>
         <buy name="Province">
             <condition>
-                <left type="countCardsInDeck" attribute="Grand_Market"/>
+                <left type="countCardsInDeck" attribute="GrandMarket"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="2.0"/>
             </condition>
@@ -5699,7 +5699,7 @@
                 <right type="constant" attribute="4.0"/>
             </condition>
         </buy>
-        <buy name="Great_Hall">
+        <buy name="GreatHall">
             <condition>
                 <left type="countCardsInSupply" attribute="Province"/>
                 <operator type="smallerOrEqualThan"/>
@@ -5713,7 +5713,7 @@
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Grand_Market"/>
+        <buy name="GrandMarket"/>
         <buy name="Vault">
             <condition>
                 <left type="countCardsInDeck" attribute="Vault"/>
@@ -5729,14 +5729,14 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Throne_Room">
+        <buy name="ThroneRoom">
             <condition>
                 <left type="countCardTypeInDeck" attribute="Action"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="3.0"/>
             </condition>
         </buy>
-        <buy name="Great_Hall">
+        <buy name="GreatHall">
             <condition>
                 <left type="countCardsInSupply" attribute="Province"/>
                 <operator type="smallerThan"/>
@@ -5770,9 +5770,9 @@
             </condition>
         </buy>
         <buy name="Gold"/>
-        <buy name="Trading_Post">
+        <buy name="TradingPost">
             <condition>
-                <left type="countCardsInDeck" attribute="Trading_Post"/>
+                <left type="countCardsInDeck" attribute="TradingPost"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
@@ -5782,7 +5782,7 @@
                 <left type="countCardTypeInDeck" attribute="Terminal"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardTypeInDeck" attribute="Village"/>
-                <extra_operation type="plus" attribute="1.0"/>
+                <extraOperation type="plus" attribute="1.0"/>
             </condition>
         </buy>
         <buy name="Bazaar">
@@ -5837,7 +5837,7 @@
                 <left type="countCardTypeInDeck" attribute="Terminal"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardTypeInDeck" attribute="Village"/>
-                <extra_operation type="plus" attribute="1.0"/>
+                <extraOperation type="plus" attribute="1.0"/>
             </condition>
         </buy>
         <buy name="Bazaar">
@@ -5847,7 +5847,7 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Scrying_Pool">
+        <buy name="ScryingPool">
             <condition>
                 <left type="countCardTypeInDeck" attribute="Action"/>
                 <operator type="greaterThan"/>
@@ -6105,7 +6105,7 @@
                 <left type="countCardsInDeck" attribute="Warehouse"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardsInDeck" attribute="Province"/>
-                <extra_operation type="plus" attribute="1.0"/>
+                <extraOperation type="plus" attribute="1.0"/>
             </condition>
         </buy>
         <buy name="Silver">
@@ -6185,19 +6185,19 @@
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Council_Room">
+        <buy name="CouncilRoom">
             <condition>
-                <left type="countCardsInDeck" attribute="Council_Room"/>
+                <left type="countCardsInDeck" attribute="CouncilRoom"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="1.0"/>
             </condition>
         </buy>
-        <buy name="Council_Room">
+        <buy name="CouncilRoom">
             <condition>
-                <left type="countCardsInDeck" attribute="Council_Room"/>
+                <left type="countCardsInDeck" attribute="CouncilRoom"/>
                 <operator type="smallerThan"/>
                 <right type="countCardsInDeck" attribute="Village"/>
-                <extra_operation type="minus" attribute="1.0"/>
+                <extraOperation type="minus" attribute="1.0"/>
             </condition>
         </buy>
         <buy name="Chapel">
@@ -6324,7 +6324,7 @@
                 <right type="countCardTypeInDeck" attribute="Terminal"/>
             </condition>
         </buy>
-        <buy name="Scrying_Pool">
+        <buy name="ScryingPool">
             <condition>
                 <left type="countCardTypeInDeck" attribute="Action"/>
                 <operator type="greaterThan"/>
@@ -6422,7 +6422,7 @@
                 <left type="countCardTypeInDeck" attribute="Terminal"/>
                 <operator type="greaterThan"/>
                 <right type="countCardsInDeck" attribute="Festival"/>
-                <extra_operation type="minus" attribute="1.0"/>
+                <extraOperation type="minus" attribute="1.0"/>
             </condition>
         </buy>
         <buy name="Chapel" strategy="aggressiveTrashing">
@@ -6471,15 +6471,15 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Ghost_Ship">
+        <buy name="GhostShip">
             <condition>
-                <left type="countCardsInDeck" attribute="Ghost_Ship"/>
+                <left type="countCardsInDeck" attribute="GhostShip"/>
                 <operator type="smallerOrEqualThan"/>
-                <right type="countCardsInDeck" attribute="Fishing_Village"/>
+                <right type="countCardsInDeck" attribute="FishingVillage"/>
             </condition>
         </buy>
         <buy name="Gold"/>
-        <buy name="Fishing_Village"/>
+        <buy name="FishingVillage"/>
     </player>
 
     <player name="Golem/Counting House" author="Geronimoo"
@@ -6492,7 +6492,7 @@
         <type name="Casual"/>
         <buy name="Colony">
             <condition>
-                <left type="countCardsInDeck" attribute="Counting_House"/>
+                <left type="countCardsInDeck" attribute="CountingHouse"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
@@ -6518,14 +6518,14 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Counting_House">
+        <buy name="CountingHouse">
             <condition>
                 <left type="countCardsInDeck" attribute="Golem"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
             <condition>
-                <left type="countCardsInDeck" attribute="Counting_House"/>
+                <left type="countCardsInDeck" attribute="CountingHouse"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
@@ -6552,7 +6552,7 @@
         </buy>
         <buy name="Silver">
             <condition>
-                <left type="countCardsInDeck" attribute="Counting_House"/>
+                <left type="countCardsInDeck" attribute="CountingHouse"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
@@ -6607,7 +6607,7 @@
         <type name="TwoPlayer"/>
         <buy name="Duchy"/>
         <buy name="Duke"/>
-        <buy name="Horse_Traders"/>
+        <buy name="HorseTraders"/>
         <buy name="Silver"/>
         <buy name="Estate">
             <condition>
@@ -6897,7 +6897,7 @@
                 <right type="constant" attribute="5.0"/>
             </condition>
         </buy>
-        <buy name="Native_Village" strategy="bigTurnBridge"/>
+        <buy name="NativeVillage" strategy="bigTurnBridge"/>
     </player>
 
     <player name="One Coppersmith to rule them all" author="Geronimoo"
@@ -6944,7 +6944,7 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Wishing_Well"/>
+        <buy name="WishingWell"/>
     </player>
 
     <player name="Peddling at the Market" author="Geronimoo"
@@ -6988,10 +6988,10 @@
             <condition>
                 <left type="countCardTypeInDeck" attribute="Terminal"/>
                 <operator type="smallerThan"/>
-                <right type="countCardsInDeck" attribute="Worker$s_Village"/>
+                <right type="countCardsInDeck" attribute="WorkersVillage"/>
             </condition>
         </buy>
-        <buy name="Worker$s_Village"/>
+        <buy name="WorkersVillage"/>
         <buy name="Masquerade">
             <condition>
                 <left type="countCardsInDeck" attribute="Masquerade"/>
@@ -7007,7 +7007,7 @@
         <type name="TwoPlayer"/>
         <buy name="Province">
             <condition>
-                <left type="countCardsInDeck" attribute="Horn_of_Plenty"/>
+                <left type="countCardsInDeck" attribute="HornOfPlenty"/>
                 <operator type="greaterOrEqualThan"/>
                 <right type="countCardsInSupply" attribute="Province"/>
             </condition>
@@ -7033,9 +7033,9 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Royal_Seal">
+        <buy name="RoyalSeal">
             <condition>
-                <left type="countCardsInDeck" attribute="Royal_Seal"/>
+                <left type="countCardsInDeck" attribute="RoyalSeal"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
@@ -7054,9 +7054,9 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Ghost_Ship">
+        <buy name="GhostShip">
             <condition>
-                <left type="countCardsInDeck" attribute="Ghost_Ship"/>
+                <left type="countCardsInDeck" attribute="GhostShip"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
@@ -7068,38 +7068,38 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Wishing_Well">
+        <buy name="WishingWell">
             <condition>
-                <left type="countCardsInDeck" attribute="Wishing_Well"/>
+                <left type="countCardsInDeck" attribute="WishingWell"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Horn_of_Plenty">
+        <buy name="HornOfPlenty">
             <condition>
-                <left type="countCardsInDeck" attribute="Horn_of_Plenty"/>
+                <left type="countCardsInDeck" attribute="HornOfPlenty"/>
                 <operator type="smallerThan"/>
                 <right type="countCardsInDeck" attribute="Smithy"/>
-                <extra_operation type="plus" attribute="2.0"/>
+                <extraOperation type="plus" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="King$s_Court">
+        <buy name="KingsCourt">
             <condition>
-                <left type="countCardsInDeck" attribute="King$s_Court"/>
+                <left type="countCardsInDeck" attribute="KingsCourt"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="7.0"/>
             </condition>
         </buy>
-        <buy name="Walled_Village">
+        <buy name="WalledVillage">
             <condition>
                 <left type="countCardTypeInDeck" attribute="Terminal"/>
                 <operator type="greaterThan"/>
                 <right type="countCardTypeInDeck" attribute="Village"/>
-                <extra_operation type="plus" attribute="1.0"/>
+                <extraOperation type="plus" attribute="1.0"/>
             </condition>
         </buy>
         <buy name="Smithy"/>
-        <buy name="Wishing_Well"/>
+        <buy name="WishingWell"/>
     </player>
 
     <player name="Moat" author="HivemMindEmulator" description="The optimized strategy that buys no other actions.">
@@ -7195,12 +7195,12 @@
                 <right type="constant" attribute="6.0"/>
             </condition>
         </buy>
-        <buy name="Shanty_Town">
+        <buy name="ShantyTown">
             <condition>
-                <left type="countCardsInDeck" attribute="Shanty_Town"/>
+                <left type="countCardsInDeck" attribute="ShantyTown"/>
                 <operator type="smallerThan"/>
                 <right type="countCardTypeInDeck" attribute="Treasure"/>
-                <extra_operation type="divideBy" attribute="14.0"/>
+                <extraOperation type="divideBy" attribute="14.0"/>
             </condition>
             <condition>
                 <left type="countCardTypeInDeck" attribute="Treasure"/>
@@ -7326,7 +7326,7 @@
                 <left type="countCardsInDeck" attribute="Smithy"/>
                 <operator type="smallerThan"/>
                 <right type="countCardTypeInDeck" attribute="Treasure"/>
-                <extra_operation type="divideBy" attribute="11.0"/>
+                <extraOperation type="divideBy" attribute="11.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -7364,10 +7364,10 @@
             <condition>
                 <left type="countCardsInDeck" attribute="Possession"/>
                 <operator type="smallerOrEqualThan"/>
-                <right type="countCardsInDeck" attribute="King$s_Court"/>
+                <right type="countCardsInDeck" attribute="KingsCourt"/>
             </condition>
         </buy>
-        <buy name="King$s_Court"/>
+        <buy name="KingsCourt"/>
         <buy name="Possession"/>
         <buy name="Gold">
             <condition>
@@ -7376,7 +7376,7 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Scrying_Pool">
+        <buy name="ScryingPool">
             <condition>
                 <left type="countCardTypeInDeck" attribute="Action"/>
                 <operator type="greaterThan"/>
@@ -7563,9 +7563,9 @@
             </condition>
         </buy>
         <buy name="Gold"/>
-        <buy name="Sea_Hag">
+        <buy name="SeaHag">
             <condition>
-                <left type="countCardsInDeck" attribute="Sea_Hag"/>
+                <left type="countCardsInDeck" attribute="SeaHag"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="2.0"/>
             </condition>
@@ -7652,7 +7652,7 @@
                 <left type="countCardsInDeck" attribute="Tactician"/>
                 <operator type="smallerThan"/>
                 <right type="countCardsInDeck" attribute="Vault"/>
-                <extra_operation type="plus" attribute="1.0"/>
+                <extraOperation type="plus" attribute="1.0"/>
             </condition>
         </buy>
         <buy name="Vault"/>
@@ -7747,7 +7747,7 @@
                 <left type="countVP"/>
                 <operator type="greaterThan"/>
                 <right type="countMAXOpponentVP"/>
-                <extra_operation type="minus" attribute="6.0"/>
+                <extraOperation type="minus" attribute="6.0"/>
             </condition>
         </buy>
         <buy name="Gold">
@@ -7848,7 +7848,7 @@
                 <left type="countCardsInDeck" attribute="Torturer"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardsInDeck" attribute="Village"/>
-                <extra_operation type="minus" attribute="1.0"/>
+                <extraOperation type="minus" attribute="1.0"/>
             </condition>
         </buy>
         <buy name="Silver">
@@ -7869,8 +7869,8 @@
         <type name="TwoPlayer"/>
         <type name="BigMoney"/>
         <buy name="Followers"/>
-        <buy name="Trusty_Steed"/>
-        <buy name="Bag_of_Gold"/>
+        <buy name="TrustySteed"/>
+        <buy name="BagOfGold"/>
         <buy name="Princess"/>
         <buy name="Diadem"/>
         <buy name="Province"/>
@@ -7922,7 +7922,7 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Treasure_Map">
+        <buy name="TreasureMap">
             <condition>
                 <left type="countCardsInDeck" attribute="Gold"/>
                 <operator type="equalTo"/>
@@ -7934,7 +7934,7 @@
                 <left type="countCardsInDeck" attribute="Warehouse"/>
                 <operator type="smallerThan"/>
                 <right type="countCardsInDeck" attribute="Province"/>
-                <extra_operation type="plus" attribute="1.0"/>
+                <extraOperation type="plus" attribute="1.0"/>
             </condition>
         </buy>
         <buy name="Silver">
@@ -8457,7 +8457,7 @@
                 <left type="countCardsInDeck" attribute="Bridge"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardTypeInDeck" attribute="Treasure"/>
-                <extra_operation type="divideBy" attribute="10.0"/>
+                <extraOperation type="divideBy" attribute="10.0"/>
             </condition>
         </buy>
         <buy name="Bridge">
@@ -8519,7 +8519,7 @@
                 <left type="countCardsInDeck" attribute="Bureaucrat"/>
                 <operator type="smallerThan"/>
                 <right type="countCardTypeInDeck" attribute="Treasure"/>
-                <extra_operation type="divideBy" attribute="20.0"/>
+                <extraOperation type="divideBy" attribute="20.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -8612,7 +8612,7 @@
                 <left type="countCardsInDeck" attribute="Chancellor"/>
                 <operator type="smallerThan"/>
                 <right type="countCardTypeInDeck" attribute="Treasure"/>
-                <extra_operation type="divideBy" attribute="19.0"/>
+                <extraOperation type="divideBy" attribute="19.0"/>
             </condition>
         </buy>
         <buy name="Chancellor">
@@ -8620,7 +8620,7 @@
                 <left type="countCardsInDeck" attribute="Chancellor"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
-                <extra_operation type="divideBy" attribute="8.0"/>
+                <extraOperation type="divideBy" attribute="8.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -8667,7 +8667,7 @@
                 <left type="countCardsInDeck" attribute="Coppersmith"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
-                <extra_operation type="divideBy" attribute="8.0"/>
+                <extraOperation type="divideBy" attribute="8.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -8709,20 +8709,20 @@
                 <right type="constant" attribute="6.0"/>
             </condition>
         </buy>
-        <buy name="Council_Room">
+        <buy name="CouncilRoom">
             <condition>
-                <left type="countCardsInDeck" attribute="Council_Room"/>
+                <left type="countCardsInDeck" attribute="CouncilRoom"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
-                <extra_operation type="divideBy" attribute="8.0"/>
+                <extraOperation type="divideBy" attribute="8.0"/>
             </condition>
         </buy>
-        <buy name="Council_Room">
+        <buy name="CouncilRoom">
             <condition>
-                <left type="countCardsInDeck" attribute="Council_Room"/>
+                <left type="countCardsInDeck" attribute="CouncilRoom"/>
                 <operator type="smallerThan"/>
                 <right type="getTotalMoney"/>
-                <extra_operation type="divideBy" attribute="13.0"/>
+                <extraOperation type="divideBy" attribute="13.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -8764,12 +8764,12 @@
                 <right type="constant" attribute="6.0"/>
             </condition>
         </buy>
-        <buy name="Counting_House">
+        <buy name="CountingHouse">
             <condition>
-                <left type="countCardsInDeck" attribute="Counting_House"/>
+                <left type="countCardsInDeck" attribute="CountingHouse"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="2.0"/>
-                <extra_operation type="divideBy" attribute="8.0"/>
+                <extraOperation type="divideBy" attribute="8.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -8832,7 +8832,7 @@
                 <left type="countCardsInDeck" attribute="Courtyard"/>
                 <operator type="smallerThan"/>
                 <right type="countCardTypeInDeck" attribute="Treasure"/>
-                <extra_operation type="divideBy" attribute="8.0"/>
+                <extraOperation type="divideBy" attribute="8.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -8887,7 +8887,7 @@
                 <left type="countCardsInDeck" attribute="Cutpurse"/>
                 <operator type="smallerThan"/>
                 <right type="countCardTypeInDeck" attribute="Treasure"/>
-                <extra_operation type="divideBy" attribute="9.0"/>
+                <extraOperation type="divideBy" attribute="9.0"/>
             </condition>
         </buy>
         <buy name="Cutpurse">
@@ -8895,7 +8895,7 @@
                 <left type="countCardsInDeck" attribute="Cutpurse"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
-                <extra_operation type="divideBy" attribute="8.0"/>
+                <extraOperation type="divideBy" attribute="8.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -8993,7 +8993,7 @@
                 <left type="countCardsInDeck" attribute="Envoy"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardTypeInDeck" attribute="Treasure"/>
-                <extra_operation type="divideBy" attribute="14.0"/>
+                <extraOperation type="divideBy" attribute="14.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -9054,7 +9054,7 @@
                 <left type="countCardsInDeck" attribute="Explorer"/>
                 <operator type="smallerThan"/>
                 <right type="countCardTypeInDeck" attribute="Treasure"/>
-                <extra_operation type="divideBy" attribute="13.0"/>
+                <extraOperation type="divideBy" attribute="13.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -9137,20 +9137,20 @@
                 <right type="constant" attribute="6.0"/>
             </condition>
         </buy>
-        <buy name="Fortune_Teller">
+        <buy name="FortuneTeller">
             <condition>
-                <left type="countCardsInDeck" attribute="Fortune_Teller"/>
+                <left type="countCardsInDeck" attribute="FortuneTeller"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardTypeInDeck" attribute="Treasure"/>
-                <extra_operation type="divideBy" attribute="10.0"/>
+                <extraOperation type="divideBy" attribute="10.0"/>
             </condition>
         </buy>
-        <buy name="Fortune_Teller">
+        <buy name="FortuneTeller">
             <condition>
-                <left type="countCardsInDeck" attribute="Fortune_Teller"/>
+                <left type="countCardsInDeck" attribute="FortuneTeller"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
-                <extra_operation type="divideBy" attribute="8.0"/>
+                <extraOperation type="divideBy" attribute="8.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -9185,9 +9185,9 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Ghost_Ship">
+        <buy name="GhostShip">
             <condition>
-                <left type="countCardsInDeck" attribute="Ghost_Ship"/>
+                <left type="countCardsInDeck" attribute="GhostShip"/>
                 <operator type="smallerThan"/>
                 <right type="constant" attribute="2.0"/>
             </condition>
@@ -9200,7 +9200,7 @@
                 <right type="constant" attribute="5.0"/>
             </condition>
         </buy>
-        <buy name="Ghost_Ship"/>
+        <buy name="GhostShip"/>
         <buy name="Silver"/>
     </player>
 
@@ -9238,7 +9238,7 @@
                 <left type="countCardsInDeck" attribute="Goons"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardsInDeck" attribute="Gold"/>
-                <extra_operation type="plus" attribute="2.0"/>
+                <extraOperation type="plus" attribute="2.0"/>
             </condition>
         </buy>
         <buy name="Gold"/>
@@ -9280,7 +9280,7 @@
         </buy>
         <buy name="Province">
             <condition>
-                <left type="countCardsInDeck" attribute="Grand_Market"/>
+                <left type="countCardsInDeck" attribute="GrandMarket"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="0.0"/>
             </condition>
@@ -9299,7 +9299,7 @@
                 <right type="constant" attribute="2.0"/>
             </condition>
         </buy>
-        <buy name="Grand_Market"/>
+        <buy name="GrandMarket"/>
         <buy name="Gold"/>
         <buy name="Duchy">
             <condition>
@@ -9332,7 +9332,7 @@
                 <right type="constant" attribute="4.0"/>
             </condition>
         </buy>
-        <buy name="Great_Hall">
+        <buy name="GreatHall">
             <condition>
                 <left type="countCardsInSupply" attribute="Province"/>
                 <operator type="smallerOrEqualThan"/>
@@ -9354,7 +9354,7 @@
                 <right type="constant" attribute="6.0"/>
             </condition>
         </buy>
-        <buy name="Great_Hall">
+        <buy name="GreatHall">
             <condition>
                 <left type="countCardsInDeck" attribute="Silver"/>
                 <operator type="greaterOrEqualThan"/>
@@ -9375,7 +9375,7 @@
                 <left type="getTotalMoney"/>
                 <operator type="greaterThan"/>
                 <right type="constant" attribute="11.0"/>
-                <extra_operation type="multiplyWith" attribute="2.0"/>
+                <extraOperation type="multiplyWith" attribute="2.0"/>
             </condition>
         </buy>
         <buy name="Duchy">
@@ -9397,7 +9397,7 @@
                 <left type="getTotalMoney"/>
                 <operator type="greaterOrEqualThan"/>
                 <right type="constant" attribute="11.0"/>
-                <extra_operation type="multiplyWith" attribute="2.0"/>
+                <extraOperation type="multiplyWith" attribute="2.0"/>
             </condition>
         </buy>
         <buy name="Duchy">
@@ -9466,7 +9466,7 @@
                 <left type="countCardsInDeck" attribute="Harvest"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardTypeInDeck" attribute="Treasure"/>
-                <extra_operation type="divideBy" attribute="9.0"/>
+                <extraOperation type="divideBy" attribute="9.0"/>
             </condition>
         </buy>
         <buy name="Harvest">
@@ -9474,7 +9474,7 @@
                 <left type="countCardsInDeck" attribute="Harvest"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
-                <extra_operation type="divideBy" attribute="8.0"/>
+                <extraOperation type="divideBy" attribute="8.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -9521,7 +9521,7 @@
                 <left type="countCardsInDeck" attribute="Haven"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardsInDeck" attribute="Silver"/>
-                <extra_operation type="minus" attribute="8.0"/>
+                <extraOperation type="minus" attribute="8.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -9569,7 +9569,7 @@
                 <left type="countCardsInDeck" attribute="Herbalist"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardsInDeck" attribute="Silver"/>
-                <extra_operation type="minus" attribute="8.0"/>
+                <extraOperation type="minus" attribute="8.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -9670,12 +9670,12 @@
                 <right type="constant" attribute="6.0"/>
             </condition>
         </buy>
-        <buy name="Horse_Traders">
+        <buy name="HorseTraders">
             <condition>
-                <left type="countCardsInDeck" attribute="Horse_Traders"/>
+                <left type="countCardsInDeck" attribute="HorseTraders"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardTypeInDeck" attribute="Victory"/>
-                <extra_operation type="minus" attribute="3.0"/>
+                <extraOperation type="minus" attribute="3.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -9718,7 +9718,7 @@
                 <right type="constant" attribute="0.0"/>
             </condition>
         </buy>
-        <buy name="Hunting_Party"/>
+        <buy name="HuntingParty"/>
         <buy name="Estate">
             <condition>
                 <left type="gainsNeededToEndGame"/>
@@ -9770,7 +9770,7 @@
                 <left type="countCardsInDeck" attribute="Ironworks"/>
                 <operator type="equalTo"/>
                 <right type="constant" attribute="0.0"/>
-                <extra_operation type="minus" attribute="6.0"/>
+                <extraOperation type="minus" attribute="6.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -9824,7 +9824,7 @@
                 <left type="countCardsInDeck" attribute="Island"/>
                 <operator type="smallerThan"/>
                 <right type="countCardTypeInDeck" attribute="Victory"/>
-                <extra_operation type="divideBy" attribute="2.0"/>
+                <extraOperation type="divideBy" attribute="2.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -9965,7 +9965,7 @@
                 <left type="countCardsInDeck" attribute="Monument"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="countCardTypeInDeck" attribute="Treasure"/>
-                <extra_operation type="divideBy" attribute="5.0"/>
+                <extraOperation type="divideBy" attribute="5.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -10013,7 +10013,7 @@
                 <left type="countCardsInDeck" attribute="Rabble"/>
                 <operator type="smallerOrEqualThan"/>
                 <right type="getTotalMoney"/>
-                <extra_operation type="divideBy" attribute="11.0"/>
+                <extraOperation type="divideBy" attribute="11.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>
@@ -10070,7 +10070,7 @@
                 <left type="countCardsInDeck" attribute="Wharf"/>
                 <operator type="smallerThan"/>
                 <right type="countCardTypeInDeck" attribute="Treasure"/>
-                <extra_operation type="divideBy" attribute="4.0"/>
+                <extraOperation type="divideBy" attribute="4.0"/>
             </condition>
         </buy>
         <buy name="Silver"/>

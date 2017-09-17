@@ -5,22 +5,11 @@ import be.aga.dominionSimulator.DomCost;
 import be.aga.dominionSimulator.DomEngine;
 import be.aga.dominionSimulator.enums.DomCardName;
 import be.aga.dominionSimulator.enums.DomCardType;
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.Logger;
-import org.apache.log4j.SimpleLayout;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class BlackMarketCard extends DomCard {
-    protected static final Logger LOGGER = Logger.getLogger(BlackMarketCard.class);
-
-    static {
-        LOGGER.setLevel(DomEngine.LEVEL);
-        LOGGER.removeAllAppenders();
-        if (DomEngine.addAppender)
-            LOGGER.addAppender(new ConsoleAppender(new SimpleLayout()));
-    }
 
     public BlackMarketCard() {
         super(DomCardName.BlackMarket);

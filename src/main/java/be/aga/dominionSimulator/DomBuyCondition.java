@@ -3,20 +3,23 @@ package be.aga.dominionSimulator;
 import be.aga.dominionSimulator.enums.*;
 import be.aga.dominionSimulator.gui.DomBuyConditionPanel;
 import be.aga.dominionSimulator.gui.DomBuyRulePanel;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
+@Data
+@NoArgsConstructor
 public class DomBuyCondition {
     private DomBotFunction leftFunction;
-    private double leftValue;
     private DomCardName leftCardName;
+    private DomCardType leftCardType;
+    private double leftValue;
     private DomBotComparator comparator;
     private DomBotFunction rightFunction;
-    private double rightValue;
     private DomCardName rightCardName;
+    private DomCardType rightCardType;
+    private double rightValue;
     private DomBotOperator extraOperator = DomBotOperator.plus;
     private double extraAttribute;
-    private DomCardType rightCardType;
-    private DomCardType leftCardType;
 
     public DomBuyCondition(DomBotFunction aLeftFunction,
                            DomCardName aLeftCardName,
@@ -32,21 +35,18 @@ public class DomBuyCondition {
         leftFunction = aLeftFunction;
         leftCardName = aLeftCardName;
         leftCardType = aLeftCardType;
-        leftValue = new Double(aLeftValue).doubleValue();
+        leftValue = new Double(aLeftValue);
         comparator = aComparator;
         rightFunction = aRightFunction;
         rightCardName = aRightCardName;
         rightCardType = aRightCardType;
-        rightValue = new Double(aRightValue).doubleValue();
+        rightValue = new Double(aRightValue);
         extraOperator = anExtraOperator;
         if (anExtraAttribute == null || anExtraAttribute.equals("")) {
             extraAttribute = 0;
         } else {
-            extraAttribute = new Double(anExtraAttribute).doubleValue();
+            extraAttribute = new Double(anExtraAttribute);
         }
-    }
-
-    public DomBuyCondition() {
     }
 
     public boolean isTrue(DomPlayer owner) {
@@ -286,7 +286,7 @@ public class DomBuyCondition {
         if (anAttribute == null)
             return;
         if (rightFunction == DomBotFunction.constant) {
-            rightValue = Double.valueOf(anAttribute).doubleValue();
+            rightValue = Double.valueOf(anAttribute);
             return;
         }
         if (rightFunction == DomBotFunction.countCardTypeInDeck) {
@@ -301,7 +301,7 @@ public class DomBuyCondition {
         if (anAttribute == null)
             return;
         if (leftFunction == DomBotFunction.constant) {
-            leftValue = Double.valueOf(anAttribute).doubleValue();
+            leftValue = Double.valueOf(anAttribute);
             return;
         }
         if (leftFunction == DomBotFunction.countCardTypeInDeck) {
@@ -319,101 +319,9 @@ public class DomBuyCondition {
      */
     public void addExtraOperation(String aType, String anAttribute) {
         extraOperator = DomBotOperator.valueOf(aType);
-        extraAttribute = Double.valueOf(anAttribute).doubleValue();
+        extraAttribute = Double.valueOf(anAttribute);
     }
 
-    public DomBotFunction getLeftFunction() {
-        return leftFunction;
-    }
-
-    public void setLeftFunction(DomBotFunction leftFunction) {
-        this.leftFunction = leftFunction;
-    }
-
-    public double getLeftValue() {
-        return leftValue;
-    }
-
-    public void setLeftValue(double leftValue) {
-        this.leftValue = leftValue;
-    }
-
-    public DomCardName getLeftCardName() {
-        return leftCardName;
-    }
-
-    public void setLeftCardName(DomCardName leftCardName) {
-        this.leftCardName = leftCardName;
-    }
-
-    public DomBotComparator getComparator() {
-        return comparator;
-    }
-
-    public void setComparator(DomBotComparator comparator) {
-        this.comparator = comparator;
-    }
-
-    public DomBotFunction getRightFunction() {
-        return rightFunction;
-    }
-
-    public void setRightFunction(DomBotFunction rightFunction) {
-        this.rightFunction = rightFunction;
-    }
-
-    public double getRightValue() {
-        return rightValue;
-    }
-
-    public void setRightValue(double rightValue) {
-        this.rightValue = rightValue;
-    }
-
-    public DomCardName getRightCardName() {
-        return rightCardName;
-    }
-
-    public void setRightCardName(DomCardName rightCardName) {
-        this.rightCardName = rightCardName;
-    }
-
-    public DomBotOperator getExtraOperator() {
-        return extraOperator;
-    }
-
-    public void setExtraOperator(DomBotOperator extraOperator) {
-        this.extraOperator = extraOperator;
-    }
-
-    public double getExtraAttribute() {
-        return extraAttribute;
-    }
-
-    public void setExtraAttribute(double extraAttribute) {
-        this.extraAttribute = extraAttribute;
-    }
-
-    public DomCardType getRightCardType() {
-        return rightCardType;
-    }
-
-    public void setRightCardType(DomCardType rightCardType) {
-        this.rightCardType = rightCardType;
-    }
-
-    public DomCardType getLeftCardType() {
-        return leftCardType;
-    }
-
-    public void setLeftCardType(DomCardType leftCardType) {
-        this.leftCardType = leftCardType;
-    }
-
-    /**
-     * @param domBuyRulePanel
-     * @return
-     */
     public DomBuyConditionPanel getGuiPanel(DomBuyRulePanel domBuyRulePanel) {
         return new DomBuyConditionPanel(this, domBuyRulePanel);
     }
